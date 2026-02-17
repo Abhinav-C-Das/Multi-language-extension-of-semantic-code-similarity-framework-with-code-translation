@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this software in your research, please cite it as below."
+title: "Multi-View Code Similarity Framework for Pedagogical Assessment"
+abstract: "A research-grade code similarity system achieving 89% accuracy using interpretable multi-view analysis of Code Property Graphs. Features the novel Computation Evolution Signatures (CES) component for distinguishing computational strategies."
+authors:
+  - family-names: "Your Last Name"
+    given-names: "Your First Name"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+    # email: "your.email@example.com"
+version: 1.0.0
+date-released: 2026-01-12
+url: "https://github.com/yourusername/ckg-multiview-code-similarity"
+repository-code: "https://github.com/yourusername/ckg-multiview-code-similarity"
+keywords:
+  - code similarity
+  - code property graphs
+  - program analysis
+  - pedagogical assessment
+  - explainable AI
+  - graph kernels
+  - semantic analysis
+  - Weisfeiler-Lehman
+  - education technology
+license: MIT
+preferred-citation:
+  type: article
+  title: "Multi-View Code Similarity for Pedagogical Assessment via Computation Evolution Signatures"
+  authors:
+    - family-names: "Your Last Name"
+      given-names: "Your First Name"
+  # journal: "Conference/Journal Name"
+  # year: 2026
+  # doi: "10.xxxx/xxxxx"
