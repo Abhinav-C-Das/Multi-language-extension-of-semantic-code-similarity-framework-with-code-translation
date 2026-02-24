@@ -9,8 +9,26 @@ workspace/
 outputs/
 features/
 vectors/
-evaluation/*.json
-evaluation/*.csv
+
+# --- Evaluation results (generated) ---
+evaluation/**/*.json
+evaluation/**/*.csv
+evaluation/**/*report*
+
+# --- Translation generated outputs ---
+translation/test_output*/
+translation/outputs/
+translation_results.*
+
+# --- Archives (internal planning docs) ---
+docs/archives/
+
+# --- Previously deleted — prevent re-adding ---
+backups/
+test1/
+prevchat.txt
+temp.sc
+run_temp.sh
 
 # --- Python ---
 __pycache__/
@@ -54,4 +72,3 @@ logs/
 *.bak
 *.backup
 *~
-

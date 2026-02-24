@@ -1,0 +1,122 @@
+{
+    "canonical_types": {
+        "INT": {
+            "c": "int",
+            "cpp": "int",
+            "java": "int"
+        },
+        "LONG": {
+            "c": "long",
+            "cpp": "long long",
+            "java": "long"
+        },
+        "DOUBLE": {
+            "c": "double",
+            "cpp": "double",
+            "java": "double"
+        },
+        "FLOAT": {
+            "c": "float",
+            "cpp": "float",
+            "java": "float"
+        },
+        "CHAR": {
+            "c": "char",
+            "cpp": "char",
+            "java": "char"
+        },
+        "BOOL": {
+            "c": "int",
+            "cpp": "bool",
+            "java": "boolean"
+        },
+        "VOID": {
+            "c": "void",
+            "cpp": "void",
+            "java": "void"
+        },
+        "STRING": {
+            "c": "char*",
+            "cpp": "std::string",
+            "java": "String"
+        },
+        "INT_ARRAY": {
+            "c": "int",
+            "cpp": "int",
+            "java": "int[]"
+        },
+        "LONG_ARRAY": {
+            "c": "long",
+            "cpp": "long long",
+            "java": "long[]"
+        },
+        "DOUBLE_ARRAY": {
+            "c": "double",
+            "cpp": "double",
+            "java": "double[]"
+        },
+        "CHAR_ARRAY": {
+            "c": "char",
+            "cpp": "char",
+            "java": "char[]"
+        },
+        "FLOAT_ARRAY": {
+            "c": "float",
+            "cpp": "float",
+            "java": "float[]"
+        }
+    },
+    "type_inference": {
+        "int": "INT",
+        "long": "LONG",
+        "long int": "LONG",
+        "long long": "LONG",
+        "long long int": "LONG",
+        "double": "DOUBLE",
+        "float": "FLOAT",
+        "char": "CHAR",
+        "bool": "BOOL",
+        "boolean": "BOOL",
+        "void": "VOID",
+        "int[]": "INT_ARRAY",
+        "int *": "INT_ARRAY",
+        "int*": "INT_ARRAY",
+        "long[]": "LONG_ARRAY",
+        "long long[]": "LONG_ARRAY",
+        "double[]": "DOUBLE_ARRAY",
+        "char[]": "CHAR_ARRAY",
+        "char *": "CHAR_ARRAY",
+        "float[]": "FLOAT_ARRAY",
+        "java.lang.String": "STRING",
+        "java.lang.String[]": "STRING",
+        "char*": "STRING",
+        "String": "STRING",
+        "String[]": "STRING"
+    },
+    "array_param_format": {
+        "c": {
+            "style": "name_then_brackets",
+            "example": "int arr[]",
+            "needs_size_param": true
+        },
+        "cpp": {
+            "style": "name_then_brackets",
+            "example": "int arr[]",
+            "needs_size_param": true
+        },
+        "java": {
+            "style": "brackets_then_name",
+            "example": "int[] arr",
+            "needs_size_param": false,
+            "size_access": ".length"
+        }
+    },
+    "print_format_specifiers": {
+        "INT": "%d",
+        "LONG": "%ld",
+        "DOUBLE": "%f",
+        "FLOAT": "%f",
+        "CHAR": "%c",
+        "STRING": "%s"
+    }
+}

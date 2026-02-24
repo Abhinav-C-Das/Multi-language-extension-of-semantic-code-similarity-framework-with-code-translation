@@ -1,156 +1,27 @@
 # Multi-Language Code Similarity Framework
 
-A **language-extensible framework** for detecting semantic code similarity using multi-view Code Property Graphs (CPG), designed to work across C, Java, and C++ with minimal modification.
+A **language-extensible framework** for detecting semantic code similarity using multi-view Code Property Graphs (CPG). Supports **C, C++, and Java** with cross-language similarity and CPG-based translation.
 
 ---
 
-## 🎯 Framework Overview
+## 🎯 Overview
 
-This project implements a **multi-view code similarity detection framework** that analyzes programs through multiple complementary perspectives:
+This project implements four integrated pipelines for code analysis:
 
-1. **Baseline** - Structural similarity (CFG, AST, PDG)
-2. **WL (Weisfeiler-Lehman)** - Graph kernel-based structural patterns
-3. **CES (Computational Expression Semantics)** - Algorithmic strategy patterns
-4. **SCDPS** - System call and data flow patterns
+| Pipeline | Description | Accuracy |
+|---|---|---|
+| **C++ Similarity** | Detects similar C++ programs via CPG analysis | 100% (90/90) |
+| **Java Similarity** | Detects similar Java programs via CPG analysis | 100% (90/90) |
+| **Cross-Language** | Matches semantically equivalent code across C/C++/Java | 98.89% (89/90) |
+| **Translation** | Translates programs between C, C++, and Java via CPG | Validated on 10 CS-1 problems |
 
-### Key Innovation: Language Extensibility
+### Multi-View Approach
 
-The framework is designed as a **layered architecture** where:
-- **Core algorithms** remain language-agnostic
-- **Language-specific extensions** add features unique to each language
-- **Shared infrastructure** handles CPG generation, feature extraction, and similarity computation
+Programs are analyzed through **three complementary views**:
 
----
-
-## 🏗️ Architecture: Three-Phase Development
-
-### Phase 1: C Language Foundation ✅
-**Repository**: Separate C-focused repository
-
-The foundation layer implements:
-- Core CPG extraction using Joern
-- Multi-view feature extraction (Baseline, WL, CES, SCDPS)
-- Similarity computation using cosine/Tversky metrics
-- Weighted aggregation and accuracy evaluation
-
-**Validation**: Tested on 400 C programming assignment submissions
-
-### Phase 2: Multi-Language Extensions 🚀
-**This Repository**: Java + C++ (planned)
-
-#### Java Extension ✅ COMPLETE
-Extends the C foundation with Java-specific features:
-- **Object-oriented patterns**: Class hierarchies, inheritance, polymorphism
-- **Exception handling**: Try-catch blocks, exception flow
-- **Generics and collections**: Type parameterization patterns
-- **Concurrency**: Thread synchronization, concurrent data structures
-- **Streams and lambdas**: Functional programming constructs
-
-#### C++ Extension ✅ COMPLETE
-Extends with C++ features while maintaining framework consistency:
-- **Template metaprogramming**: Template specialization, SFINAE patterns
-- **RAII patterns**: Resource Acquisition Is Initialization semantics
-- **Move semantics**: Rvalue references, perfect forwarding, zero-copy optimization
-- **STL algorithms**: Iterator-based computation patterns, functional composition
-- **Smart pointers**: Ownership models (unique_ptr, shared_ptr, weak_ptr)
-- **CES v3 Enhanced**: Advanced semantic pattern detection with Priority 1-4 fixes
-
-**Both Java and C++ implementations use identical multi-view architecture:**
-- Baseline (35%) + WL (40%) + CES (25%) weighted aggregation
-- Same CPG extraction pipeline (Joern)
-- Same similarity computation methodology
-- Language-specific pattern extensions in CES layer
-
----
-
-## 📊 Multi-View Feature Extraction
-
-### 1. Baseline Features
-**What**: Fundamental code graph properties  
-**Captured**:
-- Control Flow Graph (CFG) metrics
-- Abstract Syntax Tree (AST) structure
-- Program Dependence Graph (PDG) edges
-
-### 2. Weisfeiler-Lehman (WL) 
-**What**: Iterative graph kernel for structural similarity  
-**Captured**:
-- Node type distributions
-- Neighborhood aggregation patterns
-- Subgraph isomorphisms
-
-### 3. Computational Expression Semantics (CES)
-**What**: High-level algorithmic strategies  
-**Captured**:
-- Loop patterns (indexed, iterator, stream)
-- Data access patterns (sequential, random)
-- Accumulation strategies (compound assignment, explicit)
-- Control flow strategies (conditional logic, branching)
-
-**Example**: Distinguishes between:
-```java
-// Pattern A: Indexed loop
-for (int i = 0; i < arr.length; i++) sum += arr[i];
-
-// Pattern B: Enhanced for
-for (int x : arr) sum = sum + x;
-
-// Pattern C: Functional API
-Arrays.stream(arr).sum();
-```
-
-### 4. SCDPS (System Call & Data Patterns)
-**What**: External interactions and data flow  
-**Captured**:
-- System call sequences
-- I/O patterns
-- Data transformation pipelines
-
----
-
-## 🎓 How It Works
-
-### Step 1: CPG Generation
-```
-Source Code → Joern → Code Property Graph (CPG)
-```
-Joern parses source code into a unified CPG representation containing:
-- AST nodes
-- CFG edges
-- PDG dependencies
-- Type information
-- Data flow
-
-### Step 2: Feature Extraction
-For each program, extract features through multiple views:
-```
-CPG → [Baseline, WL, CES, SCDPS] → Feature Vectors
-```
-
-### Step 3: Vectorization & Normalization
-```
-Features → Global Vocabulary → Dense Vectors → L2 Normalization
-```
-
-### Step 4: Similarity Computation
-```
-Normalized Vectors → Cosine Similarity → Similarity Matrices
-```
-
-### Step 5: Weighted Aggregation
-```
-Multiple Similarity Matrices → Weighted Combination → Final Similarity
-```
-
-Default weights:
-- Baseline: 35%
-- WL: 40%
-- CES: 25%
-
-### Step 6: Prediction & Evaluation
-```
-Final Similarity → Top-1 Prediction → Accuracy vs Ground Truth
-```
+- **Baseline (35%)** — Structural graph properties (CFG nodes/edges, AST depth, PDG dependencies)
+- **WL (40%)** — Weisfeiler-Lehman graph kernel capturing neighborhood structure patterns
+- **CES (25%)** — Computational Expression Semantics detecting algorithmic strategies
 
 ---
 
@@ -158,58 +29,52 @@ Final Similarity → Top-1 Prediction → Accuracy vs Ground Truth
 
 ```
 ckg-multiview-code-similarity/
-├── data/
-│   └── java/                          # Java test programs
-│       ├── ground_truth.json          # Expected similarity mappings
-│       └── p1/                        # Problem 1
-│           ├── ref/                   # Reference implementations
-│           │   ├── ref1.java         # Reference strategy 1
-│           │   └── ref2.java         # Reference strategy 2
-│           └── s/                     # Student submissions
-│               ├── s1.java           # Student 1
-│               ├── s2.java           # Student 2
-│               └── s3.java           # Student 3
-│
-├── cpg/
-│   └── scripts/
-│       └── java/                      # Java CPG extraction scripts
-│           ├── baseline/              # Baseline feature extraction
-│           ├── wl/                    # WL feature extraction
-│           └── semantic/              # CES feature extraction
-│
-├── experiments/
-│   ├── java/
-│   │   └── run_joern_java.sh         # CPG generation for Java
-│   └── pipeline/
-│       └── java/                      # Java pipeline orchestration
-│           ├── run_wl_extract_java.sh
-│           ├── run_ces_extract_java.sh
-│           └── run_scdps_extract_java.sh
-│
-├── similarity/
-│   └── java/                          # Java similarity computation
-│       ├── build_wl_vocab_java.py    # WL vocabulary builder
-│       ├── vectorize_wl_java.py      # WL vectorization
-│       ├── normalize_wl_java.py      # WL normalization
-│       ├── compute_wl_similarity_java.py
-│       ├── build_ces_vocab_java.py
-│       ├── vectorize_ces_java.py
-│       ├── normalize_ces_java.py
-│       └── compute_ces_similarity_java.py
-│
-├── evaluation/
-│   └── java/
-│       ├── aggregate_all_features_java.py    # Weighted aggregation
-│       └── compute_accuracy_weights_java.py   # Accuracy calculation
-│
-├── outputs/                           # Generated features (gitignored)
-├── vectors/                           # Feature vectors (gitignored)
-├── cpgs/                              # CPG binaries (gitignored)
-├── evaluation/                        # Results (gitignored)
-│
-├── run_java_pipeline.sh               # Main Java pipeline executor
 ├── README.md                          # This file
-└── JAVA_README.md                     # Java-specific documentation
+├── LICENSE / CITATION.cff             # License and citation
+├── requirements.txt                   # Dependencies
+├── run_cpp_pipeline.sh                # C++ pipeline executor
+├── run_java_pipeline.sh               # Java pipeline executor
+├── run_c_pipeline.sh                  # C pipeline executor
+├── run_cross_pipeline.sh              # Cross-language pipeline
+├── run_cross_test.sh                  # Cross-language test suite
+│
+├── cpg/scripts/                       # Joern feature extraction (Scala)
+│   ├── c/                             #   C: preprocess, structural, semantic, wl, behavioral
+│   ├── cpp/                           #   C++: same structure
+│   └── java/                          #   Java: same structure
+│
+├── similarity/                        # Similarity computation (Python)
+│   ├── aggregate_baseline.py          #   Baseline aggregation
+│   ├── cpp/                           #   C++ similarity scripts
+│   ├── java/                          #   Java similarity scripts
+│   └── cross/                         #   Cross-language similarity scripts
+│
+├── evaluation/                        # Accuracy evaluation (Python)
+│   ├── calculate_accuracy.py          #   Main accuracy calculator
+│   ├── cpp/ / java/ / cross/          #   Per-pipeline evaluation + ablation
+│   └── cross_test/                    #   Cross-language test evaluation
+│
+├── experiments/                       # Pipeline orchestration (Bash)
+│   ├── c/ / cpp/ / java/              #   Per-language Joern scripts
+│   └── pipeline/                      #   Pipeline step scripts
+│
+├── data/                              # Input datasets
+│   ├── cpp/ / java/                   #   Language-specific problems (p1-p10)
+│   ├── cross/                         #   Cross-language problems + ground_truth.json
+│   └── cross_test/                    #   Dedicated test data
+│
+├── translation/                       # CPG-based code translation
+│   ├── scripts/                       #   APM extraction, code generators
+│   ├── input/ / resources/ / tests/   #   Translation data and tests
+│   └── docs/                          #   Translation documentation
+│
+└── docs/                              # Documentation
+    ├── CPP_README.md                  #   C++ pipeline details
+    ├── JAVA_README.md                 #   Java pipeline details
+    ├── CROSS_LANGUAGE_README.md        #   Cross-language details
+    ├── TRANSLATION_README.md          #   Translation details
+    ├── INSTRUCTIONS.md                #   Setup instructions
+    └── archives/                      #   Internal planning docs
 ```
 
 ---
@@ -217,113 +82,176 @@ ckg-multiview-code-similarity/
 ## 🚀 Quick Start
 
 ### Prerequisites
-- **Joern** (CPG extraction): https://joern.io
-- **Python 3.8+**
-- **Bash/WSL** (for pipeline scripts)
 
-### Installation
+- **Python 3.8+** (standard library only — no pip packages required)
+- **Joern 2.x** — [Installation Guide](https://docs.joern.io/installation)
+- **Java JDK 11+** (required by Joern)
+- **Bash** (WSL on Windows, native on Linux/macOS)
+
+### Running a Pipeline
+
 ```bash
-# Clone repository
-git clone <repository-url>
+# Clone and enter project
+git clone https://github.com/Abhinav-C-Das/Multi-Language-Extension-of-Semantic-Code-Similarity-Framework.git
 cd ckg-multiview-code-similarity
 
-# Install Python dependencies
-pip install -r requirements.txt
+# Run any single-language pipeline
+bash run_java_pipeline.sh     # Java
+bash run_cpp_pipeline.sh      # C++
 
-# Verify Joern installation
-joern-parse --version
+# Run cross-language pipeline
+bash run_cross_pipeline.sh
 ```
 
-### Running Java Pipeline
-```bash
-# Execute full pipeline
-./run_java_pipeline.sh
-```
-
-See [JAVA_README.md](./JAVA_README.md) for detailed Java-specific instructions.
+Each pipeline:
+1. Generates CPGs via Joern
+2. Extracts features (Baseline, WL, CES)
+3. Computes similarity matrices
+4. Aggregates with optimal weights
+5. Evaluates accuracy against ground truth
 
 ---
 
-## 📈 Results & Validation
+## 📊 Sample Outputs
 
-### Java Validation (Sample Dataset)
-- **Dataset**: 1 problem, 3 students, 2 references
-- **Accuracy**: 100% (3/3 correct predictions)
-- **Features**: All views (Baseline, WL, CES) working correctly
+### CES Feature Extraction
 
-### Expected Performance (Large-Scale)
-Based on C implementation with 400 problems:
-- Baseline-only: ~60-70% accuracy
-- Multi-view: ~80-90% accuracy
-- CES contribution: ~10-15% improvement
+For a Java array summation function:
+```json
+[{"context": "loop_ANY", "variable": "total", "evolution": "ACCUMULATIVE", "operator": "ADD", "importance": 0.7}]
+```
+
+For a C find-max function:
+```json
+[{"context": "loop_ANY", "variable": "max", "evolution": "MAX_UPDATE", "operator": "COMPARE", "importance": 0.8}]
+```
+
+### WL Feature Extraction
+
+Graph neighborhood hash counts (iteration 0):
+```json
+{"wl_i0_BLOCK": 1, "wl_i0_CALL": 8, "wl_i0_CONTROL_STRUCTURE": 1, "wl_i0_IDENTIFIER": 12, "wl_i0_LITERAL": 3, "wl_i0_LOCAL": 3, "wl_i0_METHOD": 1, "wl_i0_METHOD_RETURN": 1, "wl_i0_RETURN": 1}
+```
+
+### Similarity Matrix (Cross-Language)
+
+Student `s1_java` against references in all languages:
+```
+          ref1_c    ref1_cpp    ref1_java    ref2_c    ref2_cpp    ref2_java
+s1_java   0.9002    0.9039      0.9817       0.8781    0.8806      0.9215
+```
+→ Highest match: `ref1_java` (0.9817), but **cross-language ref1_c (0.9002) still scores high** — demonstrating language agnosticism.
+
+### Accuracy Report
+
+```
+============================================================
+             ACCURACY EVALUATION REPORT
+============================================================
+  Weights: Baseline=35%, WL=40%, CES=25%
+  Correct Predictions: 89/90
+  Accuracy: 0.9889 (98.89%)
+============================================================
+```
+
+### Translation Output
+
+Input (C):
+```c
+int arraySum(int arr[], int n) {
+    int total = 0;
+    for (int i = 0; i < n; i++) total += arr[i];
+    return total;
+}
+```
+
+Translated (Java):
+```java
+public static int arraySum(int[] arr, int n) {
+    int total = 0;
+    for (int i = 0; i < n; i++) { total += arr[i]; }
+    return total;
+}
+```
 
 ---
 
-## 🔬 Research Background
+## 🏗️ Architecture
 
-This framework is based on research in:
-- **Code Property Graphs**: Unified program representation
-- **Multi-view Learning**: Combining complementary perspectives
-- **Plagiarism Detection**: Semantic similarity beyond syntax
-- **Program Analysis**: Static analysis for education
+### Three-Phase Development
 
-### Publications
+```
+Phase 1: C Foundation       → Core CPG extraction + multi-view similarity
+Phase 2: Language Extension  → Java + C++ with language-specific CES patterns
+Phase 3: Cross-Language      → 3-way matching + CPG-based translation
+```
 
-This framework implements research in multi-view code similarity detection using Code Property Graphs. If you use this framework, please cite:
+### How It Works
 
-**Journal Papers:**
-- *To be added upon publication*
+```
+Source Code → Joern → CPG → Feature Extraction → Vectorization → Similarity → Prediction
+                            ├── Baseline (35%)
+                            ├── WL (40%)
+                            └── CES (25%)
+```
 
-**Conference Papers:**
-- *To be added upon publication*
+1. **CPG Generation** — Joern parses source code into a unified Code Property Graph
+2. **Feature Extraction** — Joern Scala scripts extract features through 3 views
+3. **Similarity Computation** — Python scripts compute pairwise cosine/Tversky similarity
+4. **Weighted Aggregation** — Views are combined: `0.35×Baseline + 0.40×WL + 0.25×CES`
+5. **Prediction** — Each student program is matched to its most similar reference
 
-**Related Work:**
-- Yamaguchi, F., Golde, N., Arp, D., & Rieck, K. (2014). Modeling and discovering vulnerabilities with code property graphs. In *IEEE Symposium on Security and Privacy*.
-- Allamanis, M., Barr, E. T., Devanbu, P., & Sutton, C. (2018). A survey of machine learning for big code and naturalness. *ACM Computing Surveys*, 51(4), 1-37.
-- Alon, U., Zilberstein, M., Levy, O., & Yahav, E. (2019). code2vec: Learning distributed representations of code. *Proceedings of the ACM on Programming Languages*, 3(POPL), 1-29.
+---
+
+## 🔬 Multi-View Feature Details
+
+### Baseline Features
+Structural graph properties: CFG node/edge counts, AST depth, PDG dependency ratios. Computed as normalized ratio vectors.
+
+### WL (Weisfeiler-Lehman) Features
+Iterative graph kernel that captures node type distributions and neighborhood aggregation patterns. Uses iteration 0 (node type counts) for cross-language similarity to avoid language-specific hash explosion.
+
+### CES (Computational Expression Semantics)
+Language-agnostic algorithmic pattern detection. Identifies:
+- **ACCUMULATIVE** — Loop accumulations (`sum += x`)
+- **MAX_UPDATE / MIN_UPDATE** — Conditional extremum tracking
+- **CONDITIONAL_SWAP** — Sorting swap patterns
+- **NARROWING_WINDOW** — Binary search convergence
+- **SEARCH_WITH_RETURN** — Early exit search patterns
+- **HEAD_RECURSIVE / TAIL_RECURSIVE** — Recursion strategies
 
 ---
 
 ## 🛠️ Extending to New Languages
 
-To add a new language (e.g., Python, Rust):
+1. Create extraction scripts in `cpg/scripts/{lang}/`
+2. Add similarity scripts in `similarity/{lang}/`
+3. Create pipeline script `run_{lang}_pipeline.sh`
+4. Add test data in `data/{lang}/` with `ground_truth.json`
+5. Run pipeline and evaluate accuracy
 
-1. **Create language directory structure**:
-   ```bash
-   mkdir -p data/{lang} experiments/{lang} similarity/{lang} cpg/scripts/{lang}
-   ```
+---
 
-2. **Implement CPG extraction scripts** (Joern Scala):
-   - Baseline features: `cpg/scripts/{lang}/baseline/`
-   - WL features: `cpg/scripts/{lang}/wl/`
-   - CES features: `cpg/scripts/{lang}/semantic/`
+## 📖 Detailed Documentation
 
-3. **Create pipeline scripts**:
-   - Feature extraction: `experiments/pipeline/{lang}/`
-   - Similarity computation: `similarity/{lang}/`
-
-4. **Add language-specific patterns** to CES:
-   - Identify unique idioms (e.g., list comprehensions in Python)
-   - Extend CES extraction scripts
-   - Test with diverse programs
-
-5. **Validate**:
-   - Create ground truth dataset
-   - Run pipeline
-   - Evaluate accuracy
+| Document | Description |
+|---|---|
+| [C++ Pipeline](docs/CPP_README.md) | C++ feature extraction and evaluation details |
+| [Java Pipeline](docs/JAVA_README.md) | Java feature extraction and evaluation details |
+| [Cross-Language](docs/CROSS_LANGUAGE_README.md) | Cross-language matching methodology |
+| [Translation](docs/TRANSLATION_README.md) | CPG-based code translation pipeline |
+| [Instructions](docs/INSTRUCTIONS.md) | Setup and environment instructions |
 
 ---
 
 ## 📝 Citation
 
-If you use this framework in your research, please cite:
-
 ```bibtex
 @software{multiview_code_similarity,
-  title={Multi-Language Code Similarity Detection Framework},
-  author={Your Name},
+  title={Multi-Language Extension of Semantic Code Similarity Framework},
+  author={Abhinav C Das},
   year={2026},
-  url={https://github.com/yourusername/ckg-multiview-code-similarity}
+  url={https://github.com/Abhinav-C-Das/Multi-Language-Extension-of-Semantic-Code-Similarity-Framework}
 }
 ```
 
@@ -331,49 +259,13 @@ If you use this framework in your research, please cite:
 
 ## 📜 License
 
-MIT License
-
-Copyright (c) 2026 [Author Name]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
----
+MIT License — See [LICENSE](LICENSE) for details.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Areas for contribution:
-- New language extensions (Python, Rust, Go, etc.)
-- Additional feature views
-- Performance optimizations
-- Evaluation on larger datasets
-
----
-
-## 📧 Contact
-
-For questions or collaboration:
-- **Email**: your.email@example.com
-- **Issues**: GitHub Issues tab
-
----
+Contributions welcome! Areas: new language extensions, additional feature views, performance optimizations, larger dataset evaluations.
 
 ## 🙏 Acknowledgments
 
-- **Joern Team** for the CPG extraction framework
-- **Research Community** for foundational work in code similarity detection
+- **Joern Team** for the CPG analysis framework
+- Research community for foundational work in code similarity detection

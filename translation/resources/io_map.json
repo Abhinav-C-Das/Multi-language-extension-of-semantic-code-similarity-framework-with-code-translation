@@ -1,0 +1,126 @@
+{
+    "io_functions": {
+        "print": {
+            "c": {
+                "function": "printf",
+                "format_string": true,
+                "newline_in_format": true
+            },
+            "cpp": {
+                "function": "std::cout",
+                "format_string": false,
+                "newline_suffix": "std::endl"
+            },
+            "java": {
+                "function": "System.out.println",
+                "format_string": false,
+                "auto_newline": true
+            }
+        },
+        "print_no_newline": {
+            "c": {
+                "function": "printf",
+                "format_string": true,
+                "newline_in_format": false
+            },
+            "cpp": {
+                "function": "std::cout",
+                "format_string": false,
+                "newline_suffix": null
+            },
+            "java": {
+                "function": "System.out.print",
+                "format_string": false,
+                "auto_newline": false
+            }
+        }
+    },
+    "io_detection": {
+        "printf": {
+            "lang": "c",
+            "type": "print",
+            "has_format": true
+        },
+        "puts": {
+            "lang": "c",
+            "type": "print",
+            "has_format": false
+        },
+        "fprintf": {
+            "lang": "c",
+            "type": "print",
+            "has_format": true
+        },
+        "scanf": {
+            "lang": "c",
+            "type": "read",
+            "has_format": true
+        },
+        "std::cout": {
+            "lang": "cpp",
+            "type": "print",
+            "has_format": false
+        },
+        "operator<<": {
+            "lang": "cpp",
+            "type": "print",
+            "has_format": false
+        },
+        "std::cin": {
+            "lang": "cpp",
+            "type": "read",
+            "has_format": false
+        },
+        "operator>>": {
+            "lang": "cpp",
+            "type": "read",
+            "has_format": false
+        },
+        "System.out.println": {
+            "lang": "java",
+            "type": "print",
+            "has_format": false
+        },
+        "System.out.print": {
+            "lang": "java",
+            "type": "print",
+            "has_format": false
+        },
+        "System.out.printf": {
+            "lang": "java",
+            "type": "print",
+            "has_format": true
+        }
+    },
+    "string_concat": {
+        "c": {
+            "method": "format_string",
+            "example": "printf(\"Sum: %d\\n\", result)"
+        },
+        "cpp": {
+            "method": "stream_chain",
+            "example": "std::cout << \"Sum: \" << result << std::endl"
+        },
+        "java": {
+            "method": "plus_operator",
+            "example": "System.out.println(\"Sum: \" + result)"
+        }
+    },
+    "headers": {
+        "c": {
+            "print": "#include <stdio.h>",
+            "math": "#include <math.h>",
+            "stdlib": "#include <stdlib.h>"
+        },
+        "cpp": {
+            "print": "#include <iostream>",
+            "math": "#include <cmath>",
+            "stdlib": "#include <cstdlib>"
+        },
+        "java": {
+            "print": null,
+            "math": null,
+            "stdlib": null
+        }
+    }
+}

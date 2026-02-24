@@ -1,0 +1,26 @@
+# ============================================================
+# CKG Multi-View Code Similarity - Requirements
+# ============================================================
+#
+# Python 3.8+ required
+#
+# The core project uses only Python standard library modules:
+#   json, os, sys, math, collections, argparse, pathlib
+#
+# No pip-installable packages are required.
+#
+# ============================================================
+# External Tool Dependencies (installed separately):
+# ============================================================
+#
+# 1. Joern (https://joern.io) - v2.x
+#    Code Property Graph analysis framework
+#    Used for: CPG generation, feature extraction (Scala scripts)
+#    Install: https://docs.joern.io/installation
+#
+# 2. Java JDK 11+ 
+#    Required by Joern
+#
+# 3. Bash shell (WSL on Windows, native on Linux/macOS)
+#    Required for: pipeline orchestration scripts
+#

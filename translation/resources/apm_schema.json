@@ -1,0 +1,315 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Abstract Program Model (APM)",
+    "description": "Language-neutral intermediate representation extracted from Joern CPG. Used for cross-language code translation between C, C++, and Java at CS-1 level.",
+    "type": "object",
+    "required": [
+        "source_language",
+        "source_file",
+        "functions"
+    ],
+    "properties": {
+        "source_language": {
+            "type": "string",
+            "enum": [
+                "c",
+                "cpp",
+                "java"
+            ],
+            "description": "Language of the original source file"
+        },
+        "source_file": {
+            "type": "string",
+            "description": "Path to the original source file"
+        },
+        "functions": {
+            "type": "array",
+            "description": "List of functions extracted from the program (excluding main)",
+            "items": {
+                "$ref": "#/definitions/Function"
+            }
+        },
+        "entry_point": {
+            "$ref": "#/definitions/EntryPoint",
+            "description": "The main() function decomposed into declarations and calls"
+        }
+    },
+    "definitions": {
+        "Function": {
+            "type": "object",
+            "required": [
+                "name",
+                "return_type",
+                "parameters",
+                "body"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "return_type": {
+                    "$ref": "#/definitions/CanonicalType"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Parameter"
+                    }
+                },
+                "body": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Statement"
+                    }
+                }
+            }
+        },
+        "Parameter": {
+            "type": "object",
+            "required": [
+                "name",
+                "type"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "$ref": "#/definitions/CanonicalType"
+                },
+                "role": {
+                    "type": "string",
+                    "enum": [
+                        "ARRAY_SIZE",
+                        "DATA",
+                        "TARGET"
+                    ],
+                    "description": "ARRAY_SIZE = this param represents the length of an array param"
+                }
+            }
+        },
+        "CanonicalType": {
+            "type": "string",
+            "enum": [
+                "INT",
+                "LONG",
+                "DOUBLE",
+                "FLOAT",
+                "CHAR",
+                "BOOL",
+                "VOID",
+                "STRING",
+                "INT_ARRAY",
+                "LONG_ARRAY",
+                "DOUBLE_ARRAY"
+            ]
+        },
+        "EntryPoint": {
+            "type": "object",
+            "properties": {
+                "declarations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Statement"
+                    }
+                },
+                "statements": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Statement"
+                    }
+                }
+            }
+        },
+        "Statement": {
+            "type": "object",
+            "required": [
+                "kind"
+            ],
+            "properties": {
+                "kind": {
+                    "type": "string",
+                    "enum": [
+                        "DECLARE",
+                        "FOR_LOOP",
+                        "WHILE_LOOP",
+                        "DO_WHILE",
+                        "IF",
+                        "ASSIGN",
+                        "COMPOUND_ASSIGN",
+                        "RETURN",
+                        "CALL",
+                        "PRINT",
+                        "BREAK",
+                        "CONTINUE",
+                        "BLOCK",
+                        "EXPR_STMT"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Variable name (DECLARE)"
+                },
+                "type": {
+                    "$ref": "#/definitions/CanonicalType",
+                    "description": "(DECLARE)"
+                },
+                "init": {
+                    "$ref": "#/definitions/Expression",
+                    "description": "Initial value (DECLARE)"
+                },
+                "var_init": {
+                    "$ref": "#/definitions/Statement",
+                    "description": "Loop init (FOR_LOOP)"
+                },
+                "condition": {
+                    "$ref": "#/definitions/Expression",
+                    "description": "(FOR/WHILE/DO/IF)"
+                },
+                "update": {
+                    "$ref": "#/definitions/Expression",
+                    "description": "Loop update (FOR_LOOP)"
+                },
+                "body": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Statement"
+                    },
+                    "description": "Body statements (loops, if-then)"
+                },
+                "else_body": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Statement"
+                    },
+                    "description": "Else branch (IF)"
+                },
+                "target": {
+                    "$ref": "#/definitions/Expression",
+                    "description": "(ASSIGN/COMPOUND_ASSIGN)"
+                },
+                "value": {
+                    "$ref": "#/definitions/Expression",
+                    "description": "(ASSIGN/RETURN)"
+                },
+                "operator": {
+                    "type": "string",
+                    "enum": [
+                        "ADD",
+                        "SUB",
+                        "MUL",
+                        "DIV",
+                        "MOD"
+                    ],
+                    "description": "(COMPOUND_ASSIGN)"
+                },
+                "function": {
+                    "type": "string",
+                    "description": "Function name (CALL)"
+                },
+                "arguments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Expression"
+                    },
+                    "description": "(CALL/PRINT)"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "Format string (PRINT)"
+                },
+                "expression": {
+                    "$ref": "#/definitions/Expression",
+                    "description": "(EXPR_STMT)"
+                }
+            }
+        },
+        "Expression": {
+            "type": "object",
+            "required": [
+                "kind"
+            ],
+            "properties": {
+                "kind": {
+                    "type": "string",
+                    "enum": [
+                        "IDENTIFIER",
+                        "LITERAL",
+                        "BINARY_OP",
+                        "UNARY_OP",
+                        "ARRAY_ACCESS",
+                        "MEMBER_ACCESS",
+                        "CALL_EXPR",
+                        "CAST"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "(IDENTIFIER)"
+                },
+                "value": {
+                    "description": "(LITERAL) — the literal value"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "(LITERAL) — INT, DOUBLE, STRING, CHAR"
+                },
+                "left": {
+                    "$ref": "#/definitions/Expression",
+                    "description": "(BINARY_OP)"
+                },
+                "right": {
+                    "$ref": "#/definitions/Expression",
+                    "description": "(BINARY_OP)"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "(BINARY_OP/UNARY_OP) — +, -, *, /, %, <, >, <=, >=, ==, !=, &&, ||, !, ++, --"
+                },
+                "operand": {
+                    "$ref": "#/definitions/Expression",
+                    "description": "(UNARY_OP)"
+                },
+                "prefix": {
+                    "type": "boolean",
+                    "description": "(UNARY_OP) — true = prefix, false = postfix"
+                },
+                "array": {
+                    "$ref": "#/definitions/Expression",
+                    "description": "(ARRAY_ACCESS)"
+                },
+                "index": {
+                    "$ref": "#/definitions/Expression",
+                    "description": "(ARRAY_ACCESS)"
+                },
+                "object": {
+                    "$ref": "#/definitions/Expression",
+                    "description": "(MEMBER_ACCESS)"
+                },
+                "member": {
+                    "type": "string",
+                    "description": "(MEMBER_ACCESS) — e.g., 'length'"
+                },
+                "function": {
+                    "type": "string",
+                    "description": "(CALL_EXPR)"
+                },
+                "arguments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Expression"
+                    },
+                    "description": "(CALL_EXPR)"
+                },
+                "target_type": {
+                    "type": "string",
+                    "description": "(CAST)"
+                },
+                "expression": {
+                    "$ref": "#/definitions/Expression",
+                    "description": "(CAST)"
+                }
+            }
+        }
+    }
+}

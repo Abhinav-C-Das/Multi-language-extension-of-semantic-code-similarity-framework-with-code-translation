@@ -1,0 +1,472 @@
+ bash cpg_t1/run_custom_tests.sh
+==================================================
+    🧪 Custom CS-1 Concept Translation Suite
+==================================================
+
+▶ Testing File: t1_nested_loops.c
+--------------------------------------------------
+--- ORIGINAL SOURCE CODE (cpg_t1/input/t1_nested_loops.c) ---
+#include <stdio.h>
+
+void print_pyramid(int rows) {
+  for (int i = 1; i <= rows; i++) {
+    for (int j = 1; j <= (rows - i); j++) {
+      printf(" ");
+    }
+    for (int k = 1; k <= (2 * i - 1); k++) {
+      printf("*");
+    }
+    printf("\n");
+  }
+}
+
+int main() {
+  print_pyramid(5);
+  return 0;
+}
+--------------------------------------------------
+  Target -> java
+  [Verifying Semantic Equivalence]
+[Level 1] Compiling cpg_t1/outputs/t1_nested_loops_generated.java...
+  [✓] Generated code compiles
+[Level 2] Comparing outputs...
+  [✓] Outputs match: '*
+   ***
+  *****
+ *******
+*********'
+
+========================================
+ Compile:     PASS
+ Output:      MATCH
+========================================
+
+--- GENERATED CODE (cpg_t1/outputs/t1_nested_loops_generated.java) ---
+// Auto-generated from CPG Abstract Program Model
+class T1_nested_loops {
+
+    public static void print_pyramid(int rows) {
+        for (int i = 1; (i <= rows); i++) {
+            for (int j = 1; (j <= (rows - i)); j++) {
+                System.out.print(" ");
+            }
+            for (int k = 1; (k <= ((2 * i) - 1)); k++) {
+                System.out.print("*");
+            }
+            System.out.println("");
+        }
+    }
+
+    public static void main(String[] args) {
+        print_pyramid(5);
+    }
+}
+----------------------------------------
+
+  Target -> cpp
+  [Verifying Semantic Equivalence]
+[Level 1] Compiling cpg_t1/outputs/t1_nested_loops_generated.cpp...
+  [✓] Generated code compiles
+[Level 2] Comparing outputs...
+  [✓] Outputs match: '*
+   ***
+  *****
+ *******
+*********'
+
+========================================
+ Compile:     PASS
+ Output:      MATCH
+========================================
+
+--- GENERATED CODE (cpg_t1/outputs/t1_nested_loops_generated.cpp) ---
+// Auto-generated from CPG Abstract Program Model
+#include <iostream>
+
+void print_pyramid(int rows) {
+    for (int i = 1; (i <= rows); i++) {
+        for (int j = 1; (j <= (rows - i)); j++) {
+            std::cout << " ";
+        }
+        for (int k = 1; (k <= ((2 * i) - 1)); k++) {
+            std::cout << "*";
+        }
+        std::cout << "" << std::endl;
+    }
+}
+
+int main() {
+    print_pyramid(5);
+    return 0;
+    return 0;
+}
+----------------------------------------
+
+
+▶ Testing File: t2_gcd_while.c
+--------------------------------------------------
+--- ORIGINAL SOURCE CODE (cpg_t1/input/t2_gcd_while.c) ---
+#include <stdio.h>
+
+int find_gcd(int a, int b) {
+  int temp = 0;
+  while (b != 0) {
+    temp = b;
+    b = a % b;
+    a = temp;
+  }
+  return a;
+}
+
+int main() {
+  int num1 = 48;
+  int num2 = 18;
+  int gcd = 0;
+
+  if (num1 < 0 || num2 < 0) {
+    printf("Error: Negative numbers not supported.\n");
+  } else {
+    gcd = find_gcd(num1, num2);
+    printf("GCD of %d and %d is %d\n", num1, num2, gcd);
+  }
+  return 0;
+}
+--------------------------------------------------
+  Target -> java
+  [Verifying Semantic Equivalence]
+[Level 1] Compiling cpg_t1/outputs/t2_gcd_while_generated.java...
+  [✓] Generated code compiles
+[Level 2] Comparing outputs...
+  [✓] Outputs match: 'GCD of 48 and 18 is 6'
+
+========================================
+ Compile:     PASS
+ Output:      MATCH
+========================================
+
+--- GENERATED CODE (cpg_t1/outputs/t2_gcd_while_generated.java) ---
+// Auto-generated from CPG Abstract Program Model
+class T2_gcd_while {
+
+    public static int find_gcd(int a, int b) {
+        int temp = 0;
+        while ((b != 0)) {
+            temp = b;
+            b = (a % b);
+            a = temp;
+        }
+        return a;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 48;
+        int num2 = 18;
+        int gcd = 0;
+        if (((num1 < 0) || (num2 < 0))) {
+            System.out.println("Error: Negative numbers not supported.");
+        } else {
+            gcd = find_gcd(num1, num2);
+            System.out.println("GCD of " + num1 + " and " + num2 + " is " + gcd);
+        }
+    }
+}
+----------------------------------------
+
+  Target -> cpp
+  [Verifying Semantic Equivalence]
+[Level 1] Compiling cpg_t1/outputs/t2_gcd_while_generated.cpp...
+  [✓] Generated code compiles
+[Level 2] Comparing outputs...
+  [✓] Outputs match: 'GCD of 48 and 18 is 6'
+
+========================================
+ Compile:     PASS
+ Output:      MATCH
+========================================
+
+--- GENERATED CODE (cpg_t1/outputs/t2_gcd_while_generated.cpp) ---
+// Auto-generated from CPG Abstract Program Model
+#include <iostream>
+
+int find_gcd(int a, int b) {
+    int temp = 0;
+    while ((b != 0)) {
+        temp = b;
+        b = (a % b);
+        a = temp;
+    }
+    return a;
+}
+
+int main() {
+    int num1 = 48;
+    int num2 = 18;
+    int gcd = 0;
+    if (((num1 < 0) || (num2 < 0))) {
+        std::cout << "Error: Negative numbers not supported." << std::endl;
+    } else {
+        gcd = find_gcd(num1, num2);
+        std::cout << "GCD of " << num1 << " and " << num2 << " is " << gcd << std::endl;
+    }
+    return 0;
+    return 0;
+}
+----------------------------------------
+
+
+▶ Testing File: t3_do_while_logic.c
+--------------------------------------------------
+--- ORIGINAL SOURCE CODE (cpg_t1/input/t3_do_while_logic.c) ---
+#include <stdio.h>
+
+void filter_numbers(int limit) {
+  int current = 0;
+
+  do {
+    current++;
+
+    if (current > limit) {
+      break;
+    }
+
+    if (current % 2 == 0) {
+      continue;
+    }
+
+    if (!(current < 5) && (current < 15)) {
+      printf("Eligible Odd: %d\n", current);
+    }
+
+  } while (current < 20);
+}
+
+int main() {
+  filter_numbers(18);
+  return 0;
+}
+--------------------------------------------------
+  Target -> java
+  [Verifying Semantic Equivalence]
+[Level 1] Compiling cpg_t1/outputs/t3_do_while_logic_generated.java...
+  [✓] Generated code compiles
+[Level 2] Comparing outputs...
+  [✓] Outputs match: 'Eligible Odd: 5
+Eligible Odd: 7
+Eligible Odd: 9
+El'
+
+========================================
+ Compile:     PASS
+ Output:      MATCH
+========================================
+
+--- GENERATED CODE (cpg_t1/outputs/t3_do_while_logic_generated.java) ---
+// Auto-generated from CPG Abstract Program Model
+class T3_do_while_logic {
+
+    public static void filter_numbers(int limit) {
+        int current = 0;
+        do {
+            current++;
+            if ((current > limit)) {
+                break;
+            }
+            if (((current % 2) == 0)) {
+                continue;
+            }
+            if ((!(current < 5) && (current < 15))) {
+                System.out.println("Eligible Odd: " + current);
+            }
+        } while ((current < 20));
+    }
+
+    public static void main(String[] args) {
+        filter_numbers(18);
+    }
+}
+----------------------------------------
+
+  Target -> cpp
+  [Verifying Semantic Equivalence]
+[Level 1] Compiling cpg_t1/outputs/t3_do_while_logic_generated.cpp...
+  [✓] Generated code compiles
+[Level 2] Comparing outputs...
+  [✓] Outputs match: 'Eligible Odd: 5
+Eligible Odd: 7
+Eligible Odd: 9
+El'
+
+========================================
+ Compile:     PASS
+ Output:      MATCH
+========================================
+
+--- GENERATED CODE (cpg_t1/outputs/t3_do_while_logic_generated.cpp) ---
+// Auto-generated from CPG Abstract Program Model
+#include <iostream>
+
+void filter_numbers(int limit) {
+    int current = 0;
+    do {
+        current++;
+        if ((current > limit)) {
+            break;
+        }
+        if (((current % 2) == 0)) {
+            continue;
+        }
+        if ((!(current < 5) && (current < 15))) {
+            std::cout << "Eligible Odd: " << current << std::endl;
+        }
+    } while ((current < 20));
+}
+
+int main() {
+    filter_numbers(18);
+    return 0;
+    return 0;
+}
+----------------------------------------
+
+
+▶ Testing File: t4_array_ops.c
+--------------------------------------------------
+--- ORIGINAL SOURCE CODE (cpg_t1/input/t4_array_ops.c) ---
+#include <stdio.h>
+
+void reverse_array(int arr[], int size) {
+  int start = 0;
+  int end = size - 1;
+  int temp = 0;
+
+  while (start < end) {
+    temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+
+    start++;
+    end--;
+  }
+}
+
+void print_array(int arr[], int size) {
+  for (int i = 0; i < size; i++) {
+    printf("%d ", arr[i]);
+  }
+  printf("\n");
+}
+
+int main() {
+  int data[] = {10, 20, 30, 40, 50, 60, 70};
+  printf("Original: ");
+  print_array(data, 7);
+
+  reverse_array(data, 7);
+
+  printf("Reversed: ");
+  print_array(data, 7);
+  return 0;
+}
+--------------------------------------------------
+  Target -> java
+  [Verifying Semantic Equivalence]
+[Level 1] Compiling cpg_t1/outputs/t4_array_ops_generated.java...
+  [✓] Generated code compiles
+[Level 2] Comparing outputs...
+  [✓] Outputs match: 'Original: 10 20 30 40 50 60 70
+Reversed: 70 60 50'
+
+========================================
+ Compile:     PASS
+ Output:      MATCH
+========================================
+
+--- GENERATED CODE (cpg_t1/outputs/t4_array_ops_generated.java) ---
+// Auto-generated from CPG Abstract Program Model
+class T4_array_ops {
+
+    public static void reverse_array(int[] arr) {
+        int start = 0;
+        int end = (arr.length - 1);
+        int temp = 0;
+        while ((start < end)) {
+            temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    public static void print_array(int[] arr) {
+        for (int i = 0; (i < arr.length); i++) {
+            System.out.print("" + arr[i] + " ");
+        }
+        System.out.println("");
+    }
+
+    public static void main(String[] args) {
+        int[] data = new int[]{10, 20, 30, 40, 50, 60, 70};
+        System.out.print("Original: ");
+        print_array(data);
+        reverse_array(data);
+        System.out.print("Reversed: ");
+        print_array(data);
+    }
+}
+----------------------------------------
+
+  Target -> cpp
+  [Verifying Semantic Equivalence]
+[Level 1] Compiling cpg_t1/outputs/t4_array_ops_generated.cpp...
+  [✓] Generated code compiles
+[Level 2] Comparing outputs...
+  [✓] Outputs match: 'Original: 10 20 30 40 50 60 70
+Reversed: 70 60 50'
+
+========================================
+ Compile:     PASS
+ Output:      MATCH
+========================================
+
+--- GENERATED CODE (cpg_t1/outputs/t4_array_ops_generated.cpp) ---
+// Auto-generated from CPG Abstract Program Model
+#include <iostream>
+
+void reverse_array(int arr[], int size) {
+    int start = 0;
+    int end = (size - 1);
+    int temp = 0;
+    while ((start < end)) {
+        temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+void print_array(int arr[], int size) {
+    for (int i = 0; (i < size); i++) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << "" << std::endl;
+}
+
+int main() {
+    int data[] = {10, 20, 30, 40, 50, 60, 70};
+    std::cout << "Original: ";
+    print_array(data, 7);
+    reverse_array(data, 7);
+    std::cout << "Reversed: ";
+    print_array(data, 7);
+    return 0;
+    return 0;
+}
+----------------------------------------
+
+
+==================================================
+    🏁 Custom Suite Execution Complete
+==================================================
+abhinav@User:/mnt/c/Users/abhis/OneDrive/Desktop/msths/ckg-multiview-code-similarity$

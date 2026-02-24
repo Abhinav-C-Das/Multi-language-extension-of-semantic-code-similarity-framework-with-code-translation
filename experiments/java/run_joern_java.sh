@@ -5,10 +5,10 @@ echo "=========================================="
 echo "Java CPG Generation & Feature Extraction"
 echo "=========================================="
 
-DATA_DIR="data/java"
-OUT_DIR="outputs/java"
+DATA_DIR="${DATA_DIR:-data/java}"
+OUT_DIR="${OUT_DIR:-outputs/java}"
 SCRIPTS_DIR="cpg/scripts/java"
-CPG_BASE="cpgs/java"
+CPG_BASE="${CPG_BASE:-cpgs/java}"
 
 mkdir -p "$OUT_DIR"
 mkdir -p "$CPG_BASE"
@@ -100,7 +100,20 @@ for PROBLEM in "$DATA_DIR"/*; do
       fi
 
       # -----------------------------------------------
-      # 5. Behavioral features
+      # 5. WL (Weisfeiler-Leman) features
+      # -----------------------------------------------
+      if [ -f "$SCRIPTS_DIR/wl/wl_ast_java.sc" ]; then
+        TARGET_FILE="$SRC_FILE" \
+        joern --exit --cpg "$CPG" \
+          --script "$SCRIPTS_DIR/wl/wl_ast_java.sc" \
+          > wl.out 2>/dev/null
+
+        sed -n '/^{/,$p' wl.out > "$OUT_PROG/wl.json"
+        echo "     [✓] WL features"
+      fi
+
+      # -----------------------------------------------
+      # 6. Behavioral features
       # -----------------------------------------------
       if [ -f "$SCRIPTS_DIR/behavioral/basic_behavioral_java.sc" ]; then
         TARGET_FILE="$SRC_FILE" \

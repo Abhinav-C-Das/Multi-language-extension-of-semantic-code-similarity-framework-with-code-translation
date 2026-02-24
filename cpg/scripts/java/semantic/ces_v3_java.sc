@@ -127,10 +127,13 @@ def isMinUpdate(lhs: String, cond: String): Boolean =
 // =======================================================
 val mainMethodNames = Set("main", "arraySum", "binarySearch", "reverseString", "isPrime", 
                           "findMax", "findMin", "bubbleSort", "selectionSort", "factorial",
-                          "fibonacci", "gcd", "lcm", "palindrome")
+                          "fibonacci", "gcd", "lcm", "palindrome",
+                          "countOccurrences", "arrayProduct", "dotProduct", "trackBalance")
 
-def isMainMethod(name: String): Boolean = 
-  mainMethodNames.exists(m => name.toLowerCase.contains(m.toLowerCase))
+def isMainMethod(name: String): Boolean = {
+  val normalized = name.toLowerCase.replace("_", "")
+  mainMethodNames.exists(m => normalized.contains(m.toLowerCase.replace("_", "")))
+}
 
 // ==========================================================
 // MULTI-FUNCTION LOOP ANALYSIS (ENHANCED)
@@ -305,7 +308,7 @@ allMethods.foreach { method =>
             
             if (!inductionVars.contains(rawLhs) && !isOptimizationFlag(rawLhs)) {
               
-              val op =
+              val rawOp =
                 if (assign.name.contains("Plus")) "ADD"
                 else if (assign.name.contains("Minus")) "SUB"
                 else if (assign.name.contains("Multiplication")) "MUL"
@@ -318,6 +321,15 @@ allMethods.foreach { method =>
                 assign.name.contains("Minus") ||
                 assign.name.contains("Multiplication") ||
                 assign.name.contains("Division")
+
+              // Bug 2 fix: Infer real operator from RHS when plain assignment is accumulative
+              val op = if (rawOp == "ASSIGN" && isAccumulative) {
+                if (rhs.contains("+") && !rhs.contains("++")) "ADD"
+                else if (rhs.contains("-") && !rhs.contains("--")) "SUB"
+                else if (rhs.contains("*")) "MUL"
+                else if (rhs.contains("/")) "DIV"
+                else "ADD"  // Default accumulation is addition
+              } else rawOp
                 
               val controlGuarded = isControlGuarded(assign, loop)
               val guardCond = getGuardCondition(assign, loop)
@@ -650,9 +662,17 @@ cpg.call
 // =======================================================
 // OUTPUT JSON
 // =======================================================
+// Deduplicate: group by (context, evolution, operator), keep max importance
+val deduped = cesRecords
+  .groupBy(r => (r.context, r.evolution, r.operator))
+  .values
+  .map(group => group.maxBy(_.importance))
+  .toSeq
+  .sortBy(r => (r.context, r.evolution))
+
 println(
   jsonArr(
-    cesRecords.map { r =>
+    deduped.map { r =>
       jsonObj(Seq(
         "context"    -> jsonStr(r.context),
         "variable"   -> jsonStr(r.variable),

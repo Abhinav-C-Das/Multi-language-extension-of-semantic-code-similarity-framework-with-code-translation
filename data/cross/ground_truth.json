@@ -1,0 +1,112 @@
+{
+  "p1": {
+    "s1_java": "ref1",
+    "s2_cpp": "ref1",
+    "s3_c": "ref2",
+    "s4_c": "ref1",
+    "s5_java": "ref2",
+    "s6_cpp": "ref2",
+    "s7_java": "ref1",
+    "s8_c": "ref2",
+    "s9_cpp": "ref1"
+  },
+  "p2": {
+    "s1_java": "ref1",
+    "s2_cpp": "ref1",
+    "s3_c": "ref2",
+    "s4_c": "ref1",
+    "s5_java": "ref2",
+    "s6_cpp": "ref2",
+    "s7_java": "ref1",
+    "s8_c": "ref2",
+    "s9_cpp": "ref1"
+  },
+  "p3": {
+    "s1_java": "ref1",
+    "s2_cpp": "ref2",
+    "s3_c": "ref1",
+    "s4_c": "ref2",
+    "s5_java": "ref2",
+    "s6_cpp": "ref1",
+    "s7_java": "ref1",
+    "s8_c": "ref2",
+    "s9_cpp": "ref1"
+  },
+  "p4": {
+    "s1_java": "ref2",
+    "s2_cpp": "ref1",
+    "s3_c": "ref1",
+    "s4_c": "ref2",
+    "s5_java": "ref1",
+    "s6_cpp": "ref2",
+    "s7_java": "ref2",
+    "s8_c": "ref1",
+    "s9_cpp": "ref1"
+  },
+  "p5": {
+    "s1_java": "ref1",
+    "s2_cpp": "ref2",
+    "s3_c": "ref2",
+    "s4_c": "ref1",
+    "s5_java": "ref2",
+    "s6_cpp": "ref1",
+    "s7_java": "ref1",
+    "s8_c": "ref1",
+    "s9_cpp": "ref2"
+  },
+  "p6": {
+    "s1_java": "ref1",
+    "s2_cpp": "ref2",
+    "s3_c": "ref1",
+    "s4_c": "ref2",
+    "s5_java": "ref2",
+    "s6_cpp": "ref1",
+    "s7_java": "ref1",
+    "s8_c": "ref2",
+    "s9_cpp": "ref1"
+  },
+  "p7": {
+    "s1_java": "ref1",
+    "s2_cpp": "ref2",
+    "s3_c": "ref1",
+    "s4_c": "ref2",
+    "s5_java": "ref2",
+    "s6_cpp": "ref1",
+    "s7_java": "ref1",
+    "s8_c": "ref2",
+    "s9_cpp": "ref1"
+  },
+  "p8": {
+    "s1_java": "ref1",
+    "s2_cpp": "ref2",
+    "s3_c": "ref1",
+    "s4_c": "ref2",
+    "s5_java": "ref2",
+    "s6_cpp": "ref1",
+    "s7_java": "ref1",
+    "s8_c": "ref2",
+    "s9_cpp": "ref1"
+  },
+  "p9": {
+    "s1_java": "ref1",
+    "s2_cpp": "ref2",
+    "s3_c": "ref1",
+    "s4_c": "ref2",
+    "s5_java": "ref2",
+    "s6_cpp": "ref1",
+    "s7_java": "ref1",
+    "s8_c": "ref2",
+    "s9_cpp": "ref1"
+  },
+  "p10": {
+    "s1_java": "ref1",
+    "s2_cpp": "ref2",
+    "s3_c": "ref1",
+    "s4_c": "ref2",
+    "s5_java": "ref2",
+    "s6_cpp": "ref1",
+    "s7_java": "ref1",
+    "s8_c": "ref2",
+    "s9_cpp": "ref1"
+  }
+}

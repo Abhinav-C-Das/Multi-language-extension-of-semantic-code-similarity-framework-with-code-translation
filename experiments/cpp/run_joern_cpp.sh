@@ -3,9 +3,13 @@ set -e
 
 # Default to C++ for this script
 LANGUAGE="cpp"
-DATA_DIR="data/cpp"
-OUT_DIR="outputs"
+DATA_DIR="${DATA_DIR:-data/cpp}"
+OUT_DIR="${OUT_DIR:-outputs}"
 SCRIPTS_DIR="cpg/scripts/cpp"
+CPG_BASE="${CPG_BASE:-cpgs}"
+# LANG_SUBDIR: subdirectory under OUT_DIR for this language.
+# Default: "cpp" (standalone mode). Set to "" for cross-language (flat) mode.
+LANG_SUBDIR="${LANG_SUBDIR:-cpp}"
 
 echo "========================================"
 echo "[JOERN] Starting CPG generation for: $LANGUAGE"
@@ -63,8 +67,13 @@ for PROBLEM in "$DATA_DIR"/*; do
 
           PROG=$(basename "$SRC" .$EXT)
           SRC_FILE=$(basename "$SRC")
-          OUT_PROG="$OUT_DIR/cpp/$PNAME/$ROLE/$PROG"
-          CPG_DIR="cpgs/cpp/$PNAME/$ROLE/$PROG"
+          if [ -n "$LANG_SUBDIR" ]; then
+            OUT_PROG="$OUT_DIR/$LANG_SUBDIR/$PNAME/$ROLE/$PROG"
+            CPG_DIR="$CPG_BASE/$LANG_SUBDIR/$PNAME/$ROLE/$PROG"
+          else
+            OUT_PROG="$OUT_DIR/$PNAME/$ROLE/$PROG"
+            CPG_DIR="$CPG_BASE/$PNAME/$ROLE/$PROG"
+          fi
           CPG="$CPG_DIR/cpg.bin"
 
           mkdir -p "$OUT_PROG"
