@@ -144,7 +144,7 @@ val unaryOps = Set(
 )
 
 val ioFunctions = Set(
-  "printf", "puts", "fprintf", "scanf",
+  "printf", "puts", "fprintf",
   "println", "print", "System.out.println", "System.out.print",
   "<operator>.formatString"
 )
@@ -571,6 +571,7 @@ ${I}}""")
 def isIOCall(name: String, call: Call): Boolean = {
   name == "printf" || name == "puts" || name == "fprintf" ||
   name == "println" || name == "print" ||
+  name == "scanf" || name == "fscanf" ||
   call.code.contains("System.out") ||
   call.code.contains("cout") ||
   name.contains("operator<<")
@@ -593,6 +594,14 @@ def buildPrintStmt(call: Call, lvl: Int): String = {
     } else args
   }
 
+  // Handle scanf / fscanf — not translatable, emit a SCAN node
+  if (call.name == "scanf" || call.name == "fscanf") {
+    s"""${I}{
+${I}  "kind": "SCAN",
+${I}  "comment": "stdin input not supported in cross-language translation"
+${I}}"""
+  } else {
+
   val args = if (call.name == "<operator>.shiftLeft" || call.name.contains("operator<<")) {
     flattenShiftLeft(call)
   } else {
@@ -611,8 +620,9 @@ def buildPrintStmt(call: Call, lvl: Int): String = {
   // Try to figure out the format string
   val format = call.name match {
     case "printf" =>
-      // First argument is the format string
-      if (printArgs.nonEmpty) printArgs.head match {
+      // First argument is the format string — extract from index 0 nodes, NOT printArgs
+      val allArgs = call.argument.l.sortBy(_.argumentIndex)
+      if (allArgs.nonEmpty) allArgs.head match {
         case lit: Literal => lit.code.replaceAll("^\"|\"$", "")
         case _ => "{}"
       } else "{}"
@@ -631,7 +641,8 @@ ${I}  "arguments": [
 ${argJsons.mkString(",\n")}
 ${I}  ]
 ${I}}"""
-}
+  } // end scanf guard
+} // end buildPrintStmt
 
 // =======================================================
 // PARAMETER ROLE DETECTION

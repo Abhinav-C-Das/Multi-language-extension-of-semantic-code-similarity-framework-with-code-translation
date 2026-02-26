@@ -10,11 +10,11 @@
 # Example:
 #   bash cpg_t1/scripts/run_translation.sh data/cross/p1/ref/ref1_c.c java cpg_t1/output
 # =============================================================
-set -e
+# Do NOT use set -e — compilation failure at step 4 should not abort the whole script
 
 SOURCE_FILE=$1
 TARGET_LANG=$2
-OUTPUT_DIR=${3:-cpg_t1/output}
+OUTPUT_DIR=${3:-translation/output}
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
@@ -88,7 +88,7 @@ CPG_FILE="$CPG_FILE" TARGET_FILE="$(basename "$SOURCE_FILE")" \
 sed -n '/^{/,$p' "$OUTPUT_DIR/apm_raw.out" > "$APM_FILE"
 
 # Validate JSON
-if ! python -c "import json; json.load(open('$APM_FILE'))" 2>/dev/null; then
+if ! python3 -c "import json; json.load(open('$APM_FILE'))" 2>/dev/null; then
   echo "  [ERROR] APM extraction produced invalid JSON"
   echo "  Raw output saved to: $OUTPUT_DIR/apm_raw.out"
   exit 1
@@ -100,7 +100,7 @@ echo "  [✓] APM extracted"
 # -----------------------------------------------
 GENERATED_FILE="$OUTPUT_DIR/${SRC_BASENAME}_generated.${EXT}"
 echo "[3/4] Generating $TARGET_LANG code..."
-python "$SCRIPT_DIR/generate_${TARGET_LANG}.py" \
+python3 "$SCRIPT_DIR/generate_${TARGET_LANG}.py" \
   "$APM_FILE" \
   --output "$GENERATED_FILE"
 

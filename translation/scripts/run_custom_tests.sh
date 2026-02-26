@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # run_custom_tests.sh
-# Orchestrates translation and verification across all files in cpg_t1/input
+# Orchestrates translation and verification across all files in translation/input
 
 # Do NOT use set -e: we want ALL tests to run even if some fail
 
-INPUT_DIR="data/cpg_t1"
-OUTPUT_DIR="cpg_t1/outputs"
-LANGUAGES=("java" "cpp")
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+INPUT_DIR="translation/input"
+OUTPUT_DIR="translation/output/custom"
+LANGUAGES=("java" "cpp" "c")
 
 mkdir -p "$OUTPUT_DIR"
 
@@ -42,9 +43,15 @@ for src_file in "$INPUT_DIR"/*; do
         echo "  Target -> $TARGET_LANG"
         
         # 1. Run the translation pipeline
-        bash cpg_t1/scripts/run_translation.sh "$src_file" "$TARGET_LANG" "$OUTPUT_DIR" > /dev/null 2>&1
+        bash "$SCRIPT_DIR/run_translation.sh" "$src_file" "$TARGET_LANG" "$OUTPUT_DIR" > /dev/null 2>&1
         
-        gen_file="$OUTPUT_DIR/${basename_no_ext}_generated.${TARGET_LANG}"
+        # Determine correct file extension for generated file
+        case "$TARGET_LANG" in
+          c)    GEN_EXT="c" ;;
+          cpp)  GEN_EXT="cpp" ;;
+          java) GEN_EXT="java" ;;
+        esac
+        gen_file="$OUTPUT_DIR/${basename_no_ext}_generated.${GEN_EXT}"
         
         if [ ! -f "$gen_file" ]; then
              echo "    [❌] Pipeline failed: No generated file found at $gen_file"
@@ -53,7 +60,7 @@ for src_file in "$INPUT_DIR"/*; do
 
         # 2. Run the Verification Script
         echo "  [Verifying Semantic Equivalence]"
-        python3 cpg_t1/scripts/verify_translation.py --source "$src_file" --generated "$gen_file" --target-lang "$TARGET_LANG"
+        python3 "$SCRIPT_DIR/verify_translation.py" --source "$src_file" --generated "$gen_file" --target-lang "$TARGET_LANG"
         
         echo ""
         echo "--- GENERATED CODE ($gen_file) ---"

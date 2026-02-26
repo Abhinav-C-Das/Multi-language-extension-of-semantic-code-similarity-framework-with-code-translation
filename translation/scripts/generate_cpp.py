@@ -69,6 +69,17 @@ class CppCodeGenerator(CodeGenerator):
             filtered.append(a)
         args = filtered
 
+        # The APM extractor duplicates the printf format string as arguments[0]
+        # (a STRING literal). Skip it — the format is already in stmt["format"].
+        if args and fmt:
+            a0 = args[0]
+            if a0.get("kind") == "LITERAL" and a0.get("type") == "STRING":
+                lit = a0.get("value", "")
+                # Strip surrounding quotes from the literal value
+                raw = lit.strip('"')
+                if raw == fmt or raw == fmt.replace("\\n", "\n"):
+                    args = args[1:]
+
         # Determine newline from APM format
         use_endl = fmt.endswith("\\n")
         display_fmt = fmt[:-2] if use_endl else fmt
@@ -82,10 +93,10 @@ class CppCodeGenerator(CodeGenerator):
         parts = []
         if "%" in display_fmt:
             import re
-            tokens = re.split(r'(%[dfsc])', display_fmt)
-            arg_idx = 1
+            tokens = re.split(r'(%[dflsc])', display_fmt)
+            arg_idx = 0  # args already has format string stripped
             for tk in tokens:
-                if tk in ("%d", "%f", "%s", "%c"):
+                if tk in ("%d", "%f", "%l", "%s", "%c"):
                     if arg_idx < len(args):
                         parts.append(self.emit_expr(args[arg_idx]))
                         arg_idx += 1

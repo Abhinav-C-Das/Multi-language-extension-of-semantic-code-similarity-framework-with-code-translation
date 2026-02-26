@@ -21,8 +21,8 @@ class CodeGenerator:
         self._load_maps()
 
     def _load_maps(self):
-        """Load type_map.json and io_map.json from the same directory."""
-        base = os.path.dirname(os.path.abspath(__file__))
+        """Load type_map.json and io_map.json from translation/resources/."""
+        base = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "resources")
         type_map_path = os.path.join(base, "type_map.json")
         io_map_path = os.path.join(base, "io_map.json")
         if os.path.exists(type_map_path):
@@ -165,6 +165,8 @@ class CodeGenerator:
         elif kind == "EXPR_STMT":
             expr_code = self.emit_expr(stmt.get("expression"))
             return [f"{I}{expr_code};"]
+        elif kind == "SCAN":
+            return [f"{I}/* INPUT: stdin not supported in cross-language translation */"]
         else:
             return [f"{I}/* unsupported: {kind} */"]
 
@@ -308,6 +310,8 @@ class CodeGenerator:
                 # Recursively optimize inner blocks
                 if "body" in s1:
                     s1["body"] = merge_decls(s1["body"])
+                if "then" in s1:
+                    s1["then"] = merge_decls(s1["then"])
                 if "else_body" in s1:
                     s1["else_body"] = merge_decls(s1["else_body"])
                 merged.append(s1)

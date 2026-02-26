@@ -8,11 +8,11 @@
 # Usage:
 #   bash cpg_t1/run_all_translations.sh [data_dir]
 # =============================================================
-set -e
+# Do NOT use set -e — each translation is independent; record all results even on partial failure
 
 DATA_DIR=${1:-data/cross}
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-OUTPUT_BASE="cpg_t1/output"
+OUTPUT_BASE="translation/output"
 RESULTS_FILE="$OUTPUT_BASE/translation_results.json"
 
 mkdir -p "$OUTPUT_BASE"
@@ -56,8 +56,9 @@ for PROBLEM in "$DATA_DIR"/p*; do
         OUT_DIR="$OUTPUT_BASE/$PNAME/$ROLE/${SRC_BASE}_to_${TLANG}"
         TOTAL=$((TOTAL + 1))
 
-        # Run translation
+        # Run translation — create OUT_DIR first so pipeline.log can be written
         RESULT="FAIL"
+        mkdir -p "$OUT_DIR"
         if bash "$SCRIPT_DIR/run_translation.sh" "$SRC" "$TLANG" "$OUT_DIR" > "$OUT_DIR/pipeline.log" 2>&1; then
           # Check if compilation passed
           if grep -q "Compilation successful" "$OUT_DIR/pipeline.log" 2>/dev/null; then

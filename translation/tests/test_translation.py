@@ -3,15 +3,17 @@ import json
 import os
 import sys
 
-# Add parent directory to path to import generators
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(BASE_DIR)
+# Scripts live in translation/scripts/, resources in translation/resources/
+SCRIPTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts")
+RESOURCES_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "resources")
+sys.path.insert(0, SCRIPTS_DIR)
 
 try:
     from generate_c import CCodeGenerator
     from generate_cpp import CppCodeGenerator
     from generate_java import JavaCodeGenerator
-except ImportError:
+except ImportError as e:
+    print(f"[WARN] Could not import generators: {e}")
     CCodeGenerator = None
     CppCodeGenerator = None
     JavaCodeGenerator = None
@@ -19,9 +21,9 @@ except ImportError:
 class TestTranslationPipeline(unittest.TestCase):
 
     def setUp(self):
-        self.type_map_path = os.path.join(BASE_DIR, "type_map.json")
-        self.io_map_path = os.path.join(BASE_DIR, "io_map.json")
-        self.apm_schema_path = os.path.join(BASE_DIR, "apm_schema.json")
+        self.type_map_path = os.path.join(RESOURCES_DIR, "type_map.json")
+        self.io_map_path = os.path.join(RESOURCES_DIR, "io_map.json")
+        self.apm_schema_path = os.path.join(RESOURCES_DIR, "apm_schema.json")
 
     def test_apm_schema_loads(self):
         """Test that the APM schema is valid JSON."""

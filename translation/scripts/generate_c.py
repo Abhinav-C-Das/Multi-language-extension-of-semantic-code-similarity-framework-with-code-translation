@@ -71,9 +71,19 @@ class CCodeGenerator(CodeGenerator):
         # Determine if a trailing newline is required from the APM format
         has_newline = fmt.endswith("\\n")
 
+        # The APM extractor duplicates the printf format string as arguments[0]
+        # (a STRING literal). Skip it — the format is already in stmt["format"].
+        if args and fmt:
+            a0 = args[0]
+            if a0.get("kind") == "LITERAL" and a0.get("type") == "STRING":
+                lit = a0.get("value", "")
+                raw = lit.strip('"')
+                if raw == fmt or raw == fmt.replace("\\n", "\n"):
+                    args = args[1:]
+
         # ---- C-originated printf with % specifiers: pass through as-is ----
         if "%" in fmt:
-            arg_strs = [self.emit_expr(a) for a in args[1:]]  # skip format string arg
+            arg_strs = [self.emit_expr(a) for a in args]
             if arg_strs:
                 return [f'{I}printf({self._c_string(fmt)}, {", ".join(arg_strs)});']
             return [f'{I}printf({self._c_string(fmt)});']
@@ -101,6 +111,9 @@ class CCodeGenerator(CodeGenerator):
                 fmt_parts.append(val.strip('"'))
             elif a.get("kind") == "LITERAL" and isinstance(val, str) and val.startswith("'"):
                 fmt_parts.append("%c")
+                val_exprs.append(expr_str)
+            elif a.get("type") in ("LONG",):
+                fmt_parts.append("%ld")
                 val_exprs.append(expr_str)
             elif a.get("type") in ("DOUBLE", "FLOAT"):
                 fmt_parts.append("%f")

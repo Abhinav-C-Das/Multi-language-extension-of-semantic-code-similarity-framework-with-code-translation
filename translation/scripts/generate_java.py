@@ -55,6 +55,17 @@ class JavaCodeGenerator(CodeGenerator):
             filtered.append(a)
         args = filtered
 
+        # The APM extractor duplicates the printf format string as arguments[0]
+        # (a STRING literal). Skip it — the format is already in stmt["format"].
+        if args and fmt:
+            a0 = args[0]
+            if a0.get("kind") == "LITERAL" and a0.get("type") == "STRING":
+                lit = a0.get("value", "")
+                # Strip surrounding quotes from the literal value
+                raw = lit.strip('"')
+                if raw == fmt or raw == fmt.replace("\\n", "\n"):
+                    args = args[1:]
+
         # Determine newline from APM format
         use_println = fmt.endswith("\\n")
         display_fmt = fmt[:-2] if use_println else fmt
@@ -68,10 +79,10 @@ class JavaCodeGenerator(CodeGenerator):
         parts = []
         if "%" in display_fmt:
             import re
-            tokens = re.split(r'(%[dfsc])', display_fmt)
-            arg_idx = 1
+            tokens = re.split(r'(%[dflsc])', display_fmt)
+            arg_idx = 0  # args already has format string stripped
             for tk in tokens:
-                if tk in ("%d", "%f", "%s", "%c"):
+                if tk in ("%d", "%f", "%l", "%s", "%c"):
                     if arg_idx < len(args):
                         parts.append(self.emit_expr(args[arg_idx]))
                         arg_idx += 1
@@ -171,7 +182,7 @@ class JavaCodeGenerator(CodeGenerator):
         if kind == "IDENTIFIER":
             name = expr.get("name", "")
             
-            if hasattr(self, "current_func"):
+            if hasattr(self, "current_func") and self.current_func is not None:
                 params = self.current_func.get("parameters", [])
                 is_size_param = any(p.get("name") == name and p.get("role") == "ARRAY_SIZE" for p in params)
                 if is_size_param:
@@ -245,6 +256,7 @@ class JavaCodeGenerator(CodeGenerator):
             lines.append("")
 
         # Main / entry point
+        self.current_func = None  # reset so main body has no function context
         entry = apm.get("entry_point")
         if entry:
             lines.append("    public static void main(String[] args) {")
