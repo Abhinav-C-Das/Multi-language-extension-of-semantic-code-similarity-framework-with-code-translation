@@ -72,3 +72,4 @@ logs/
 *.bak
 *.backup
 *~
+translation/output/
