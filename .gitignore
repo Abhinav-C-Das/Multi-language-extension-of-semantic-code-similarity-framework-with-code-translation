@@ -73,3 +73,20 @@ logs/
 *.backup
 *~
 translation/output/
+
+# --- Protected Local Data & Final Polish ---
+data/
+docs/
+scratch_*.py
+temp.py
+*.out
+cross_err.txt
+e*.txt
+
+
+# --- Extended Audit Cleanups ---
+translation/docs/
+translation/input/
+translation/tests/
+experiments/
+

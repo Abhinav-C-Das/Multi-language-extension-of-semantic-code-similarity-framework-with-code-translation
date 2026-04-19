@@ -1,0 +1,11 @@
+{
+  "ast_node_count": 81,
+  "ast_type_histogram": {"METHOD_REF": 2, "METHOD_PARAMETER_OUT": 2, "RETURN": 6, "BLOCK": 7, "METHOD_PARAMETER_IN": 2, "IDENTIFIER": 14, "CALL": 18, "METHOD": 5, "LITERAL": 12, "LOCAL": 6, "CONTROL_STRUCTURE": 2, "METHOD_RETURN": 5},
+  "max_ast_depth": 8,
+  "avg_ast_depth": 2.234567901234568,
+  "cfg_node_count": 34,
+  "cfg_edge_count": 26,
+  "conditional_count": 2,
+  "loop_count": 0,
+  "ternary_count": 0
+}

@@ -1,0 +1,143 @@
+{
+  "source_language": "cpp",
+  "source_file": "ref1_cpp.cpp",
+  "functions": [
+    {
+      "name": "linearSearchRecursive",
+      "return_type": "INT",
+      "parameters": [
+        {"name": "arr", "type": "INT_ARRAY", "role": "DATA"},
+        {"name": "target", "type": "INT", "role": "DATA"},
+        {"name": "index", "type": "INT", "role": "DATA"},
+        {"name": "n", "type": "INT", "role": "ARRAY_SIZE"}
+      ],
+      "body": [
+        {
+          "kind": "IF",
+          "condition": 
+            {
+              "kind": "BINARY_OP",
+              "operator": ">=",
+              "left": 
+              {"kind": "IDENTIFIER", "name": "index"},
+              "right": 
+              {"kind": "IDENTIFIER", "name": "n"}
+            },
+          "then": [
+            {
+              "kind": "RETURN",
+              "value": 
+                {
+                  "kind": "UNARY_OP",
+                  "operator": "-",
+                  "operand": 
+                  {"kind": "LITERAL", "value": "1", "type": "INT"},
+                  "prefix": true
+                }
+            }
+          ]
+        },
+        {
+          "kind": "IF",
+          "condition": 
+            {
+              "kind": "BINARY_OP",
+              "operator": "==",
+              "left": 
+              {
+                "kind": "ARRAY_ACCESS",
+                "array": 
+                {"kind": "IDENTIFIER", "name": "arr"},
+                "index": 
+                {"kind": "IDENTIFIER", "name": "index"}
+              },
+              "right": 
+              {"kind": "IDENTIFIER", "name": "target"}
+            },
+          "then": [
+            {
+              "kind": "RETURN",
+              "value": 
+                {"kind": "IDENTIFIER", "name": "index"}
+            }
+          ]
+        },
+        {
+          "kind": "RETURN",
+          "value": 
+            {
+              "kind": "CALL_EXPR",
+              "function": "linearSearchRecursive",
+              "arguments": [
+                {"kind": "IDENTIFIER", "name": "arr"},
+                {"kind": "IDENTIFIER", "name": "target"},
+                {
+                  "kind": "BINARY_OP",
+                  "operator": "+",
+                  "left": 
+                  {"kind": "IDENTIFIER", "name": "index"},
+                  "right": 
+                  {"kind": "LITERAL", "value": "1", "type": "INT"}
+                },
+                {"kind": "IDENTIFIER", "name": "n"}
+              ]
+            }
+        }
+      ]
+    }
+  ],
+  "entry_point": 
+  {
+    "declarations": [],
+    "statements": [
+      {"kind": "DECLARE", "name": "arr", "type": "INT_ARRAY"},
+      {
+        "kind": "ASSIGN",
+        "target": 
+        {"kind": "IDENTIFIER", "name": "arr"},
+        "value": 
+        {
+          "kind": "CALL_EXPR",
+          "function": "arrayInitializer",
+          "arguments": [
+            {"kind": "LITERAL", "value": "5", "type": "INT"},
+            {"kind": "LITERAL", "value": "10", "type": "INT"},
+            {"kind": "LITERAL", "value": "15", "type": "INT"},
+            {"kind": "LITERAL", "value": "20", "type": "INT"},
+            {"kind": "LITERAL", "value": "25", "type": "INT"}
+          ]
+        }
+      },
+      {"kind": "DECLARE", "name": "n", "type": "INT"},
+      {
+        "kind": "ASSIGN",
+        "target": 
+        {"kind": "IDENTIFIER", "name": "n"},
+        "value": 
+        {"kind": "LITERAL", "value": "5", "type": "INT"}
+      },
+      {
+        "kind": "PRINT",
+        "format": "Found at: %d\\n",
+        "arguments": [
+          {"kind": "LITERAL", "value": "\"Found at: %d\\n\"", "type": "STRING"},
+          {
+            "kind": "CALL_EXPR",
+            "function": "linearSearchRecursive",
+            "arguments": [
+              {"kind": "IDENTIFIER", "name": "arr"},
+              {"kind": "LITERAL", "value": "20", "type": "INT"},
+              {"kind": "LITERAL", "value": "0", "type": "INT"},
+              {"kind": "IDENTIFIER", "name": "n"}
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "RETURN",
+        "value": 
+          {"kind": "LITERAL", "value": "0", "type": "INT"}
+      }
+    ]
+  }
+}

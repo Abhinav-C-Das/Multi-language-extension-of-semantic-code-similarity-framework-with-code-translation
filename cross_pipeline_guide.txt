@@ -1,0 +1,61 @@
+================================================================
+           CROSS-LANGUAGE PIPELINE EXECUTION GUIDE
+================================================================
+This guide documents the steps, scripts, and output locations 
+for running the multi-view cross-language evaluation on your 
+400-program dataset. Save this for arranging the results folder later.
+
+----------------------------------------------------------------
+1. HOW TO RUN THE ENTIRE PIPELINE
+----------------------------------------------------------------
+To execute the pipeline end-to-end, simply run the master wrapper script from the project root:
+
+    bash run_cross_pipeline.sh
+
+(Note: Ensure your dataset is correctly staged at `data/cross` or update the script's `DATA_DIR` export.)
+
+----------------------------------------------------------------
+2. PIPELINE PHASES & SCRIPT BREAKDOWN
+----------------------------------------------------------------
+
+[PHASE 0] Feature Extraction (Joern Parsing)
+- Scripts Executed:
+    - ./experiments/java/run_joern_java.sh
+    - ./experiments/cpp/run_joern_cpp.sh
+    - ./experiments/c/run_joern_c.sh
+- Purpose: Parses every file in `data/cross` through Joern to generate the structural and semantic CPG graphs.
+- Expected Outputs:
+    - CPG Binaries: stored in `cpgs/cross/`
+    - Structural/Semantic JSON Features: stored in `outputs/cross/` (nested by language)
+
+[PHASE 1] View-Based Similarity Computation
+- Scripts Executed:
+    - python3 similarity/cross/compute_ces_similarity_cross.py
+    - python3 similarity/cross/compute_wl_similarity_cross.py
+    - python3 similarity/cross/compute_baseline_similarity_cross.py
+- Purpose: Reads the extracted graph features and computes discrete pairwise similarity scores (Tversky & Cosine) for all cross-language program combinations.
+- Expected Outputs:
+    - evaluation/cross/ces_similarity_matrix_cross.json
+    - evaluation/cross/wl_similarity_matrix_cross.json
+    - evaluation/cross/baseline_similarity_matrix_cross.json
+
+[PHASE 2] Weighted Aggregation
+- Script Executed:
+    - python3 evaluation/cross/aggregate_all_features_cross.py 0.25 0.35 0.40
+- Purpose: Merges the 3 similarity matrices into a single final score using the optimal weighting (CES=25%, Baseline=35%, WL=40%).
+- Expected Outputs:
+    - evaluation/cross/final_similarity_matrix_cross.json
+
+[PHASE 3] Accuracy Evaluation
+- Script Executed:
+    - python3 evaluation/calculate_accuracy.py
+- Purpose: Compares the multi-language predictions in `final_similarity_matrix_cross.json` against `data/cross/ground_truth.json` to compute Top-1 accuracy metrics.
+- Expected Outputs:
+    - Generates terminal accuracy logs and typically stores final results text files under `results/cross/` or `evaluation/cross/` depending on your wrapper mapping.
+
+----------------------------------------------------------------
+3. AFTERMATH: ARRANGING RESULTS
+----------------------------------------------------------------
+After execution completes, you should gather the following artifacts to update your dissertation Section 06 (Evaluation):
+1. `evaluation/cross/ces_similarity_matrix_cross.json` (to show independent semantic robustness)
+2. The final printed accuracy stats to definitively report the cross language generalizability metric across 400 mixed-language student sets.

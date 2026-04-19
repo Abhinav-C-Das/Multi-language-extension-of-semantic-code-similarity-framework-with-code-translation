@@ -1,0 +1,198 @@
+{
+  "source_language": "java",
+  "source_file": "ref1.java",
+  "functions": [
+    {
+      "name": "reverseArray",
+      "return_type": "VOID",
+      "parameters": [
+        {"name": "arr", "type": "INT_ARRAY", "role": "DATA"},
+        {"name": "n", "type": "INT", "role": "ARRAY_SIZE"}
+      ],
+      "body": [
+        {"kind": "DECLARE", "name": "left", "type": "INT"},
+        {"kind": "DECLARE", "name": "right", "type": "INT"},
+        {
+          "kind": "ASSIGN",
+          "target": 
+          {"kind": "IDENTIFIER", "name": "left"},
+          "value": 
+          {"kind": "LITERAL", "value": "0", "type": "INT"}
+        },
+        {
+          "kind": "ASSIGN",
+          "target": 
+          {"kind": "IDENTIFIER", "name": "right"},
+          "value": 
+          {
+            "kind": "BINARY_OP",
+            "operator": "-",
+            "left": 
+            {"kind": "IDENTIFIER", "name": "n"},
+            "right": 
+            {"kind": "LITERAL", "value": "1", "type": "INT"}
+          }
+        },
+        {
+          "kind": "WHILE_LOOP",
+          "condition": 
+            {
+              "kind": "BINARY_OP",
+              "operator": "<",
+              "left": 
+              {"kind": "IDENTIFIER", "name": "left"},
+              "right": 
+              {"kind": "IDENTIFIER", "name": "right"}
+            },
+          "body": [
+            {"kind": "DECLARE", "name": "temp", "type": "INT"},
+            {
+              "kind": "ASSIGN",
+              "target": 
+              {"kind": "IDENTIFIER", "name": "temp"},
+              "value": 
+              {
+                "kind": "ARRAY_ACCESS",
+                "array": 
+                {"kind": "IDENTIFIER", "name": "arr"},
+                "index": 
+                {"kind": "IDENTIFIER", "name": "left"}
+              }
+            },
+            {
+              "kind": "ASSIGN",
+              "target": 
+              {
+                "kind": "ARRAY_ACCESS",
+                "array": 
+                {"kind": "IDENTIFIER", "name": "arr"},
+                "index": 
+                {"kind": "IDENTIFIER", "name": "left"}
+              },
+              "value": 
+              {
+                "kind": "ARRAY_ACCESS",
+                "array": 
+                {"kind": "IDENTIFIER", "name": "arr"},
+                "index": 
+                {"kind": "IDENTIFIER", "name": "right"}
+              }
+            },
+            {
+              "kind": "ASSIGN",
+              "target": 
+              {
+                "kind": "ARRAY_ACCESS",
+                "array": 
+                {"kind": "IDENTIFIER", "name": "arr"},
+                "index": 
+                {"kind": "IDENTIFIER", "name": "right"}
+              },
+              "value": 
+              {"kind": "IDENTIFIER", "name": "temp"}
+            },
+            {
+              "kind": "EXPR_STMT",
+              "expression": 
+              {
+                "kind": "UNARY_OP",
+                "operator": "++",
+                "operand": 
+                {"kind": "IDENTIFIER", "name": "left"},
+                "prefix": false
+              }
+            },
+            {
+              "kind": "EXPR_STMT",
+              "expression": 
+              {
+                "kind": "UNARY_OP",
+                "operator": "--",
+                "operand": 
+                {"kind": "IDENTIFIER", "name": "right"},
+                "prefix": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "entry_point": 
+  {
+    "declarations": [],
+    "statements": [
+      {"kind": "DECLARE", "name": "arr", "type": "INT_ARRAY"},
+      {
+        "kind": "ASSIGN",
+        "target": 
+        {"kind": "IDENTIFIER", "name": "arr"},
+        "value": 
+        {
+          "kind": "CALL_EXPR",
+          "function": "arrayInitializer",
+          "arguments": [
+            {"kind": "LITERAL", "value": "1", "type": "INT"},
+            {"kind": "LITERAL", "value": "2", "type": "INT"},
+            {"kind": "LITERAL", "value": "3", "type": "INT"},
+            {"kind": "LITERAL", "value": "4", "type": "INT"},
+            {"kind": "LITERAL", "value": "5", "type": "INT"}
+          ]
+        }
+      },
+      {
+        "kind": "CALL",
+        "function": "reverseArray",
+        "arguments": [
+          {"kind": "IDENTIFIER", "name": "arr"},
+          {"kind": "LITERAL", "value": "5", "type": "INT"}
+        ]
+      },
+      {
+        "kind": "FOR_LOOP",
+        "var_init": {"kind": "DECLARE", "name": "i", "type": "INT", "init": 
+          {"kind": "LITERAL", "value": "0", "type": "INT"}
+        },
+        "condition": 
+          {
+            "kind": "BINARY_OP",
+            "operator": "<",
+            "left": 
+            {"kind": "IDENTIFIER", "name": "i"},
+            "right": 
+            {"kind": "LITERAL", "value": "5", "type": "INT"}
+          },
+        "update": 
+          {
+            "kind": "UNARY_OP",
+            "operator": "++",
+            "operand": 
+            {"kind": "IDENTIFIER", "name": "i"},
+            "prefix": false
+          },
+        "body": [
+          {
+            "kind": "PRINT",
+            "format": "{}",
+            "arguments": [
+              {
+                "kind": "BINARY_OP",
+                "operator": "+",
+                "left": 
+                {
+                  "kind": "ARRAY_ACCESS",
+                  "array": 
+                  {"kind": "IDENTIFIER", "name": "arr"},
+                  "index": 
+                  {"kind": "IDENTIFIER", "name": "i"}
+                },
+                "right": 
+                {"kind": "LITERAL", "value": "\" \"", "type": "STRING"}
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

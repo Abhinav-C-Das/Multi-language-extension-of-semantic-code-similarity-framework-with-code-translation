@@ -1,0 +1,21 @@
+{
+  "identifiers": {
+    "sumArray": {
+      "total": "v0",
+      "i": "v1",
+      "arr": "v2"
+    },
+    "main": {
+      "data": "v0"
+    }
+  },
+  "literals": {
+    "\"Sum: \"": "STRING",
+    "0": "ZERO",
+    "10": "SMALL_INT",
+    "20": "LARGE_INT",
+    "30": "LARGE_INT",
+    "40": "LARGE_INT",
+    "50": "LARGE_INT"
+  }
+}

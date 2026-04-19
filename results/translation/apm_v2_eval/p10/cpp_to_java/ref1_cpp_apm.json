@@ -1,0 +1,122 @@
+{
+  "source_language": "cpp",
+  "source_file": "ref1_cpp.cpp",
+  "functions": [
+    {
+      "name": "isPrime",
+      "return_type": "INT",
+      "parameters": [
+        {"name": "n", "type": "INT", "role": "DATA"}
+      ],
+      "body": [
+        {
+          "kind": "IF",
+          "condition": 
+            {
+              "kind": "BINARY_OP",
+              "operator": "<=",
+              "left": 
+              {"kind": "IDENTIFIER", "name": "n"},
+              "right": 
+              {"kind": "LITERAL", "value": "1", "type": "INT"}
+            },
+          "then": [
+            {
+              "kind": "RETURN",
+              "value": 
+                {"kind": "LITERAL", "value": "0", "type": "INT"}
+            }
+          ]
+        },
+        {
+          "kind": "FOR_LOOP",
+          "var_init": {"kind": "DECLARE", "name": "i", "type": "INT", "init": 
+            {"kind": "LITERAL", "value": "2", "type": "INT"}
+          },
+          "condition": 
+            {
+              "kind": "BINARY_OP",
+              "operator": "<=",
+              "left": 
+              {
+                "kind": "BINARY_OP",
+                "operator": "*",
+                "left": 
+                {"kind": "IDENTIFIER", "name": "i"},
+                "right": 
+                {"kind": "IDENTIFIER", "name": "i"}
+              },
+              "right": 
+              {"kind": "IDENTIFIER", "name": "n"}
+            },
+          "update": 
+            {
+              "kind": "UNARY_OP",
+              "operator": "++",
+              "operand": 
+              {"kind": "IDENTIFIER", "name": "i"},
+              "prefix": false
+            },
+          "body": [
+            {
+              "kind": "IF",
+              "condition": 
+                {
+                  "kind": "BINARY_OP",
+                  "operator": "==",
+                  "left": 
+                  {
+                    "kind": "BINARY_OP",
+                    "operator": "%",
+                    "left": 
+                    {"kind": "IDENTIFIER", "name": "n"},
+                    "right": 
+                    {"kind": "IDENTIFIER", "name": "i"}
+                  },
+                  "right": 
+                  {"kind": "LITERAL", "value": "0", "type": "INT"}
+                },
+              "then": [
+                {
+                  "kind": "RETURN",
+                  "value": 
+                    {"kind": "LITERAL", "value": "0", "type": "INT"}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "RETURN",
+          "value": 
+            {"kind": "LITERAL", "value": "1", "type": "INT"}
+        }
+      ]
+    }
+  ],
+  "entry_point": 
+  {
+    "declarations": [],
+    "statements": [
+      {
+        "kind": "PRINT",
+        "format": "Is 17 prime? %d\\n",
+        "arguments": [
+          {"kind": "LITERAL", "value": "\"Is 17 prime? %d\\n\"", "type": "STRING"},
+          {
+            "kind": "CALL_EXPR",
+            "function": "isPrime",
+            "arguments": [
+              {"kind": "LITERAL", "value": "17", "type": "INT"}
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "RETURN",
+        "value": 
+          {"kind": "LITERAL", "value": "0", "type": "INT"}
+      }
+    ]
+  }
+}

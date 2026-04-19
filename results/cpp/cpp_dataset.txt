@@ -1,0 +1,53 @@
+C++ Multi-View Similarity Dataset & Results
+This document provides a deep dive into the CS-1 C++ dataset used for evaluating the multi-view code similarity framework, as well as a comprehensive breakdown of the results and extracted features stored in the resulting 
+cpp/
+ output directory.
+
+1. Dataset Deep Dive
+The dataset is explicitly designed to test a code similarity tool's ability to recognize computational strategies rather than superficial syntax. It consists of 20 classical programming problems (e.g., Array Sum, Finding Maximums, Prime Checking, Character Frequency Counting).
+
+Scale & Ground Truth (
+ground_truth.json
+)
+400 Student Submissions: 20 distinct submissions per problem.
+~45 Reference Solutions: 2 to 3 canonical reference solutions per problem.
+Rigid Mapping: The 
+ground_truth.json
+ explicitly maps every single one of the 400 student submissions to a specific canonical reference solution (ref1, ref2, or ref3) based on the semantic algorithm used. For instance, in Problem 1 (Array Sum), a student using a standard for loop with sum += arr[i] maps to ref1, while a student using std::accumulate maps to ref3.
+The Pedagogical Challenge
+This dataset contains code pairs that are strongly anti-correlated in standard metrics:
+
+Structurally identical but semantically divergent: Two student programs might both use a for loop iterating over an array (identical AST/CFG), but one accumulates sum += arr[i] (correct) while the other overwrites sum = arr[i] (logical bug).
+Structurally divergent but semantically identical: A student might use a while loop while a reference uses a for loop, yet both represent the exact same accumulative strategy.
+2. Output Data Structure (
+cpp/
+ Directory)
+The 
+cpp/
+ directory contains the complete artifact trail from raw feature extraction to final evaluation matrices for all 400 problems.
+
+A. Raw Feature Extractions (cpp/outputs/)
+This directory holds the granular features extracted natively from the Code Property Graph (CPG) by Joern. It is hierarchically structured: outputs/{problem}/{type}/{submission}/ (e.g., outputs/p1/s/s1/).
+
+Inside each submission's folder, you will find the JSON files representing the 4 different "views":
+
+canonical.json: The "Local Vocabulary". Maps original variable names to canonical IDs (e.g., totalSum -> v0) based on declaration order.
+structural.json & behavioral.json: The Baseline View features. Contains raw counts of AST nodes, CFG edges, loop counts, and boolean flags for recursion.
+wl_ast.json: The Weisfeiler-Lehman (WL) View features. Contains hashed structural fingerprints (e.g., wl_i1_a8b3...: 2) capturing neighborhood structures.
+scdps.json: The SCDPS View features. Contains raw path sequences representing data/control flow tracking.
+ces_v3.json: The CES View features. Identifies high-level computational patterns (e.g., "evolution": "ACCUMULATIVE", "evolution": "RECURSIVE_BINARY_SEARCH").
+combined_features.json: A consolidated dictionary of the above metrics.
+B. Vector Embeddings (cpp/vectors/)
+This directory holds the numerical embeddings representing the JSON features, ready for cosine/Tversky similarity calculations.
+
+Note: While some views (like Baseline) output their explicit vectors here, the high-dimensional views (WL, SCDPS, CES) often generate their vocabularies and vectorize in-memory during the evaluation scripts.
+C. Evaluation & Matrices (cpp/evaluation/)
+This directory holds the final results, similarity scores, and analytical reports.
+
+matrices/ Subdirectory: The most critical folder. It contains the large NxM JSON dictionaries mapping every student submission to every reference solution with a similarity score bounded [0.0, 1.0].
+similarity_matrix.json: Baseline scores.
+wl_similarity_matrix_local.json: Weisfeiler-Lehman structural scores.
+scdps_similarity_matrix_local.json: Data/Control flow scores.
+ces_v3_similarity_matrix_local.json: Semantic strategy scores (using Tversky similarity).
+final_similarity_matrix_ces_v3_local.json: The ultimate aggregated score fusing all 4 views together.
+Reports and Scripts: Contains comprehensive_evaluation.py (which calculates the final ~89-93% Top-1 accuracy) alongside markdown reports (EVALUATION_SUMMARY.md, CES_ZERO_SUMMARY.md) that break down pipeline performance and edge cases.

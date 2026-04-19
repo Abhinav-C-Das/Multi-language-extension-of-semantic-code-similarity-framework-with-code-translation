@@ -1,0 +1,90 @@
+{
+  "source_language": "c",
+  "source_file": "ref1_c.c",
+  "functions": [
+    {
+      "name": "gcd",
+      "return_type": "INT",
+      "parameters": [
+        {"name": "a", "type": "INT", "role": "DATA"},
+        {"name": "b", "type": "INT", "role": "DATA"}
+      ],
+      "body": [
+        {
+          "kind": "WHILE_LOOP",
+          "condition": 
+            {
+              "kind": "BINARY_OP",
+              "operator": "!=",
+              "left": 
+              {"kind": "IDENTIFIER", "name": "b"},
+              "right": 
+              {"kind": "LITERAL", "value": "0", "type": "INT"}
+            },
+          "body": [
+            {"kind": "DECLARE", "name": "temp", "type": "INT"},
+            {
+              "kind": "ASSIGN",
+              "target": 
+              {"kind": "IDENTIFIER", "name": "temp"},
+              "value": 
+              {"kind": "IDENTIFIER", "name": "b"}
+            },
+            {
+              "kind": "ASSIGN",
+              "target": 
+              {"kind": "IDENTIFIER", "name": "b"},
+              "value": 
+              {
+                "kind": "BINARY_OP",
+                "operator": "%",
+                "left": 
+                {"kind": "IDENTIFIER", "name": "a"},
+                "right": 
+                {"kind": "IDENTIFIER", "name": "b"}
+              }
+            },
+            {
+              "kind": "ASSIGN",
+              "target": 
+              {"kind": "IDENTIFIER", "name": "a"},
+              "value": 
+              {"kind": "IDENTIFIER", "name": "temp"}
+            }
+          ]
+        },
+        {
+          "kind": "RETURN",
+          "value": 
+            {"kind": "IDENTIFIER", "name": "a"}
+        }
+      ]
+    }
+  ],
+  "entry_point": 
+  {
+    "declarations": [],
+    "statements": [
+      {
+        "kind": "PRINT",
+        "format": "GCD(48,18) = %d\\n",
+        "arguments": [
+          {"kind": "LITERAL", "value": "\"GCD(48,18) = %d\\n\"", "type": "STRING"},
+          {
+            "kind": "CALL_EXPR",
+            "function": "gcd",
+            "arguments": [
+              {"kind": "LITERAL", "value": "48", "type": "INT"},
+              {"kind": "LITERAL", "value": "18", "type": "INT"}
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "RETURN",
+        "value": 
+          {"kind": "LITERAL", "value": "0", "type": "INT"}
+      }
+    ]
+  }
+}

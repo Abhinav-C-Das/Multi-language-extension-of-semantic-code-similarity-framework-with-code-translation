@@ -1,0 +1,84 @@
+{
+  "source_language": "c",
+  "source_file": "ref1_c.c",
+  "functions": [
+    {
+      "name": "factorial",
+      "return_type": "INT",
+      "parameters": [
+        {"name": "n", "type": "INT", "role": "DATA"}
+      ],
+      "body": [
+        {
+          "kind": "IF",
+          "condition": 
+            {
+              "kind": "BINARY_OP",
+              "operator": "<=",
+              "left": 
+              {"kind": "IDENTIFIER", "name": "n"},
+              "right": 
+              {"kind": "LITERAL", "value": "1", "type": "INT"}
+            },
+          "then": [
+            {
+              "kind": "RETURN",
+              "value": 
+                {"kind": "LITERAL", "value": "1", "type": "INT"}
+            }
+          ]
+        },
+        {
+          "kind": "RETURN",
+          "value": 
+            {
+              "kind": "BINARY_OP",
+              "operator": "*",
+              "left": 
+              {"kind": "IDENTIFIER", "name": "n"},
+              "right": 
+              {
+                "kind": "CALL_EXPR",
+                "function": "factorial",
+                "arguments": [
+                  {
+                    "kind": "BINARY_OP",
+                    "operator": "-",
+                    "left": 
+                    {"kind": "IDENTIFIER", "name": "n"},
+                    "right": 
+                    {"kind": "LITERAL", "value": "1", "type": "INT"}
+                  }
+                ]
+              }
+            }
+        }
+      ]
+    }
+  ],
+  "entry_point": 
+  {
+    "declarations": [],
+    "statements": [
+      {
+        "kind": "PRINT",
+        "format": "5! =%d\\n",
+        "arguments": [
+          {"kind": "LITERAL", "value": "\"5! =%d\\n\"", "type": "STRING"},
+          {
+            "kind": "CALL_EXPR",
+            "function": "factorial",
+            "arguments": [
+              {"kind": "LITERAL", "value": "5", "type": "INT"}
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "RETURN",
+        "value": 
+          {"kind": "LITERAL", "value": "0", "type": "INT"}
+      }
+    ]
+  }
+}

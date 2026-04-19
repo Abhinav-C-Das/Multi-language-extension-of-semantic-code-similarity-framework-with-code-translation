@@ -1,0 +1,14 @@
+Ablation Results
+================
+
+CONFIGURATION             | ACCURACY   | ERRORS    
+------------------------------------------------------------
+Baseline Only             | 100.00%    | 0
+WL Only                   | 100.00%    | 0
+CES v3 Only               | 100.00%    | 0
+SCDPS Only                | 100.00%    | 0
+Standard (No SCDPS)       | 100.00%    | 0
+With SCDPS                | 100.00%    | 0
+============================================================
+
+ERROR ANALYSIS:

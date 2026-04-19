@@ -1,0 +1,16 @@
+{
+  "identifiers": {
+    "factorial": {
+      "n": "v0"
+    },
+    "main": {
+      "num": "v0"
+    }
+  },
+  "literals": {
+    "\"Factorial: %d\\n\"": "STRING",
+    "0": "ZERO",
+    "1": "ONE",
+    "5": "SMALL_INT"
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "source_language": "c",
+  "source_file": "ref1_c.c",
+  "functions": [
+    {
+      "name": "countPositives",
+      "return_type": "INT",
+      "parameters": [
+        {"name": "arr", "type": "INT_ARRAY", "role": "DATA"},
+        {"name": "n", "type": "INT", "role": "ARRAY_SIZE"}
+      ],
+      "body": [
+        {"kind": "DECLARE", "name": "count", "type": "INT"},
+        {
+          "kind": "ASSIGN",
+          "target": 
+          {"kind": "IDENTIFIER", "name": "count"},
+          "value": 
+          {"kind": "LITERAL", "value": "0", "type": "INT"}
+        },
+        {
+          "kind": "FOR_LOOP",
+          "var_init": {"kind": "DECLARE", "name": "i", "type": "INT", "init": 
+            {"kind": "LITERAL", "value": "0", "type": "INT"}
+          },
+          "condition": 
+            {
+              "kind": "BINARY_OP",
+              "operator": "<",
+              "left": 
+              {"kind": "IDENTIFIER", "name": "i"},
+              "right": 
+              {"kind": "IDENTIFIER", "name": "n"}
+            },
+          "update": 
+            {
+              "kind": "UNARY_OP",
+              "operator": "++",
+              "operand": 
+              {"kind": "IDENTIFIER", "name": "i"},
+              "prefix": false
+            },
+          "body": [
+            {
+              "kind": "IF",
+              "condition": 
+                {
+                  "kind": "BINARY_OP",
+                  "operator": ">",
+                  "left": 
+                  {
+                    "kind": "ARRAY_ACCESS",
+                    "array": 
+                    {"kind": "IDENTIFIER", "name": "arr"},
+                    "index": 
+                    {"kind": "IDENTIFIER", "name": "i"}
+                  },
+                  "right": 
+                  {"kind": "LITERAL", "value": "0", "type": "INT"}
+                },
+              "then": [
+                {
+                  "kind": "EXPR_STMT",
+                  "expression": 
+                  {
+                    "kind": "UNARY_OP",
+                    "operator": "++",
+                    "operand": 
+                    {"kind": "IDENTIFIER", "name": "count"},
+                    "prefix": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "RETURN",
+          "value": 
+            {"kind": "IDENTIFIER", "name": "count"}
+        }
+      ]
+    }
+  ],
+  "entry_point": 
+  {
+    "declarations": [],
+    "statements": [
+      {"kind": "DECLARE", "name": "arr", "type": "INT_ARRAY"},
+      {
+        "kind": "ASSIGN",
+        "target": 
+        {"kind": "IDENTIFIER", "name": "arr"},
+        "value": 
+        {
+          "kind": "CALL_EXPR",
+          "function": "arrayInitializer",
+          "arguments": [
+            {
+              "kind": "UNARY_OP",
+              "operator": "-",
+              "operand": 
+              {"kind": "LITERAL", "value": "1", "type": "INT"},
+              "prefix": true
+            },
+            {"kind": "LITERAL", "value": "2", "type": "INT"},
+            {
+              "kind": "UNARY_OP",
+              "operator": "-",
+              "operand": 
+              {"kind": "LITERAL", "value": "3", "type": "INT"},
+              "prefix": true
+            },
+            {"kind": "LITERAL", "value": "4", "type": "INT"},
+            {"kind": "LITERAL", "value": "5", "type": "INT"},
+            {
+              "kind": "UNARY_OP",
+              "operator": "-",
+              "operand": 
+              {"kind": "LITERAL", "value": "6", "type": "INT"},
+              "prefix": true
+            }
+          ]
+        }
+      },
+      {"kind": "DECLARE", "name": "result", "type": "INT"},
+      {
+        "kind": "ASSIGN",
+        "target": 
+        {"kind": "IDENTIFIER", "name": "result"},
+        "value": 
+        {
+          "kind": "CALL_EXPR",
+          "function": "countPositives",
+          "arguments": [
+            {"kind": "IDENTIFIER", "name": "arr"},
+            {"kind": "LITERAL", "value": "6", "type": "INT"}
+          ]
+        }
+      },
+      {
+        "kind": "PRINT",
+        "format": "Result: %d\\n",
+        "arguments": [
+          {"kind": "LITERAL", "value": "\"Result: %d\\n\"", "type": "STRING"},
+          {"kind": "IDENTIFIER", "name": "result"}
+        ]
+      },
+      {
+        "kind": "RETURN",
+        "value": 
+          {"kind": "LITERAL", "value": "0", "type": "INT"}
+      }
+    ]
+  }
+}

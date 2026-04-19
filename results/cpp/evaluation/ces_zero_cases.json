@@ -1,0 +1,2891 @@
+[
+  {
+    "problem": "p1",
+    "student": "s11",
+    "student_code_preview": "// P1 Student 11: Correct with compound addition (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint calcSum(int values[], int count) {\n  int total = 0;\n  int idx = 0;\n  while (idx < count) {",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 20
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2",
+      "ref3"
+    ]
+  },
+  {
+    "problem": "p1",
+    "student": "s13",
+    "student_code_preview": "// P1 Student 13: Tail recursive with accumulator parameter (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint sumHelper(int arr[], int n, int index, int accumulator) {\n  if (index >= n) {\n ",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2",
+      "ref3"
+    ]
+  },
+  {
+    "problem": "p1",
+    "student": "s18",
+    "student_code_preview": "// P1 Student 18: Forward tail recursion (matches ref3)\n#include <iostream>\nusing namespace std;\n\nint sumTail(int arr[], int startIdx, int endIdx, int accumulator) {\n  if (startIdx >= endIdx) {\n    re",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2",
+      "ref3"
+    ]
+  },
+  {
+    "problem": "p1",
+    "student": "s2",
+    "student_code_preview": "// P1 Student 2: Correct with = sum + arr[i] form (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint arraySum(int arr[], int n) {\n  int sum = 0;\n  for (int i = 0; i < n; i++) {\n    sum = sum",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2",
+      "ref3"
+    ]
+  },
+  {
+    "problem": "p1",
+    "student": "s4",
+    "student_code_preview": "// P1 Student 4: Recursive accumulation (matches ref3)\n#include <iostream>\nusing namespace std;\n\nint sumArray(int arr[], int index) {\n  if (index < 0) {\n    return 0;\n  }\n  return arr[index] + sumArra",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 17
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2",
+      "ref3"
+    ]
+  },
+  {
+    "problem": "p1",
+    "student": "s9",
+    "student_code_preview": "// P1 Student 9: Recursive with helper (matches ref3)\n#include <iostream>\nusing namespace std;\n\nint sumHelper(int arr[], int n, int index) {\n  if (index == n) {\n    return 0;\n  }\n  return arr[index] +",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2",
+      "ref3"
+    ]
+  },
+  {
+    "problem": "p10",
+    "student": "s7",
+    "student_code_preview": "// P10-S7: Recursive prime check (ref1 style)\n#include <iostream>\nusing namespace std;\n\nint checkDivisor(int n, int i) {\n  if (i * i > n)\n    return 1;\n  if (n % i == 0)\n    return 0;\n  return checkDi",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": false,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 23
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p12",
+    "student": "s10",
+    "student_code_preview": "// P12-S10: Matches ref1 (helper swap function)\n#include <iostream>\nusing namespace std;\n#include <cstring>\n\nvoid swap(char *a, char *b) {\n  char temp = *a;\n  *a = *b;\n  *b = temp;\n}\n\nvoid reverseStri",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": true,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 29
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p12",
+    "student": "s11",
+    "student_code_preview": "// P12-S11: Matches ref1 (recursive reversal)\n#include <iostream>\nusing namespace std;\n#include <cstring>\n\nvoid reverseHelper(char str[], int left, int right) {\n  if (left >= right)\n    return;\n\n  cha",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": true,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 25
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p12",
+    "student": "s16",
+    "student_code_preview": "// P12-S16: Matches ref1 (arithmetic swap)\n#include <iostream>\nusing namespace std;\n#include <cstring>\n\nvoid reverseString(char str[]) {\n  int left = 0;\n  int right = strlen(str) - 1;\n\n  while (left <",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": true,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 26
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p12",
+    "student": "s9",
+    "student_code_preview": "// P12-S9: Matches ref1 (XOR swap - no temp)\n#include <iostream>\nusing namespace std;\n#include <cstring>\n\nvoid reverseString(char str[]) {\n  int left = 0;\n  int right = strlen(str) - 1;\n\n  while (left",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": true,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 26
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p13",
+    "student": "s10",
+    "student_code_preview": "// P13_S10: Matches ref2 (recursive with ternary operator)\n#include <iostream>\nusing namespace std;\n\nint bsearch(int a[], int low, int high, int x) {\n  if (low > high)\n    return -1;\n\n  int mid = (low",
+    "diagnosis": {
+      "reason": "SIMPLE_RECURSION",
+      "explanation": "Uses simple recursion without accumulation patterns",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 25
+      },
+      "missing_ces_patterns": [
+        "HEAD_RECURSIVE"
+      ],
+      "fix_recommendation": "Add HEAD_RECURSIVE pattern to CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p13",
+    "student": "s13",
+    "student_code_preview": "// P13_S13: Matches ref2 (recursive with base case check first)\n#include <iostream>\nusing namespace std;\n\nint helper(int *arr, int l, int r, int target) {\n  // Base case first\n  if (l > r) {\n    retur",
+    "diagnosis": {
+      "reason": "SIMPLE_RECURSION",
+      "explanation": "Uses simple recursion without accumulation patterns",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 35
+      },
+      "missing_ces_patterns": [
+        "HEAD_RECURSIVE"
+      ],
+      "fix_recommendation": "Add HEAD_RECURSIVE pattern to CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p13",
+    "student": "s15",
+    "student_code_preview": "// P13_S15: Matches ref2 (recursive with standard mid calculation)\n#include <iostream>\nusing namespace std;\n\nint bsearch_rec(int a[], int left, int right, int x) {\n  if (left > right)\n    return -1;\n\n",
+    "diagnosis": {
+      "reason": "SIMPLE_RECURSION",
+      "explanation": "Uses simple recursion without accumulation patterns",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 25
+      },
+      "missing_ces_patterns": [
+        "HEAD_RECURSIVE"
+      ],
+      "fix_recommendation": "Add HEAD_RECURSIVE pattern to CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p13",
+    "student": "s2",
+    "student_code_preview": "// P13_S2: Matches ref2 (recursive)\n#include <iostream>\nusing namespace std;\n\nint searchRec(int arr[], int l, int r, int x) {\n  if (l > r)\n    return -1;\n  int m = l + (r - l) / 2;\n  if (arr[m] == x)\n",
+    "diagnosis": {
+      "reason": "SIMPLE_RECURSION",
+      "explanation": "Uses simple recursion without accumulation patterns",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 23
+      },
+      "missing_ces_patterns": [
+        "HEAD_RECURSIVE"
+      ],
+      "fix_recommendation": "Add HEAD_RECURSIVE pattern to CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p13",
+    "student": "s5",
+    "student_code_preview": "// P13_S5: Matches ref2 (tail recursive)\n#include <iostream>\nusing namespace std;\n\nint bsearch(int a[], int l, int r, int x) {\n  if (l > r)\n    return -1;\n  int mid = (l + r) / 2;\n  if (a[mid] == x)\n ",
+    "diagnosis": {
+      "reason": "SIMPLE_RECURSION",
+      "explanation": "Uses simple recursion without accumulation patterns",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 21
+      },
+      "missing_ces_patterns": [
+        "HEAD_RECURSIVE"
+      ],
+      "fix_recommendation": "Add HEAD_RECURSIVE pattern to CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p13",
+    "student": "s8",
+    "student_code_preview": "// P13_S8: Matches ref2 (helper function)\n#include <iostream>\nusing namespace std;\n\nint helper(int *a, int l, int r, int target) {\n  if (l > r)\n    return -1;\n  int m = (l + r) >> 1;\n  if (a[m] == tar",
+    "diagnosis": {
+      "reason": "SIMPLE_RECURSION",
+      "explanation": "Uses simple recursion without accumulation patterns",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 23
+      },
+      "missing_ces_patterns": [
+        "HEAD_RECURSIVE"
+      ],
+      "fix_recommendation": "Add HEAD_RECURSIVE pattern to CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p14",
+    "student": "s11",
+    "student_code_preview": "// P14-S11: Matches ref1 (recursive row-by-row)\n#include <iostream>\nusing namespace std;\n\nint sumRow(int matrix[][3], int row, int cols, int col) {\n  if (col >= cols)\n    return 0;\n  return matrix[row",
+    "diagnosis": {
+      "reason": "SIMPLE_RECURSION",
+      "explanation": "Uses simple recursion without accumulation patterns",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 28
+      },
+      "missing_ces_patterns": [
+        "HEAD_RECURSIVE"
+      ],
+      "fix_recommendation": "Add HEAD_RECURSIVE pattern to CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p15",
+    "student": "s11",
+    "student_code_preview": "// P15_S11: Matches ref1 (recursive palindrome check)\n#include <ctype.h>\n#include <iostream>\nusing namespace std;\n#include <cstring>\n\n\nint checkRecursive(char str[], int left, int right) {\n  if (left ",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 26
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p15",
+    "student": "s16",
+    "student_code_preview": "// P15-S16: Matches ref1 (recursive two-pointer)\n#include <cctype.h>\n#include <iostream>\nusing namespace std;\n#include <cstring>\n\nint checkPalindrome(char str[], int left, int right) {\n  if (left >= r",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 30
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s1",
+    "student_code_preview": "// P16_S1: Matches ref1 (standard forward search)\n#include <iostream>\nusing namespace std;\n\nint search(int arr[], int target, int i, int n) {\n  if (i >= n)\n    return -1;\n  if (arr[i] == target)\n    r",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s10",
+    "student_code_preview": "// P16_S10: Matches ref1 (inline conditional)\n#include <iostream>\nusing namespace std;\n\nint search(int arr[], int target, int i, int n) {\n  return (i >= n) ? -1\n                  : ((arr[i] == target)",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 15
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s11",
+    "student_code_preview": "// P16_S11: Matches ref1 (standard index recursion)\n#include <iostream>\nusing namespace std;\n\nint search(int arr[], int target, int index, int n) {\n  if (index >= n)\n    return -1;\n  if (arr[index] ==",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s12",
+    "student_code_preview": "// P16_S12: Matches ref1 (nested ternary with logical OR)\n#include <iostream>\nusing namespace std;\n\nint search(int arr[], int target, int index, int n) {\n  return (index >= n)\n             ? -1\n      ",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 17
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s13",
+    "student_code_preview": "// P16_S13: Matches ref1 (1-indexed traversal)\n#include <iostream>\nusing namespace std;\n\nint search(int arr[], int target, int current, int n) {\n  if (current > n)\n    return -1;\n  if (arr[current - 1",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s14",
+    "student_code_preview": "// P16_S14: Matches ref1 (global variable for size)\n#include <iostream>\nusing namespace std;\n\nint SIZE;\n\nint search(int arr[], int target, int index) {\n  if (index >= SIZE)\n    return -1;\n  if (arr[in",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 21
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s15",
+    "student_code_preview": "// P16_S15: Matches ref2 (backward with wrapper and helper)\n#include <iostream>\nusing namespace std;\n\nint helper(int arr[], int target, int end) {\n  return (end < 0) ? -1\n                   : (arr[end",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 17
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s16",
+    "student_code_preview": "// P16_S16: Matches ref2 (backward with explicit found flag)\n#include <iostream>\nusing namespace std;\n\nint search(int arr[], int target, int idx) {\n  if (idx < 0)\n    return -1;\n  int found = (arr[idx",
+    "diagnosis": {
+      "reason": "SIMPLE_RECURSION",
+      "explanation": "Uses simple recursion without accumulation patterns",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "HEAD_RECURSIVE"
+      ],
+      "fix_recommendation": "Add HEAD_RECURSIVE pattern to CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s17",
+    "student_code_preview": "// P16_S17: Matches ref2 (backward pointer decrement)\n#include <iostream>\nusing namespace std;\n\nint search(int *arr, int target, int *end, int *start) {\n  if (end < start)\n    return -1;\n  if (*end ==",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s18",
+    "student_code_preview": "// P16_S18: Matches ref2 (backward with redundant parameter)\n#include <iostream>\nusing namespace std;\n\nint search(int arr[], int target, int n, int idx) {\n  if (idx < 0)\n    return -1;\n  if (idx >= n)",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 20
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s19",
+    "student_code_preview": "// P16_S19: Matches ref1 (binary-style parameters but linear search)\n#include <iostream>\nusing namespace std;\n\nint search(int arr[], int target, int start, int end) {\n  if (start > end)\n    return -1;",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s2",
+    "student_code_preview": "// P16_S2: Matches ref2 (backward search variant)\n#include <iostream>\nusing namespace std;\n\nint search(int a[], int x, int idx) {\n  if (idx < 0)\n    return -1;\n  if (a[idx] == x)\n    return idx;\n  ret",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s3",
+    "student_code_preview": "// P16_S3: Matches ref1 (ternary operator variant)\n#include <iostream>\nusing namespace std;\n\nint search(int arr[], int target, int index, int n) {\n  if (index >= n)\n    return -1;\n  return (arr[index]",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 16
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s4",
+    "student_code_preview": "// P16_S4: Matches ref1 (different parameter order)\n#include <iostream>\nusing namespace std;\n\nint search(int n, int arr[], int index, int target) {\n  if (index >= n)\n    return -1;\n  if (arr[index] ==",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s5",
+    "student_code_preview": "// P16_S5: Matches ref2 (backward with combined base case)\n#include <iostream>\nusing namespace std;\n\nint search(int arr[], int target, int n) {\n  if (n < 0)\n    return -1;\n  return (arr[n] == target) ",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 16
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s6",
+    "student_code_preview": "// P16_S6: Matches ref1 (with wrapper function)\n#include <iostream>\nusing namespace std;\n\nint helper(int arr[], int target, int i, int n) {\n  if (i >= n)\n    return -1;\n  if (arr[i] == target)\n    ret",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 22
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s7",
+    "student_code_preview": "// P16_S7: Matches ref1 (explicit else branch)\n#include <iostream>\nusing namespace std;\n\nint search(int arr[], int target, int index, int n) {\n  if (index >= n) {\n    return -1;\n  } else if (arr[index",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 20
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s8",
+    "student_code_preview": "// P16_S8: Matches ref2 (backward with explicit checks)\n#include <iostream>\nusing namespace std;\n\nint search(int arr[], int target, int index) {\n  if (index < 0) {\n    return -1;\n  }\n  if (arr[index] ",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 20
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p16",
+    "student": "s9",
+    "student_code_preview": "// P16_S9: Matches ref1 (pointer-based recursion)\n#include <iostream>\nusing namespace std;\n\nint search(int *arr, int target, int index, int n) {\n  if (index >= n)\n    return -1;\n  if (*(arr + index) =",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p2",
+    "student": "s7",
+    "student_code_preview": "// P2-S7: Recursive max finder (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint findMaxRec(int arr[], int n) {\n  if (n == 1)\n    return arr[0];\n  int maxRest = findMaxRec(arr, n - 1);\n  re",
+    "diagnosis": {
+      "reason": "SIMPLE_RECURSION",
+      "explanation": "Uses simple recursion without accumulation patterns",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "HEAD_RECURSIVE"
+      ],
+      "fix_recommendation": "Add HEAD_RECURSIVE pattern to CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p20",
+    "student": "s10",
+    "student_code_preview": "// P20_S10: Matches ref1 (compact with single loop print)\n#include <iostream>\nusing namespace std;\n\nvoid charFrequency(char str[]) {\n  int freq[256] = {0}, i = 0;\n  while (str[i])\n    freq[(unsigned c",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p20",
+    "student": "s13",
+    "student_code_preview": "// P20_S13-S20: Remaining variants\n#include <iostream>\nusing namespace std;\n#include <cstring>\nvoid charFrequency(char str[]) {\n  int freq[256] = {0};\n  for (int i = 0; i < strlen(str); i++)\n    freq[",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p20",
+    "student": "s15",
+    "student_code_preview": "// P20_S15-S20\n#include <iostream>\nusing namespace std;\n#include <cstring>\nvoid charFrequency(char str[]) {\n  int freq[256] = {0}, len = strlen(str);\n  for (int i = 0; i < len; i++)\n    freq[(int)str[",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p20",
+    "student": "s16",
+    "student_code_preview": "// P20_S16-S20\n#include <ctype.h>\n#include <iostream>\nusing namespace std;\n#include <cstring>\n\nvoid charFrequency(char str[]) {\n  int freq[128] = {0};\n  for (int i = 0; str[i]; i++)\n    if (isprint(st",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 21
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p20",
+    "student": "s17",
+    "student_code_preview": "// P20_S17-S20\n#include <iostream>\nusing namespace std;\n#include <cstring>\nvoid charFrequency(char str[]) {\n  int freq[256] = {0};\n  for (char *p = str; *p; p++)\n    freq[(unsigned char)*p]++;\n  for (",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p20",
+    "student": "s18",
+    "student_code_preview": "// P20_S18-S20\n#include <iostream>\nusing namespace std;\n#include <cstring>\nvoid charFrequency(char str[]) {\n  int freq[256];\n  for (int i = 0; i < 256; i++)\n    freq[i] = 0;\n  for (int i = 0; str[i]; ",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 20
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p20",
+    "student": "s19",
+    "student_code_preview": "// P20_S19-S20\n#include <iostream>\nusing namespace std;\n#include <cstring>\nvoid charFrequency(char str[]) {\n  int freq[256] = {0};\n  int i = 0;\n  do {\n    if (str[i])\n      freq[(unsigned char)str[i]]",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 21
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p20",
+    "student": "s20",
+    "student_code_preview": "// P20_S20: Case-insensitive variant\n#include <ctype.h>\n#include <iostream>\nusing namespace std;\n#include <cstring>\n\nvoid charFrequency(char str[]) {\n  int freq[256] = {0};\n  for (int i = 0; str[i]; i",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 22
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s1",
+    "student_code_preview": "// P3-S1: matches ref1\n#include <iostream>\nusing namespace std;\nint count(int a[], int n, int x) {\n  int c = 0;\n  for (int i = 0; i < n; i++)\n    if (a[i] == x)\n      c++;\n  return c;\n}\nint main() {\n ",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 16
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s10",
+    "student_code_preview": "// P3-S10: Pointer-based iteration (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint countOccurrences(int arr[], int n, int target) {\n  int count = 0;\n  for (int i = 0; i < n; i++) {\n    if",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s11",
+    "student_code_preview": "// P3-S11: Backward iteration (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint countOccurrences(int arr[], int n, int target) {\n  int count = 0;\n  for (int i = n - 1; i >= 0; i--) {\n    if",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s12",
+    "student_code_preview": "// P3-S12: Basic counting (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint countOccurrences(int arr[], int n, int target) {\n  int count = 0;\n  for (int i = 0; i < n; i++) {\n    if (arr[i] ",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 20
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s13",
+    "student_code_preview": "// P3-S13: Basic counting (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint countOccurrences(int arr[], int n, int target) {\n  int count = 0;\n  for (int i = 0; i < n; i++) {\n    if (arr[i] ",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 20
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s15",
+    "student_code_preview": "// P3-S15: Count with break after N matches (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint countOccurrences(int arr[], int n, int target) {\n  int count = 0;\n  for (int i = 0; i < n; i++)",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 21
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s17",
+    "student_code_preview": "// P3-S17: Unrolled loop (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint countOccurrences(int arr[], int n, int target) {\n  int count = 0;\n  int i;\n  for (i = 0; i < n - 1; i += 2) {\n    ",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 24
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s18",
+    "student_code_preview": "// P3-S18: Helper function for match (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint isMatch(int value, int target) { return value == target; }\n\nint countOccurrences(int arr[], int n, int",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 21
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s19",
+    "student_code_preview": "// P3-S19: Nested ternary counting (matches ref2)\n#include <iostream>\nusing namespace std;\n\nint countOccurrences(int arr[], int n, int target) {\n  int count = 0;\n  for (int i = 0; i < n; i++) {\n    co",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s20",
+    "student_code_preview": "// P3-S20: Accumulate with explicit conditional (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint countOccurrences(int arr[], int n, int target) {\n  int count = 0;\n  for (int i = 0; i < n; ",
+    "diagnosis": {
+      "reason": "TAIL_RECURSION",
+      "explanation": "Uses tail recursion with accumulator parameter",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 20
+      },
+      "missing_ces_patterns": [
+        "TAIL_RECURSIVE"
+      ],
+      "fix_recommendation": "Add TAIL_RECURSIVE pattern to CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s3",
+    "student_code_preview": "// P3-S3: While loop counter (matches ref1)\n#include <iostream>\nusing namespace std;\nint countOccurrences(int arr[], int n, int target) {\n  int count = 0;\n  int i = 0;\n  while (i < n) {\n    if (arr[i]",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s4",
+    "student_code_preview": "// P3-S4: Ternary increment (matches ref1)\n#include <iostream>\nusing namespace std;\nint countOccurrences(int arr[], int n, int target) {\n  int count = 0;\n  for (int i = 0; i < n; i++) {\n    count = (a",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 16
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s5",
+    "student_code_preview": "// P3-S5: Explicit form count = count + 1 (matches ref2)\n#include <iostream>\nusing namespace std;\nint count_target(int data[], int size, int val) {\n  int result = 0;\n  for (int j = 0; j < size; j++) {",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 17
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s6",
+    "student_code_preview": "// P3-S6: Do-while variant (matches ref1)\n#include <iostream>\nusing namespace std;\nint countOccurrences(int arr[], int n, int target) {\n  if (n == 0)\n    return 0;\n  int count = 0;\n  int i = 0;\n  do {",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 21
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s7",
+    "student_code_preview": "// P3-S7: Recursive counting (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint countRec(int arr[], int n, int target, int index) {\n  if (index >= n)\n    return 0;\n  int found = (arr[index] ",
+    "diagnosis": {
+      "reason": "SIMPLE_RECURSION",
+      "explanation": "Uses simple recursion without accumulation patterns",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 21
+      },
+      "missing_ces_patterns": [
+        "HEAD_RECURSIVE"
+      ],
+      "fix_recommendation": "Add HEAD_RECURSIVE pattern to CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p3",
+    "student": "s9",
+    "student_code_preview": "// P3-S9: Explicit count = count + 1 (matches ref2)\n#include <iostream>\nusing namespace std;\n\nint countOccurrences(int arr[], int n, int target) {\n  int count = 0;\n  for (int i = 0; i < n; i++) {\n    ",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p4",
+    "student": "s13",
+    "student_code_preview": "// P4-S13: Ternary return (matches ref2)\n#include <iostream>\nusing namespace std;\n\nint linearSearch(int arr[], int n, int target) {\n  int result = -1;\n  for (int i = 0; i < n; i++) {\n    result = (arr",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p4",
+    "student": "s16",
+    "student_code_preview": "// P4-S16: Sentinel check (matches ref2)\n#include <iostream>\nusing namespace std;\n\nint linearSearch(int arr[], int n, int target) {\n  int result = -1;\n  for (int i = 0; i < n && result == -1; i++) {\n ",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p4",
+    "student": "s19",
+    "student_code_preview": "// P4-S19: Inline index increment (matches ref2)\n#include <iostream>\nusing namespace std;\n\nint linearSearch(int arr[], int n, int target) {\n  int result = -1;\n  int i = 0;\n  while (i < n) {\n    if (ar",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 20
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p4",
+    "student": "s20",
+    "student_code_preview": "// P4-S20: Conditional continue variant (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint linearSearch(int arr[], int n, int target) {\n  for (int i = 0; i < n; i++) {\n    if (arr[i] != targ",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p4",
+    "student": "s5",
+    "student_code_preview": "// P4-S5: Full traversal with flag (matches ref2)\n#include <iostream>\nusing namespace std;\nint findIndex(int data[], int size, int key) {\n  int position = -1;\n  for (int j = 0; j < size; j++) {\n    if",
+    "diagnosis": {
+      "reason": "STL_ALGORITHM",
+      "explanation": "Uses STL algorithms (accumulate, sort, etc.)",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": true,
+        "code_length": 17
+      },
+      "missing_ces_patterns": [
+        "STL_ALGORITHM"
+      ],
+      "fix_recommendation": "Enhance STL algorithm detection in CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p4",
+    "student": "s7",
+    "student_code_preview": "// P4-S7: Recursive search (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint searchRec(int arr[], int n, int target, int index) {\n  if (index >= n)\n    return -1;\n  if (arr[index] == target",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 22
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p5",
+    "student": "s12",
+    "student_code_preview": "// P5-S12: Recursion - matches ref1\n#include <iostream>\nusing namespace std;\n\nvoid reverseHelper(int arr[], int left, int right) {\n  if (left >= right)\n    return;\n  int t = arr[left];\n  arr[left] = a",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 23
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p5",
+    "student": "s15",
+    "student_code_preview": "// P5-S15-S20: Final batch\n// S15: Inline swap (ref2)\n#include <iostream>\nusing namespace std;\nvoid reverseArray(int arr[], int n) {\n  for (int i = 0; i < n / 2; i++) {\n    arr[i] += arr[n - 1 - i];\n ",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": true,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p5",
+    "student": "s4",
+    "student_code_preview": "// P5-S4: XOR swap (different strategy, matches ref1 conceptually)\n#include <iostream>\nusing namespace std;\nvoid reverseArray(int arr[], int n) {\n  int left = 0, right = n - 1;\n  while (left < right) ",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": true,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 22
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p5",
+    "student": "s7",
+    "student_code_preview": "// P5-S7-S20: Batch creating remaining students\n// S7: Recursive (ref1)\n#include <iostream>\nusing namespace std;\nvoid revRec(int arr[], int l, int r) {\n  if (l >= r)\n    return;\n  int t = arr[l];\n  ar",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 21
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p6",
+    "student": "s14",
+    "student_code_preview": "// P6-S14: Explicit r = r * i - matches ref1\n#include <iostream>\nusing namespace std;\n\nint factorial(int n) {\n  int r = 1;\n  int i = 1;\n  while (i <= n) {\n    r = r * i;\n    i++;\n  }\n  return r;\n}\n\nin",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": false,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p6",
+    "student": "s15",
+    "student_code_preview": "// P6-S15: Recursive factorial - matches ref2\n#include <iostream>\nusing namespace std;\n\nint factorial(int n) {\n  if (n <= 1)\n    return 1;\n  return n * factorial(n - 1);\n}\n\nint main() {\n  cout << \"5! ",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": false,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 15
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p6",
+    "student": "s3",
+    "student_code_preview": "// P6-S3: Factorial with explicit multiplication (matches ref1)\n#include <iostream>\nusing namespace std;\nint factorial(int n) {\n  int fact = 1;\n  for (int i = 1; i <= n; i++) {\n    fact = fact * i; //",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": false,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 15
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p6",
+    "student": "s7",
+    "student_code_preview": "// P6-S7: Recursive factorial (matches ref2)\n#include <iostream>\nusing namespace std;\n\nint factorial(int n) {\n  if (n <= 1)\n    return 1;\n  return n * factorial(n - 1);\n}\n\nint main() {\n  cout << \"5! =",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": false,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 15
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p6",
+    "student": "s8",
+    "student_code_preview": "// P6-S8: Explicit multiplication - matches ref1\n#include <iostream>\nusing namespace std;\n\nint arrayProduct(int arr[], int n) {\n  int p = 1;\n  for (int i = 0; i < n; i++)\n    p = p * arr[i];\n  return ",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": true,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 17
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p7",
+    "student": "s13",
+    "student_code_preview": "// P7-S13: Helper function - matches ref1\n#include <iostream>\nusing namespace std;\n\nint factHelper(int n) {\n  if (n <= 1)\n    return 1;\n  return n * factHelper(n - 1);\n}\n\nint factorial(int n) { return",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": false,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 17
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p7",
+    "student": "s18",
+    "student_code_preview": "// P7-S18: Negation check - matches ref1\n#include <iostream>\nusing namespace std;\n\nint fact(int n) { return !n ? 1 : n * fact(n - 1); }\n\nint main() {\n  cout << \"5! = \" << fact(5) << endl;\n  return 0;\n",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": false,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 11
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p7",
+    "student": "s4",
+    "student_code_preview": "// P7-S4: Recursive with explicit return statement (matches ref1)\n#include <iostream>\nusing namespace std;\nint factorial(int n) {\n  if (n <= 1) {\n    return 1;\n  } else {\n    int temp = factorial(n - ",
+    "diagnosis": {
+      "reason": "SIMPLE_RECURSION",
+      "explanation": "Uses simple recursion without accumulation patterns",
+      "student_patterns": {
+        "has_recursion": true,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": false,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": true,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 16
+      },
+      "missing_ces_patterns": [
+        "HEAD_RECURSIVE"
+      ],
+      "fix_recommendation": "Add HEAD_RECURSIVE pattern to CES v3"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p8",
+    "student": "s10",
+    "student_code_preview": "// P8-S10: No temp variable swap (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint fibonacci(int n) {\n  if (n <= 1) {\n    return n;\n  }\n\n  int a = 0, b = 1;\n\n  for (int i = 2; i <= n; i++) ",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": false,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": true,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 24
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p8",
+    "student": "s12",
+    "student_code_preview": "// P8-S12: Backward iteration (matches ref1)\n#include <iostream>\nusing namespace std;\n\nint fibonacci(int n) {\n  if (n <= 1) {\n    return n;\n  }\n\n  int fib[n + 1];\n  fib[0] = 0;\n  fib[1] = 1;\n\n  for (i",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 25
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p8",
+    "student": "s14",
+    "student_code_preview": "// P8-S14: Tail recursive variant (matches ref2)\n#include <iostream>\nusing namespace std;\n\nint fibTail(int n, int a, int b) {\n  if (n == 0) {\n    return a;\n  }\n  if (n == 1) {\n    return b;\n  }\n  retu",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": false,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 21
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p8",
+    "student": "s20",
+    "student_code_preview": "// P8-S20: Backward loop (ref1)\n#include <iostream>\nusing namespace std;\n\nint fibonacci(int n) {\n  if (n <= 1) {\n    return n;\n  }\n\n  int fib[n + 1];\n  fib[0] = 0;\n  fib[1] = 1;\n\n  int i = 2;\n  while ",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 27
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p8",
+    "student": "s4",
+    "student_code_preview": "// P8-S4: Fibonacci with array (matches ref1 conceptually)\n#include <iostream>\nusing namespace std;\nint fibonacci(int n) {\n  if (n <= 1)\n    return n;\n  int fib[100];\n  fib[0] = 0;\n  fib[1] = 1;\n  for",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": true,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p8",
+    "student": "s7",
+    "student_code_preview": "// P8-S7: Fibonacci with XOR swap (matches ref1)\n#include <iostream>\nusing namespace std;\nint fibonacci(int n) {\n  if (n <= 1)\n    return n;\n  int a = 0, b = 1;\n  for (int i = 2; i <= n; i++) {\n    b ",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": true,
+        "has_array_access": false,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": true,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 18
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p9",
+    "student": "s12",
+    "student_code_preview": "// P9-S12: Subtraction-based GCD (ref1 variant)\n#include <iostream>\nusing namespace std;\n\nint gcd(int a, int b) {\n  while (a != b) {\n    if (a > b) {\n      a = a - b;\n    } else {\n      b = b - a;\n   ",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": false,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 20
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p9",
+    "student": "s15",
+    "student_code_preview": "// P9-S15-S20\n// S15: Tail recursive with helper (ref2)\n#include <iostream>\nusing namespace std;\n\nint gcdHelper(int a, int b, int prev) {\n  if (b == 0) {\n    return a;\n  }\n  return gcdHelper(b, a % b,",
+    "diagnosis": {
+      "reason": "DIRECT_COMPUTATION",
+      "explanation": "No loops or recursion - direct formula/computation",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": false,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": false,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "DIRECT_FORMULA"
+      ],
+      "fix_recommendation": "Add DIRECT_FORMULA pattern or accept 0.0 as correct"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p9",
+    "student": "s17",
+    "student_code_preview": "// P9-S17-20\n#include <iostream>\nusing namespace std;\n\nint gcd(int x, int y) {\n  while (y) {\n    x = x % y;\n    x = x + y;\n    y = x - y;\n    x = x - y;\n  }\n  return x;\n}\n\nint main() {\n  cout << \"GCD(",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": false,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 19
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p9",
+    "student": "s4",
+    "student_code_preview": "// P9-S4: GCD subtraction method (different algorithm)\n#include <iostream>\nusing namespace std;\nint gcd(int a, int b) {\n  while (a != b) {\n    if (a > b)\n      a = a - b;\n    else\n      b = b - a;\n  }",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": false,
+        "has_conditional": true,
+        "has_early_return": true,
+        "has_swap": false,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 17
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  },
+  {
+    "problem": "p9",
+    "student": "s8",
+    "student_code_preview": "// P9-S8-S20: Additional GCD variants\n// S8: No temp variable swap (ref1)\n#include <iostream>\nusing namespace std;\n\nint gcd(int a, int b) {\n  while (b != 0) {\n    a = a % b;\n    a = a + b;\n    b = a -",
+    "diagnosis": {
+      "reason": "COMPLEX_STRUCTURE",
+      "explanation": "Complex code structure with helper functions",
+      "student_patterns": {
+        "has_recursion": false,
+        "has_loop": true,
+        "has_helper_function": true,
+        "has_accumulator": false,
+        "has_array_access": false,
+        "has_conditional": false,
+        "has_early_return": false,
+        "has_swap": true,
+        "has_comparison": true,
+        "is_empty_or_trivial": false,
+        "has_stl_algorithm": false,
+        "code_length": 20
+      },
+      "missing_ces_patterns": [
+        "HELPER_FUNCTION_PATTERN"
+      ],
+      "fix_recommendation": "Analyze helper function patterns separately"
+    },
+    "refs": [
+      "ref1",
+      "ref2"
+    ]
+  }
+]

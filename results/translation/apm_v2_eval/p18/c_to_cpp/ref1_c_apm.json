@@ -1,0 +1,239 @@
+{
+  "source_language": "c",
+  "source_file": "ref1_c.c",
+  "functions": [
+    {
+      "name": "removeDuplicates",
+      "return_type": "INT",
+      "parameters": [
+        {"name": "arr", "type": "INT_ARRAY", "role": "DATA"},
+        {"name": "n", "type": "INT", "role": "ARRAY_SIZE"}
+      ],
+      "body": [
+        {
+          "kind": "IF",
+          "condition": 
+            {
+              "kind": "BINARY_OP",
+              "operator": "||",
+              "left": 
+              {
+                "kind": "BINARY_OP",
+                "operator": "==",
+                "left": 
+                {"kind": "IDENTIFIER", "name": "n"},
+                "right": 
+                {"kind": "LITERAL", "value": "0", "type": "INT"}
+              },
+              "right": 
+              {
+                "kind": "BINARY_OP",
+                "operator": "==",
+                "left": 
+                {"kind": "IDENTIFIER", "name": "n"},
+                "right": 
+                {"kind": "LITERAL", "value": "1", "type": "INT"}
+              }
+            },
+          "then": [
+            {
+              "kind": "RETURN",
+              "value": 
+                {"kind": "IDENTIFIER", "name": "n"}
+            }
+          ]
+        },
+        {"kind": "DECLARE", "name": "j", "type": "INT"},
+        {
+          "kind": "ASSIGN",
+          "target": 
+          {"kind": "IDENTIFIER", "name": "j"},
+          "value": 
+          {"kind": "LITERAL", "value": "0", "type": "INT"}
+        },
+        {
+          "kind": "FOR_LOOP",
+          "var_init": {"kind": "DECLARE", "name": "i", "type": "INT", "init": 
+            {"kind": "LITERAL", "value": "0", "type": "INT"}
+          },
+          "condition": 
+            {
+              "kind": "BINARY_OP",
+              "operator": "<",
+              "left": 
+              {"kind": "IDENTIFIER", "name": "i"},
+              "right": 
+              {
+                "kind": "BINARY_OP",
+                "operator": "-",
+                "left": 
+                {"kind": "IDENTIFIER", "name": "n"},
+                "right": 
+                {"kind": "LITERAL", "value": "1", "type": "INT"}
+              }
+            },
+          "update": 
+            {
+              "kind": "UNARY_OP",
+              "operator": "++",
+              "operand": 
+              {"kind": "IDENTIFIER", "name": "i"},
+              "prefix": false
+            },
+          "body": [
+            {
+              "kind": "IF",
+              "condition": 
+                {
+                  "kind": "BINARY_OP",
+                  "operator": "!=",
+                  "left": 
+                  {
+                    "kind": "ARRAY_ACCESS",
+                    "array": 
+                    {"kind": "IDENTIFIER", "name": "arr"},
+                    "index": 
+                    {"kind": "IDENTIFIER", "name": "i"}
+                  },
+                  "right": 
+                  {
+                    "kind": "ARRAY_ACCESS",
+                    "array": 
+                    {"kind": "IDENTIFIER", "name": "arr"},
+                    "index": 
+                    {
+                      "kind": "BINARY_OP",
+                      "operator": "+",
+                      "left": 
+                      {"kind": "IDENTIFIER", "name": "i"},
+                      "right": 
+                      {"kind": "LITERAL", "value": "1", "type": "INT"}
+                    }
+                  }
+                },
+              "then": [
+                {
+                  "kind": "ASSIGN",
+                  "target": 
+                  {
+                    "kind": "ARRAY_ACCESS",
+                    "array": 
+                    {"kind": "IDENTIFIER", "name": "arr"},
+                    "index": 
+                    {
+                      "kind": "UNARY_OP",
+                      "operator": "++",
+                      "operand": 
+                      {"kind": "IDENTIFIER", "name": "j"},
+                      "prefix": false
+                    }
+                  },
+                  "value": 
+                  {
+                    "kind": "ARRAY_ACCESS",
+                    "array": 
+                    {"kind": "IDENTIFIER", "name": "arr"},
+                    "index": 
+                    {"kind": "IDENTIFIER", "name": "i"}
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "ASSIGN",
+          "target": 
+          {
+            "kind": "ARRAY_ACCESS",
+            "array": 
+            {"kind": "IDENTIFIER", "name": "arr"},
+            "index": 
+            {
+              "kind": "UNARY_OP",
+              "operator": "++",
+              "operand": 
+              {"kind": "IDENTIFIER", "name": "j"},
+              "prefix": false
+            }
+          },
+          "value": 
+          {
+            "kind": "ARRAY_ACCESS",
+            "array": 
+            {"kind": "IDENTIFIER", "name": "arr"},
+            "index": 
+            {
+              "kind": "BINARY_OP",
+              "operator": "-",
+              "left": 
+              {"kind": "IDENTIFIER", "name": "n"},
+              "right": 
+              {"kind": "LITERAL", "value": "1", "type": "INT"}
+            }
+          }
+        },
+        {
+          "kind": "RETURN",
+          "value": 
+            {"kind": "IDENTIFIER", "name": "j"}
+        }
+      ]
+    }
+  ],
+  "entry_point": 
+  {
+    "declarations": [],
+    "statements": [
+      {"kind": "DECLARE", "name": "arr", "type": "INT_ARRAY"},
+      {
+        "kind": "ASSIGN",
+        "target": 
+        {"kind": "IDENTIFIER", "name": "arr"},
+        "value": 
+        {
+          "kind": "CALL_EXPR",
+          "function": "arrayInitializer",
+          "arguments": [
+            {"kind": "LITERAL", "value": "1", "type": "INT"},
+            {"kind": "LITERAL", "value": "2", "type": "INT"},
+            {"kind": "LITERAL", "value": "2", "type": "INT"},
+            {"kind": "LITERAL", "value": "3", "type": "INT"},
+            {"kind": "LITERAL", "value": "4", "type": "INT"},
+            {"kind": "LITERAL", "value": "4", "type": "INT"},
+            {"kind": "LITERAL", "value": "4", "type": "INT"},
+            {"kind": "LITERAL", "value": "5", "type": "INT"}
+          ]
+        }
+      },
+      {"kind": "DECLARE", "name": "n", "type": "INT"},
+      {
+        "kind": "ASSIGN",
+        "target": 
+        {"kind": "IDENTIFIER", "name": "n"},
+        "value": 
+        {
+          "kind": "CALL_EXPR",
+          "function": "removeDuplicates",
+          "arguments": [
+            {"kind": "IDENTIFIER", "name": "arr"},
+            {"kind": "LITERAL", "value": "8", "type": "INT"}
+          ]
+        }
+      },
+      {
+        "kind": "PRINT",
+        "format": "Unique Count = %d\\n",
+        "arguments": [
+          {"kind": "LITERAL", "value": "\"Unique Count = %d\\n\"", "type": "STRING"},
+          {"kind": "IDENTIFIER", "name": "n"}
+        ]
+      },
+      {
+        "kind": "RETURN",
+        "value": 
+          {"kind": "LITERAL", "value": "0", "type": "INT"}
+      }
+    ]
+  }
+}

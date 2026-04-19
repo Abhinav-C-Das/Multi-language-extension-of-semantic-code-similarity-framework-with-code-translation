@@ -1,0 +1,121 @@
+{
+  "source_language": "java",
+  "source_file": "ref1.java",
+  "functions": [
+    {
+      "name": "arraySum",
+      "return_type": "INT",
+      "parameters": [
+        {"name": "arr", "type": "INT_ARRAY", "role": "DATA"},
+        {"name": "n", "type": "INT", "role": "ARRAY_SIZE"}
+      ],
+      "body": [
+        {"kind": "DECLARE", "name": "sum", "type": "INT"},
+        {
+          "kind": "ASSIGN",
+          "target": 
+          {"kind": "IDENTIFIER", "name": "sum"},
+          "value": 
+          {"kind": "LITERAL", "value": "0", "type": "INT"}
+        },
+        {
+          "kind": "FOR_LOOP",
+          "var_init": {"kind": "DECLARE", "name": "i", "type": "INT", "init": 
+            {"kind": "LITERAL", "value": "0", "type": "INT"}
+          },
+          "condition": 
+            {
+              "kind": "BINARY_OP",
+              "operator": "<",
+              "left": 
+              {"kind": "IDENTIFIER", "name": "i"},
+              "right": 
+              {"kind": "IDENTIFIER", "name": "n"}
+            },
+          "update": 
+            {
+              "kind": "UNARY_OP",
+              "operator": "++",
+              "operand": 
+              {"kind": "IDENTIFIER", "name": "i"},
+              "prefix": false
+            },
+          "body": [
+            {
+              "kind": "COMPOUND_ASSIGN",
+              "target": 
+              {"kind": "IDENTIFIER", "name": "sum"},
+              "operator": "ADD",
+              "value": 
+              {
+                "kind": "ARRAY_ACCESS",
+                "array": 
+                {"kind": "IDENTIFIER", "name": "arr"},
+                "index": 
+                {"kind": "IDENTIFIER", "name": "i"}
+              }
+            }
+          ]
+        },
+        {
+          "kind": "RETURN",
+          "value": 
+            {"kind": "IDENTIFIER", "name": "sum"}
+        }
+      ]
+    }
+  ],
+  "entry_point": 
+  {
+    "declarations": [],
+    "statements": [
+      {"kind": "DECLARE", "name": "arr", "type": "INT_ARRAY"},
+      {
+        "kind": "ASSIGN",
+        "target": 
+        {"kind": "IDENTIFIER", "name": "arr"},
+        "value": 
+        {
+          "kind": "CALL_EXPR",
+          "function": "arrayInitializer",
+          "arguments": [
+            {"kind": "LITERAL", "value": "5", "type": "INT"},
+            {"kind": "LITERAL", "value": "10", "type": "INT"},
+            {"kind": "LITERAL", "value": "15", "type": "INT"},
+            {"kind": "LITERAL", "value": "20", "type": "INT"},
+            {"kind": "LITERAL", "value": "25", "type": "INT"}
+          ]
+        }
+      },
+      {"kind": "DECLARE", "name": "n", "type": "INT"},
+      {
+        "kind": "ASSIGN",
+        "target": 
+        {"kind": "IDENTIFIER", "name": "n"},
+        "value": 
+        {"kind": "LITERAL", "value": "5", "type": "INT"}
+      },
+      {
+        "kind": "PRINT",
+        "format": "{}\\n",
+        "arguments": [
+          {
+            "kind": "BINARY_OP",
+            "operator": "+",
+            "left": 
+            {"kind": "LITERAL", "value": "\"Sum = \"", "type": "STRING"},
+            "right": 
+            {
+              "kind": "CALL_EXPR",
+              "function": "arraySum",
+              "arguments": [
+                {"kind": "IDENTIFIER", "name": "arr"},
+                {"kind": "IDENTIFIER", "name": "n"}
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+================================================================================
+DETAILED ANALYSIS: p1/s18 Low Similarity Case
+================================================================================
+
+STUDENT CODE (s18): Tail Recursion
+--------------------------------------------------------------------------------
+// P1 Student 18: Forward tail recursion (matches ref3)
+#include <iostream>
+using namespace std;
+
+int sumTail(int arr[], int startIdx, int endIdx, int accumulator) {
+  if (startIdx >= endIdx) {
+    return accumulator;
+  }
+  return sumTail(arr, startIdx + 1, endIdx, accumulator + arr[startIdx]);
+}
+
+int arraySum(int arr[], int n) { return sumTail(arr, 0, n, 0); }
+
+int main() {
+  int arr[] = {5, 10, 15, 20, 25};
+  cout << "Sum = " << arraySum(arr, 5) << endl;
+  return 0;
+}
+
+
+EXPECTED REFERENCE (ref3): Head Recursion
+--------------------------------------------------------------------------------
+// Problem 1: Array Sum
+// Reference 3: Recursive accumulation
+// Strategy: Recursive with tail accumulation (CES: ACCUMULATIVE in recursion)
+
+#include <iostream>
+using namespace std;
+
+int arraySum(int arr[], int n) {
+  if (n == 0) {
+    return 0;
+  }
+  return arr[n - 1] + arraySum(arr, n - 1); // Recursive accumulation
+}
+
+int main() {
+  int arr[] = {5, 10, 15, 20, 25};
+  int n = 5;
+  cout << "Sum = " << arraySum(arr, n) << endl;
+  return 0;
+}
+
+
+PREDICTED REFERENCE (ref1): Iterative Loop
+--------------------------------------------------------------------------------
+// Problem 1: Array Sum
+// Reference 1: Correct iterative accumulation with +=
+// Strategy: Accumulation pattern (CES: ACCUMULATIVE)
+
+#include <iostream>
+using namespace std;
+
+int arraySum(int arr[], int n) {
+  int sum = 0;
+  for (int i = 0; i < n; i++) {
+    sum += arr[i]; // Accumulation: depends on previous value
+  }
+  return sum;
+}
+
+int main() {
+  int arr[] = {5, 10, 15, 20, 25};
+  int n = 5;
+  cout << "Sum = " << arraySum(arr, n) << endl;
+  return 0;
+}
+
+
+================================================================================
+SIMILARITY SCORES
+================================================================================
+
+ref1:
+  Baseline: 0.3330
+  WL:       0.9409
+  CES:      0.0000
+  Combined: 0.4929
+
+ref2:
+  Baseline: 0.3330
+  WL:       0.9409
+  CES:      0.0000
+  Combined: 0.4929
+
+ref3:
+  Baseline: 0.3330
+  WL:       0.9352
+  CES:      0.0000
+  Combined: 0.4906
+
+
+================================================================================
+CONCLUSION
+================================================================================
+
+The low similarity (0.49) is due to:
+1. CES v3 doesn't recognize tail recursion pattern (gives 0.0 for all refs)
+2. WL scores are very close (0.9409 vs 0.9352) - can't distinguish
+3. Baseline slightly favors ref1 due to forward iteration similarity
+
+RECOMMENDATION: Add TAIL_RECURSIVE and HEAD_RECURSIVE patterns to CES v3

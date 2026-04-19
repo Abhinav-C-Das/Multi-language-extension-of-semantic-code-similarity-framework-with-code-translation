@@ -1,0 +1,798 @@
+{
+  "user_specified": {
+    "weights": {
+      "baseline": 0.35,
+      "wl": 0.4,
+      "ces": 0.25
+    },
+    "accuracy": 0.9,
+    "correct": 360,
+    "total": 400,
+    "errors": [
+      {
+        "problem": "p1",
+        "student": "s18",
+        "expected": "ref3",
+        "predicted": "ref1",
+        "expected_score": 0.49062513343243325,
+        "predicted_score": 0.4929244937888247,
+        "difference": 0.0022993603563914444
+      },
+      {
+        "problem": "p11",
+        "student": "s8",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8278315073541979,
+        "predicted_score": 0.8800498692119458,
+        "difference": 0.052218361857747975
+      },
+      {
+        "problem": "p14",
+        "student": "s2",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8807532184494715,
+        "predicted_score": 0.8807532184494715,
+        "difference": 0.0
+      },
+      {
+        "problem": "p14",
+        "student": "s5",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8795894622961558,
+        "predicted_score": 0.8795894622961558,
+        "difference": 0.0
+      },
+      {
+        "problem": "p14",
+        "student": "s7",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8787532155452606,
+        "predicted_score": 0.8787532155452606,
+        "difference": 0.0
+      },
+      {
+        "problem": "p14",
+        "student": "s12",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8817737622153906,
+        "predicted_score": 0.8817737622153906,
+        "difference": 0.0
+      },
+      {
+        "problem": "p14",
+        "student": "s19",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8814265165310813,
+        "predicted_score": 0.8814265165310813,
+        "difference": 0.0
+      },
+      {
+        "problem": "p16",
+        "student": "s13",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.5101660170939292,
+        "predicted_score": 0.5122196239750757,
+        "difference": 0.0020536068811465302
+      },
+      {
+        "problem": "p16",
+        "student": "s17",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.5071849243379907,
+        "predicted_score": 0.5131684612819919,
+        "difference": 0.005983536944001222
+      },
+      {
+        "problem": "p16",
+        "student": "s18",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.508528514360742,
+        "predicted_score": 0.5130365740995282,
+        "difference": 0.004508059738786208
+      },
+      {
+        "problem": "p17",
+        "student": "s6",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8497218749539323,
+        "predicted_score": 0.8500733849853097,
+        "difference": 0.0003515100313774555
+      },
+      {
+        "problem": "p17",
+        "student": "s18",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8411965767257178,
+        "predicted_score": 0.8413615786532367,
+        "difference": 0.00016500192751889298
+      },
+      {
+        "problem": "p18",
+        "student": "s6",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8624969674418065,
+        "predicted_score": 0.881969981337138,
+        "difference": 0.019473013895331515
+      },
+      {
+        "problem": "p18",
+        "student": "s13",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.7750428152131652,
+        "predicted_score": 0.8833333333333339,
+        "difference": 0.10829051812016866
+      },
+      {
+        "problem": "p19",
+        "student": "s7",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8481147697750903,
+        "predicted_score": 0.8816498753614672,
+        "difference": 0.033535105586376956
+      },
+      {
+        "problem": "p19",
+        "student": "s13",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.8776107792299126,
+        "predicted_score": 0.8822126220561306,
+        "difference": 0.0046018428262180056
+      },
+      {
+        "problem": "p19",
+        "student": "s18",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.8773691469107886,
+        "predicted_score": 0.8818876400048816,
+        "difference": 0.0045184930940930235
+      },
+      {
+        "problem": "p19",
+        "student": "s20",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.8774294264440654,
+        "predicted_score": 0.8815093716201355,
+        "difference": 0.004079945176070132
+      },
+      {
+        "problem": "p2",
+        "student": "s7",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.5046916680377111,
+        "predicted_score": 0.6209339232744573,
+        "difference": 0.11624225523674614
+      },
+      {
+        "problem": "p2",
+        "student": "s20",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.6286046120334434,
+        "predicted_score": 0.9958840349102005,
+        "difference": 0.3672794228767571
+      },
+      {
+        "problem": "p20",
+        "student": "s12",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.8804080217979171,
+        "predicted_score": 0.881315938849488,
+        "difference": 0.0009079170515708945
+      },
+      {
+        "problem": "p3",
+        "student": "s4",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.6305968359597047,
+        "predicted_score": 0.630640468548229,
+        "difference": 4.363258852424501e-05
+      },
+      {
+        "problem": "p3",
+        "student": "s6",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.6299398009103043,
+        "predicted_score": 0.6299806403602085,
+        "difference": 4.08394499041842e-05
+      },
+      {
+        "problem": "p3",
+        "student": "s8",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.6289250454410971,
+        "predicted_score": 0.8793013161502723,
+        "difference": 0.25037627070917523
+      },
+      {
+        "problem": "p4",
+        "student": "s3",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.6321338775979397,
+        "predicted_score": 0.878143320510995,
+        "difference": 0.24600944291305527
+      },
+      {
+        "problem": "p4",
+        "student": "s15",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.6321338775979397,
+        "predicted_score": 0.878143320510995,
+        "difference": 0.24600944291305527
+      },
+      {
+        "problem": "p5",
+        "student": "s15",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.6243442145264748,
+        "predicted_score": 0.6310924613468889,
+        "difference": 0.006748246820414083
+      },
+      {
+        "problem": "p5",
+        "student": "s18",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8808439182938149,
+        "predicted_score": 0.8814260237286072,
+        "difference": 0.0005821054347923127
+      },
+      {
+        "problem": "p5",
+        "student": "s20",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.842466942663866,
+        "predicted_score": 0.8454473947948434,
+        "difference": 0.002980452130977418
+      },
+      {
+        "problem": "p6",
+        "student": "s9",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.8640494708271869,
+        "predicted_score": 0.8645417033796685,
+        "difference": 0.0004922325524816529
+      },
+      {
+        "problem": "p6",
+        "student": "s10",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.8747730927494359,
+        "predicted_score": 0.8772518656103772,
+        "difference": 0.002478772860941225
+      },
+      {
+        "problem": "p6",
+        "student": "s14",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.6280338380405547,
+        "predicted_score": 0.6317385451920213,
+        "difference": 0.0037047071514666463
+      },
+      {
+        "problem": "p6",
+        "student": "s17",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.876564836130669,
+        "predicted_score": 0.8779537369242875,
+        "difference": 0.0013889007936184194
+      },
+      {
+        "problem": "p6",
+        "student": "s19",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.8787147766323026,
+        "predicted_score": 0.8800343642611685,
+        "difference": 0.0013195876288659703
+      },
+      {
+        "problem": "p7",
+        "student": "s5",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8772484942822616,
+        "predicted_score": 0.8833333333333332,
+        "difference": 0.0060848390510716
+      },
+      {
+        "problem": "p7",
+        "student": "s14",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.8772484942822616,
+        "predicted_score": 0.8833333333333331,
+        "difference": 0.006084839051071489
+      },
+      {
+        "problem": "p8",
+        "student": "s11",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8010269578388746,
+        "predicted_score": 0.8064867528604396,
+        "difference": 0.005459795021565017
+      },
+      {
+        "problem": "p9",
+        "student": "s15",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.4865487631575481,
+        "predicted_score": 0.6164577467487022,
+        "difference": 0.12990898359115416
+      },
+      {
+        "problem": "p9",
+        "student": "s18",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.502157894568136,
+        "predicted_score": 0.8789319626170263,
+        "difference": 0.37677406804889035
+      },
+      {
+        "problem": "p9",
+        "student": "s19",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.5025115830605683,
+        "predicted_score": 0.8722581251397143,
+        "difference": 0.36974654207914603
+      }
+    ]
+  },
+  "baseline_only": {
+    "weights": {
+      "baseline": 1.0,
+      "wl": 0.0,
+      "ces": 0.0
+    },
+    "accuracy": 0.8175,
+    "correct": 327,
+    "total": 400
+  },
+  "wl_only": {
+    "weights": {
+      "baseline": 0.0,
+      "wl": 1.0,
+      "ces": 0.0
+    },
+    "accuracy": 0.8725,
+    "correct": 349,
+    "total": 400
+  },
+  "ces_only": {
+    "weights": {
+      "baseline": 0.0,
+      "wl": 0.0,
+      "ces": 1.0
+    },
+    "accuracy": 0.8425,
+    "correct": 337,
+    "total": 400
+  },
+  "baseline_wl": {
+    "weights": {
+      "baseline": 0.5,
+      "wl": 0.5,
+      "ces": 0.0
+    },
+    "accuracy": 0.8675,
+    "correct": 347,
+    "total": 400
+  },
+  "baseline_ces": {
+    "weights": {
+      "baseline": 0.5,
+      "wl": 0.0,
+      "ces": 0.5
+    },
+    "accuracy": 0.8775,
+    "correct": 351,
+    "total": 400
+  },
+  "wl_ces": {
+    "weights": {
+      "baseline": 0.0,
+      "wl": 0.5,
+      "ces": 0.5
+    },
+    "accuracy": 0.905,
+    "correct": 362,
+    "total": 400
+  },
+  "all_equal": {
+    "weights": {
+      "baseline": 0.333,
+      "wl": 0.333,
+      "ces": 0.334
+    },
+    "accuracy": 0.9025,
+    "correct": 361,
+    "total": 400
+  },
+  "optimal": {
+    "weights": {
+      "baseline": 0.0,
+      "wl": 0.05,
+      "ces": 0.95
+    },
+    "accuracy": 0.905,
+    "correct": 362,
+    "total": 400,
+    "errors": [
+      {
+        "problem": "p1",
+        "student": "s18",
+        "expected": "ref3",
+        "predicted": "ref1",
+        "expected_score": 0.046758525848463996,
+        "predicted_score": 0.04704468973044373,
+        "difference": 0.0002861638819797313
+      },
+      {
+        "problem": "p11",
+        "student": "s8",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.79618884957551,
+        "predicted_score": 0.999590628223119,
+        "difference": 0.203401778647609
+      },
+      {
+        "problem": "p14",
+        "student": "s2",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.999678216107072,
+        "predicted_score": 0.999678216107072,
+        "difference": 0.0
+      },
+      {
+        "problem": "p14",
+        "student": "s5",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.9995327155352273,
+        "predicted_score": 0.9995327155352273,
+        "difference": 0.0
+      },
+      {
+        "problem": "p14",
+        "student": "s7",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.9994290672381961,
+        "predicted_score": 0.9994290672381961,
+        "difference": 0.0
+      },
+      {
+        "problem": "p14",
+        "student": "s12",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.9998050536102571,
+        "predicted_score": 0.9998050536102571,
+        "difference": 0.0
+      },
+      {
+        "problem": "p14",
+        "student": "s19",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.9997618723822529,
+        "predicted_score": 0.9997618723822529,
+        "difference": 0.0
+      },
+      {
+        "problem": "p16",
+        "student": "s13",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.04918788340039985,
+        "predicted_score": 0.04944478292061358,
+        "difference": 0.00025689952021373114
+      },
+      {
+        "problem": "p16",
+        "student": "s17",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.048815314263498465,
+        "predicted_score": 0.04956299433443953,
+        "difference": 0.0007476800709410661
+      },
+      {
+        "problem": "p16",
+        "student": "s18",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.04898399415736943,
+        "predicted_score": 0.0495488188616329,
+        "difference": 0.0005648247042634655
+      },
+      {
+        "problem": "p17",
+        "student": "s6",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8840596498879303,
+        "predicted_score": 0.8841035886418525,
+        "difference": 4.393875392216806e-05
+      },
+      {
+        "problem": "p17",
+        "student": "s18",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8566217176201958,
+        "predicted_score": 0.8566423428611357,
+        "difference": 2.062524093993101e-05
+      },
+      {
+        "problem": "p18",
+        "student": "s6",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.9267239891639751,
+        "predicted_score": 0.9998300047983861,
+        "difference": 0.07310601563441099
+      },
+      {
+        "problem": "p18",
+        "student": "s13",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.5927153598977872,
+        "predicted_score": 1.0,
+        "difference": 0.40728464010221277
+      },
+      {
+        "problem": "p19",
+        "student": "s7",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8721841241338282,
+        "predicted_score": 0.9997907986093837,
+        "difference": 0.12760667447555551
+      },
+      {
+        "problem": "p19",
+        "student": "s13",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.9837138228468658,
+        "predicted_score": 0.9998604913042001,
+        "difference": 0.016146668457334257
+      },
+      {
+        "problem": "p19",
+        "student": "s18",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.9836838314998562,
+        "predicted_score": 0.9998199874056222,
+        "difference": 0.016136155905766003
+      },
+      {
+        "problem": "p19",
+        "student": "s20",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.9836908235192096,
+        "predicted_score": 0.9997732090207208,
+        "difference": 0.0160823855015112
+      },
+      {
+        "problem": "p2",
+        "student": "s20",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.049413757608774304,
+        "predicted_score": 0.999491613875229,
+        "difference": 0.9500778562664547
+      },
+      {
+        "problem": "p20",
+        "student": "s12",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.9996350456968369,
+        "predicted_score": 0.9997490732517853,
+        "difference": 0.00011402755494838157
+      },
+      {
+        "problem": "p3",
+        "student": "s4",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.04966179835902423,
+        "predicted_score": 0.049666744512024394,
+        "difference": 4.94615300016682e-06
+      },
+      {
+        "problem": "p3",
+        "student": "s6",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.04957742316282812,
+        "predicted_score": 0.04958236091233417,
+        "difference": 4.93774950605097e-06
+      },
+      {
+        "problem": "p3",
+        "student": "s8",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.04945160532889298,
+        "predicted_score": 0.9994983893089343,
+        "difference": 0.9500467839800413
+      },
+      {
+        "problem": "p4",
+        "student": "s3",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.049850110744342396,
+        "predicted_score": 0.9993527741163368,
+        "difference": 0.9495026633719944
+      },
+      {
+        "problem": "p4",
+        "student": "s15",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.049850110744342396,
+        "predicted_score": 0.9993527741163368,
+        "difference": 0.9495026633719944
+      },
+      {
+        "problem": "p5",
+        "student": "s15",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.048882322418078855,
+        "predicted_score": 0.04972277693831517,
+        "difference": 0.0008404545202363167
+      },
+      {
+        "problem": "p5",
+        "student": "s18",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.9996893296792881,
+        "predicted_score": 0.9997617610822639,
+        "difference": 7.24314029757478e-05
+      },
+      {
+        "problem": "p5",
+        "student": "s20",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.8619158566154665,
+        "predicted_score": 0.8622893139492827,
+        "difference": 0.00037345733381610735
+      },
+      {
+        "problem": "p6",
+        "student": "s9",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.9975927349180562,
+        "predicted_score": 0.9976542639871164,
+        "difference": 6.152906906020661e-05
+      },
+      {
+        "problem": "p6",
+        "student": "s10",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.9989363985906118,
+        "predicted_score": 0.9992462451982294,
+        "difference": 0.0003098466076175699
+      },
+      {
+        "problem": "p6",
+        "student": "s14",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.049338209303649176,
+        "predicted_score": 0.049801297697582514,
+        "difference": 0.00046308839393333773
+      },
+      {
+        "problem": "p6",
+        "student": "s17",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.9991540671491534,
+        "predicted_score": 0.9993276797483557,
+        "difference": 0.00017361259920223304
+      },
+      {
+        "problem": "p6",
+        "student": "s19",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.9994226804123711,
+        "predicted_score": 0.9995876288659794,
+        "difference": 0.00016494845360826016
+      },
+      {
+        "problem": "p7",
+        "student": "s5",
+        "expected": "ref2",
+        "predicted": "ref1",
+        "expected_score": 0.9992441863876336,
+        "predicted_score": 1.0,
+        "difference": 0.0007558136123664294
+      },
+      {
+        "problem": "p7",
+        "student": "s14",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.9992441863876336,
+        "predicted_score": 0.9999999999999999,
+        "difference": 0.0007558136123663184
+      },
+      {
+        "problem": "p9",
+        "student": "s15",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.04626013352985773,
+        "predicted_score": 0.047901978241995116,
+        "difference": 0.0016418447121373872
+      },
+      {
+        "problem": "p9",
+        "student": "s18",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.048199262930637206,
+        "predicted_score": 0.9994500531840653,
+        "difference": 0.9512507902534281
+      },
+      {
+        "problem": "p9",
+        "student": "s19",
+        "expected": "ref1",
+        "predicted": "ref2",
+        "expected_score": 0.04823905504959679,
+        "predicted_score": 0.9986262276863958,
+        "difference": 0.950387172636799
+      }
+    ]
+  }
+}

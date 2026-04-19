@@ -1,0 +1,130 @@
+{
+  "source_language": "java",
+  "source_file": "ref1.java",
+  "functions": [
+    {
+      "name": "arrayProduct",
+      "return_type": "INT",
+      "parameters": [
+        {"name": "arr", "type": "INT_ARRAY", "role": "DATA"}
+      ],
+      "body": [
+        {"kind": "DECLARE", "name": "product", "type": "INT"},
+        {
+          "kind": "ASSIGN",
+          "target": 
+          {"kind": "IDENTIFIER", "name": "product"},
+          "value": 
+          {"kind": "LITERAL", "value": "1", "type": "INT"}
+        },
+        {
+          "kind": "FOR_LOOP",
+          "var_init": {"kind": "DECLARE", "name": "i", "type": "INT", "init": 
+            {"kind": "LITERAL", "value": "0", "type": "INT"}
+          },
+          "condition": 
+            {
+              "kind": "BINARY_OP",
+              "operator": "<",
+              "left": 
+              {"kind": "IDENTIFIER", "name": "i"},
+              "right": 
+              {
+                "kind": "MEMBER_ACCESS",
+                "object": 
+                {"kind": "IDENTIFIER", "name": "arr"},
+                "member": "length"
+              }
+            },
+          "update": 
+            {
+              "kind": "UNARY_OP",
+              "operator": "++",
+              "operand": 
+              {"kind": "IDENTIFIER", "name": "i"},
+              "prefix": false
+            },
+          "body": [
+            {
+              "kind": "ASSIGN",
+              "target": 
+              {"kind": "IDENTIFIER", "name": "product"},
+              "value": 
+              {
+                "kind": "BINARY_OP",
+                "operator": "*",
+                "left": 
+                {"kind": "IDENTIFIER", "name": "product"},
+                "right": 
+                {
+                  "kind": "ARRAY_ACCESS",
+                  "array": 
+                  {"kind": "IDENTIFIER", "name": "arr"},
+                  "index": 
+                  {"kind": "IDENTIFIER", "name": "i"}
+                }
+              }
+            }
+          ]
+        },
+        {
+          "kind": "RETURN",
+          "value": 
+            {"kind": "IDENTIFIER", "name": "product"}
+        }
+      ]
+    }
+  ],
+  "entry_point": 
+  {
+    "declarations": [],
+    "statements": [
+      {"kind": "DECLARE", "name": "arr", "type": "INT_ARRAY"},
+      {
+        "kind": "ASSIGN",
+        "target": 
+        {"kind": "IDENTIFIER", "name": "arr"},
+        "value": 
+        {
+          "kind": "CALL_EXPR",
+          "function": "arrayInitializer",
+          "arguments": [
+            {"kind": "LITERAL", "value": "1", "type": "INT"},
+            {"kind": "LITERAL", "value": "2", "type": "INT"},
+            {"kind": "LITERAL", "value": "3", "type": "INT"},
+            {"kind": "LITERAL", "value": "4", "type": "INT"},
+            {"kind": "LITERAL", "value": "5", "type": "INT"}
+          ]
+        }
+      },
+      {"kind": "DECLARE", "name": "result", "type": "INT"},
+      {
+        "kind": "ASSIGN",
+        "target": 
+        {"kind": "IDENTIFIER", "name": "result"},
+        "value": 
+        {
+          "kind": "CALL_EXPR",
+          "function": "arrayProduct",
+          "arguments": [
+            {"kind": "IDENTIFIER", "name": "arr"}
+          ]
+        }
+      },
+      {
+        "kind": "PRINT",
+        "format": "{}\\n",
+        "arguments": [
+          {
+            "kind": "BINARY_OP",
+            "operator": "+",
+            "left": 
+            {"kind": "LITERAL", "value": "\"Result: \"", "type": "STRING"},
+            "right": 
+            {"kind": "IDENTIFIER", "name": "result"}
+          }
+        ]
+      }
+    ]
+  }
+}

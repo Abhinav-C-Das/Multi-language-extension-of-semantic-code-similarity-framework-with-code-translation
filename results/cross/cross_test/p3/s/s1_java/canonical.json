@@ -1,0 +1,22 @@
+{
+  "identifiers": {
+    "findMax": {
+      "maxVal": "v0",
+      "arr": "v1",
+      "i": "v2"
+    },
+    "main": {
+      "data": "v0"
+    }
+  },
+  "literals": {
+    "\"Max: \"": "STRING",
+    "0": "ZERO",
+    "1": "ONE",
+    "2": "SMALL_INT",
+    "3": "SMALL_INT",
+    "5": "SMALL_INT",
+    "7": "SMALL_INT",
+    "9": "SMALL_INT"
+  }
+}

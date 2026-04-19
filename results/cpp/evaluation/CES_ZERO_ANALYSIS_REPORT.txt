@@ -1,0 +1,3708 @@
+================================================================================
+CES v3 ZERO-SCORE ANALYSIS REPORT
+================================================================================
+
+Total cases with CES = 0.0 for all references: 93
+Percentage of dataset: 23.2%
+
+================================================================================
+SUMMARY BY REASON
+================================================================================
+
+
+DIRECT_COMPUTATION: 33 cases (35.5%)
+--------------------------------------------------------------------------------
+Explanation: No loops or recursion - direct formula/computation
+Missing CES patterns: DIRECT_FORMULA
+Fix: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Cases:
+  - p1/s13
+  - p1/s18
+  - p1/s4
+  - p1/s9
+  - p10/s7
+  - p12/s11
+  - p15/s11
+  - p15/s16
+  - p16/s1
+  - p16/s10
+  - p16/s11
+  - p16/s12
+  - p16/s13
+  - p16/s14
+  - p16/s15
+  - p16/s17
+  - p16/s18
+  - p16/s19
+  - p16/s2
+  - p16/s3
+  - p16/s4
+  - p16/s5
+  - p16/s6
+  - p16/s7
+  - p16/s8
+  - p16/s9
+  - p4/s7
+  - p6/s15
+  - p6/s7
+  - p7/s13
+  - p7/s18
+  - p8/s14
+  - p9/s15
+
+COMPLEX_STRUCTURE: 32 cases (34.4%)
+--------------------------------------------------------------------------------
+Explanation: Complex code structure with helper functions
+Missing CES patterns: HELPER_FUNCTION_PATTERN
+Fix: Analyze helper function patterns separately
+
+Cases:
+  - p1/s2
+  - p12/s10
+  - p12/s16
+  - p12/s9
+  - p20/s10
+  - p20/s13
+  - p20/s15
+  - p20/s16
+  - p20/s17
+  - p20/s18
+  - p20/s19
+  - p20/s20
+  - p4/s13
+  - p4/s16
+  - p4/s19
+  - p4/s20
+  - p5/s12
+  - p5/s15
+  - p5/s4
+  - p5/s7
+  - p6/s14
+  - p6/s3
+  - p6/s8
+  - p8/s10
+  - p8/s12
+  - p8/s20
+  - p8/s4
+  - p8/s7
+  - p9/s12
+  - p9/s17
+  - p9/s4
+  - p9/s8
+
+STL_ALGORITHM: 16 cases (17.2%)
+--------------------------------------------------------------------------------
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+Missing CES patterns: STL_ALGORITHM
+Fix: Enhance STL algorithm detection in CES v3
+
+Cases:
+  - p1/s11
+  - p3/s1
+  - p3/s10
+  - p3/s11
+  - p3/s12
+  - p3/s13
+  - p3/s15
+  - p3/s17
+  - p3/s18
+  - p3/s19
+  - p3/s3
+  - p3/s4
+  - p3/s5
+  - p3/s6
+  - p3/s9
+  - p4/s5
+
+SIMPLE_RECURSION: 11 cases (11.8%)
+--------------------------------------------------------------------------------
+Explanation: Uses simple recursion without accumulation patterns
+Missing CES patterns: HEAD_RECURSIVE
+Fix: Add HEAD_RECURSIVE pattern to CES v3
+
+Cases:
+  - p13/s10
+  - p13/s13
+  - p13/s15
+  - p13/s2
+  - p13/s5
+  - p13/s8
+  - p14/s11
+  - p16/s16
+  - p2/s7
+  - p3/s7
+  - p7/s4
+
+TAIL_RECURSION: 1 cases (1.1%)
+--------------------------------------------------------------------------------
+Explanation: Uses tail recursion with accumulator parameter
+Missing CES patterns: TAIL_RECURSIVE
+Fix: Add TAIL_RECURSIVE pattern to CES v3
+
+Cases:
+  - p3/s20
+
+================================================================================
+DETAILED CASE ANALYSIS
+================================================================================
+
+
+================================================================================
+CASE 1: p1/s11
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2, ref3
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 20
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P1 Student 11: Correct with compound addition (matches ref1)
+#include <iostream>
+using namespace std;
+
+int calcSum(int values[], int count) {
+  int total = 0;
+  int idx = 0;
+  while (idx < count) {
+...
+
+================================================================================
+CASE 2: p1/s13
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2, ref3
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 19
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P1 Student 13: Tail recursive with accumulator parameter (matches ref1)
+#include <iostream>
+using namespace std;
+
+int sumHelper(int arr[], int n, int index, int accumulator) {
+  if (index >= n) {
+ 
+...
+
+================================================================================
+CASE 3: p1/s18
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2, ref3
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 19
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P1 Student 18: Forward tail recursion (matches ref3)
+#include <iostream>
+using namespace std;
+
+int sumTail(int arr[], int startIdx, int endIdx, int accumulator) {
+  if (startIdx >= endIdx) {
+    re
+...
+
+================================================================================
+CASE 4: p1/s2
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2, ref3
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P1 Student 2: Correct with = sum + arr[i] form (matches ref1)
+#include <iostream>
+using namespace std;
+
+int arraySum(int arr[], int n) {
+  int sum = 0;
+  for (int i = 0; i < n; i++) {
+    sum = sum
+...
+
+================================================================================
+CASE 5: p1/s4
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2, ref3
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 17
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P1 Student 4: Recursive accumulation (matches ref3)
+#include <iostream>
+using namespace std;
+
+int sumArray(int arr[], int index) {
+  if (index < 0) {
+    return 0;
+  }
+  return arr[index] + sumArra
+...
+
+================================================================================
+CASE 6: p1/s9
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2, ref3
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 19
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P1 Student 9: Recursive with helper (matches ref3)
+#include <iostream>
+using namespace std;
+
+int sumHelper(int arr[], int n, int index) {
+  if (index == n) {
+    return 0;
+  }
+  return arr[index] +
+...
+
+================================================================================
+CASE 7: p10/s7
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: False
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 23
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P10-S7: Recursive prime check (ref1 style)
+#include <iostream>
+using namespace std;
+
+int checkDivisor(int n, int i) {
+  if (i * i > n)
+    return 1;
+  if (n % i == 0)
+    return 0;
+  return checkDi
+...
+
+================================================================================
+CASE 8: p12/s10
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: True
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 29
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P12-S10: Matches ref1 (helper swap function)
+#include <iostream>
+using namespace std;
+#include <cstring>
+
+void swap(char *a, char *b) {
+  char temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
+void reverseStri
+...
+
+================================================================================
+CASE 9: p12/s11
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: True
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 25
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P12-S11: Matches ref1 (recursive reversal)
+#include <iostream>
+using namespace std;
+#include <cstring>
+
+void reverseHelper(char str[], int left, int right) {
+  if (left >= right)
+    return;
+
+  cha
+...
+
+================================================================================
+CASE 10: p12/s16
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: True
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 26
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P12-S16: Matches ref1 (arithmetic swap)
+#include <iostream>
+using namespace std;
+#include <cstring>
+
+void reverseString(char str[]) {
+  int left = 0;
+  int right = strlen(str) - 1;
+
+  while (left <
+...
+
+================================================================================
+CASE 11: p12/s9
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: True
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 26
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P12-S9: Matches ref1 (XOR swap - no temp)
+#include <iostream>
+using namespace std;
+#include <cstring>
+
+void reverseString(char str[]) {
+  int left = 0;
+  int right = strlen(str) - 1;
+
+  while (left
+...
+
+================================================================================
+CASE 12: p13/s10
+================================================================================
+
+Reason: SIMPLE_RECURSION
+Explanation: Uses simple recursion without accumulation patterns
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 25
+
+Missing CES Patterns: HEAD_RECURSIVE
+Fix Recommendation: Add HEAD_RECURSIVE pattern to CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P13_S10: Matches ref2 (recursive with ternary operator)
+#include <iostream>
+using namespace std;
+
+int bsearch(int a[], int low, int high, int x) {
+  if (low > high)
+    return -1;
+
+  int mid = (low
+...
+
+================================================================================
+CASE 13: p13/s13
+================================================================================
+
+Reason: SIMPLE_RECURSION
+Explanation: Uses simple recursion without accumulation patterns
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 35
+
+Missing CES Patterns: HEAD_RECURSIVE
+Fix Recommendation: Add HEAD_RECURSIVE pattern to CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P13_S13: Matches ref2 (recursive with base case check first)
+#include <iostream>
+using namespace std;
+
+int helper(int *arr, int l, int r, int target) {
+  // Base case first
+  if (l > r) {
+    retur
+...
+
+================================================================================
+CASE 14: p13/s15
+================================================================================
+
+Reason: SIMPLE_RECURSION
+Explanation: Uses simple recursion without accumulation patterns
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 25
+
+Missing CES Patterns: HEAD_RECURSIVE
+Fix Recommendation: Add HEAD_RECURSIVE pattern to CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P13_S15: Matches ref2 (recursive with standard mid calculation)
+#include <iostream>
+using namespace std;
+
+int bsearch_rec(int a[], int left, int right, int x) {
+  if (left > right)
+    return -1;
+
+
+...
+
+================================================================================
+CASE 15: p13/s2
+================================================================================
+
+Reason: SIMPLE_RECURSION
+Explanation: Uses simple recursion without accumulation patterns
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 23
+
+Missing CES Patterns: HEAD_RECURSIVE
+Fix Recommendation: Add HEAD_RECURSIVE pattern to CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P13_S2: Matches ref2 (recursive)
+#include <iostream>
+using namespace std;
+
+int searchRec(int arr[], int l, int r, int x) {
+  if (l > r)
+    return -1;
+  int m = l + (r - l) / 2;
+  if (arr[m] == x)
+
+...
+
+================================================================================
+CASE 16: p13/s5
+================================================================================
+
+Reason: SIMPLE_RECURSION
+Explanation: Uses simple recursion without accumulation patterns
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 21
+
+Missing CES Patterns: HEAD_RECURSIVE
+Fix Recommendation: Add HEAD_RECURSIVE pattern to CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P13_S5: Matches ref2 (tail recursive)
+#include <iostream>
+using namespace std;
+
+int bsearch(int a[], int l, int r, int x) {
+  if (l > r)
+    return -1;
+  int mid = (l + r) / 2;
+  if (a[mid] == x)
+ 
+...
+
+================================================================================
+CASE 17: p13/s8
+================================================================================
+
+Reason: SIMPLE_RECURSION
+Explanation: Uses simple recursion without accumulation patterns
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 23
+
+Missing CES Patterns: HEAD_RECURSIVE
+Fix Recommendation: Add HEAD_RECURSIVE pattern to CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P13_S8: Matches ref2 (helper function)
+#include <iostream>
+using namespace std;
+
+int helper(int *a, int l, int r, int target) {
+  if (l > r)
+    return -1;
+  int m = (l + r) >> 1;
+  if (a[m] == tar
+...
+
+================================================================================
+CASE 18: p14/s11
+================================================================================
+
+Reason: SIMPLE_RECURSION
+Explanation: Uses simple recursion without accumulation patterns
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 28
+
+Missing CES Patterns: HEAD_RECURSIVE
+Fix Recommendation: Add HEAD_RECURSIVE pattern to CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P14-S11: Matches ref1 (recursive row-by-row)
+#include <iostream>
+using namespace std;
+
+int sumRow(int matrix[][3], int row, int cols, int col) {
+  if (col >= cols)
+    return 0;
+  return matrix[row
+...
+
+================================================================================
+CASE 19: p15/s11
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 26
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P15_S11: Matches ref1 (recursive palindrome check)
+#include <ctype.h>
+#include <iostream>
+using namespace std;
+#include <cstring>
+
+
+int checkRecursive(char str[], int left, int right) {
+  if (left 
+...
+
+================================================================================
+CASE 20: p15/s16
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 30
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P15-S16: Matches ref1 (recursive two-pointer)
+#include <cctype.h>
+#include <iostream>
+using namespace std;
+#include <cstring>
+
+int checkPalindrome(char str[], int left, int right) {
+  if (left >= r
+...
+
+================================================================================
+CASE 21: p16/s1
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S1: Matches ref1 (standard forward search)
+#include <iostream>
+using namespace std;
+
+int search(int arr[], int target, int i, int n) {
+  if (i >= n)
+    return -1;
+  if (arr[i] == target)
+    r
+...
+
+================================================================================
+CASE 22: p16/s10
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 15
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S10: Matches ref1 (inline conditional)
+#include <iostream>
+using namespace std;
+
+int search(int arr[], int target, int i, int n) {
+  return (i >= n) ? -1
+                  : ((arr[i] == target)
+...
+
+================================================================================
+CASE 23: p16/s11
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S11: Matches ref1 (standard index recursion)
+#include <iostream>
+using namespace std;
+
+int search(int arr[], int target, int index, int n) {
+  if (index >= n)
+    return -1;
+  if (arr[index] ==
+...
+
+================================================================================
+CASE 24: p16/s12
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 17
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S12: Matches ref1 (nested ternary with logical OR)
+#include <iostream>
+using namespace std;
+
+int search(int arr[], int target, int index, int n) {
+  return (index >= n)
+             ? -1
+      
+...
+
+================================================================================
+CASE 25: p16/s13
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S13: Matches ref1 (1-indexed traversal)
+#include <iostream>
+using namespace std;
+
+int search(int arr[], int target, int current, int n) {
+  if (current > n)
+    return -1;
+  if (arr[current - 1
+...
+
+================================================================================
+CASE 26: p16/s14
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 21
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S14: Matches ref1 (global variable for size)
+#include <iostream>
+using namespace std;
+
+int SIZE;
+
+int search(int arr[], int target, int index) {
+  if (index >= SIZE)
+    return -1;
+  if (arr[in
+...
+
+================================================================================
+CASE 27: p16/s15
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 17
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S15: Matches ref2 (backward with wrapper and helper)
+#include <iostream>
+using namespace std;
+
+int helper(int arr[], int target, int end) {
+  return (end < 0) ? -1
+                   : (arr[end
+...
+
+================================================================================
+CASE 28: p16/s16
+================================================================================
+
+Reason: SIMPLE_RECURSION
+Explanation: Uses simple recursion without accumulation patterns
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 19
+
+Missing CES Patterns: HEAD_RECURSIVE
+Fix Recommendation: Add HEAD_RECURSIVE pattern to CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S16: Matches ref2 (backward with explicit found flag)
+#include <iostream>
+using namespace std;
+
+int search(int arr[], int target, int idx) {
+  if (idx < 0)
+    return -1;
+  int found = (arr[idx
+...
+
+================================================================================
+CASE 29: p16/s17
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S17: Matches ref2 (backward pointer decrement)
+#include <iostream>
+using namespace std;
+
+int search(int *arr, int target, int *end, int *start) {
+  if (end < start)
+    return -1;
+  if (*end ==
+...
+
+================================================================================
+CASE 30: p16/s18
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 20
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S18: Matches ref2 (backward with redundant parameter)
+#include <iostream>
+using namespace std;
+
+int search(int arr[], int target, int n, int idx) {
+  if (idx < 0)
+    return -1;
+  if (idx >= n)
+...
+
+================================================================================
+CASE 31: p16/s19
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S19: Matches ref1 (binary-style parameters but linear search)
+#include <iostream>
+using namespace std;
+
+int search(int arr[], int target, int start, int end) {
+  if (start > end)
+    return -1;
+...
+
+================================================================================
+CASE 32: p16/s2
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S2: Matches ref2 (backward search variant)
+#include <iostream>
+using namespace std;
+
+int search(int a[], int x, int idx) {
+  if (idx < 0)
+    return -1;
+  if (a[idx] == x)
+    return idx;
+  ret
+...
+
+================================================================================
+CASE 33: p16/s3
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 16
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S3: Matches ref1 (ternary operator variant)
+#include <iostream>
+using namespace std;
+
+int search(int arr[], int target, int index, int n) {
+  if (index >= n)
+    return -1;
+  return (arr[index]
+...
+
+================================================================================
+CASE 34: p16/s4
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S4: Matches ref1 (different parameter order)
+#include <iostream>
+using namespace std;
+
+int search(int n, int arr[], int index, int target) {
+  if (index >= n)
+    return -1;
+  if (arr[index] ==
+...
+
+================================================================================
+CASE 35: p16/s5
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 16
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S5: Matches ref2 (backward with combined base case)
+#include <iostream>
+using namespace std;
+
+int search(int arr[], int target, int n) {
+  if (n < 0)
+    return -1;
+  return (arr[n] == target) 
+...
+
+================================================================================
+CASE 36: p16/s6
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 22
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S6: Matches ref1 (with wrapper function)
+#include <iostream>
+using namespace std;
+
+int helper(int arr[], int target, int i, int n) {
+  if (i >= n)
+    return -1;
+  if (arr[i] == target)
+    ret
+...
+
+================================================================================
+CASE 37: p16/s7
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 20
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S7: Matches ref1 (explicit else branch)
+#include <iostream>
+using namespace std;
+
+int search(int arr[], int target, int index, int n) {
+  if (index >= n) {
+    return -1;
+  } else if (arr[index
+...
+
+================================================================================
+CASE 38: p16/s8
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 20
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S8: Matches ref2 (backward with explicit checks)
+#include <iostream>
+using namespace std;
+
+int search(int arr[], int target, int index) {
+  if (index < 0) {
+    return -1;
+  }
+  if (arr[index] 
+...
+
+================================================================================
+CASE 39: p16/s9
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P16_S9: Matches ref1 (pointer-based recursion)
+#include <iostream>
+using namespace std;
+
+int search(int *arr, int target, int index, int n) {
+  if (index >= n)
+    return -1;
+  if (*(arr + index) =
+...
+
+================================================================================
+CASE 40: p2/s7
+================================================================================
+
+Reason: SIMPLE_RECURSION
+Explanation: Uses simple recursion without accumulation patterns
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 19
+
+Missing CES Patterns: HEAD_RECURSIVE
+Fix Recommendation: Add HEAD_RECURSIVE pattern to CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P2-S7: Recursive max finder (matches ref1)
+#include <iostream>
+using namespace std;
+
+int findMaxRec(int arr[], int n) {
+  if (n == 1)
+    return arr[0];
+  int maxRest = findMaxRec(arr, n - 1);
+  re
+...
+
+================================================================================
+CASE 41: p20/s10
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 19
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P20_S10: Matches ref1 (compact with single loop print)
+#include <iostream>
+using namespace std;
+
+void charFrequency(char str[]) {
+  int freq[256] = {0}, i = 0;
+  while (str[i])
+    freq[(unsigned c
+...
+
+================================================================================
+CASE 42: p20/s13
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P20_S13-S20: Remaining variants
+#include <iostream>
+using namespace std;
+#include <cstring>
+void charFrequency(char str[]) {
+  int freq[256] = {0};
+  for (int i = 0; i < strlen(str); i++)
+    freq[
+...
+
+================================================================================
+CASE 43: p20/s15
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P20_S15-S20
+#include <iostream>
+using namespace std;
+#include <cstring>
+void charFrequency(char str[]) {
+  int freq[256] = {0}, len = strlen(str);
+  for (int i = 0; i < len; i++)
+    freq[(int)str[
+...
+
+================================================================================
+CASE 44: p20/s16
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 21
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P20_S16-S20
+#include <ctype.h>
+#include <iostream>
+using namespace std;
+#include <cstring>
+
+void charFrequency(char str[]) {
+  int freq[128] = {0};
+  for (int i = 0; str[i]; i++)
+    if (isprint(st
+...
+
+================================================================================
+CASE 45: p20/s17
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P20_S17-S20
+#include <iostream>
+using namespace std;
+#include <cstring>
+void charFrequency(char str[]) {
+  int freq[256] = {0};
+  for (char *p = str; *p; p++)
+    freq[(unsigned char)*p]++;
+  for (
+...
+
+================================================================================
+CASE 46: p20/s18
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 20
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P20_S18-S20
+#include <iostream>
+using namespace std;
+#include <cstring>
+void charFrequency(char str[]) {
+  int freq[256];
+  for (int i = 0; i < 256; i++)
+    freq[i] = 0;
+  for (int i = 0; str[i]; 
+...
+
+================================================================================
+CASE 47: p20/s19
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 21
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P20_S19-S20
+#include <iostream>
+using namespace std;
+#include <cstring>
+void charFrequency(char str[]) {
+  int freq[256] = {0};
+  int i = 0;
+  do {
+    if (str[i])
+      freq[(unsigned char)str[i]]
+...
+
+================================================================================
+CASE 48: p20/s20
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 22
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P20_S20: Case-insensitive variant
+#include <ctype.h>
+#include <iostream>
+using namespace std;
+#include <cstring>
+
+void charFrequency(char str[]) {
+  int freq[256] = {0};
+  for (int i = 0; str[i]; i
+...
+
+================================================================================
+CASE 49: p3/s1
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 16
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S1: matches ref1
+#include <iostream>
+using namespace std;
+int count(int a[], int n, int x) {
+  int c = 0;
+  for (int i = 0; i < n; i++)
+    if (a[i] == x)
+      c++;
+  return c;
+}
+int main() {
+ 
+...
+
+================================================================================
+CASE 50: p3/s10
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 19
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S10: Pointer-based iteration (matches ref1)
+#include <iostream>
+using namespace std;
+
+int countOccurrences(int arr[], int n, int target) {
+  int count = 0;
+  for (int i = 0; i < n; i++) {
+    if
+...
+
+================================================================================
+CASE 51: p3/s11
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 19
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S11: Backward iteration (matches ref1)
+#include <iostream>
+using namespace std;
+
+int countOccurrences(int arr[], int n, int target) {
+  int count = 0;
+  for (int i = n - 1; i >= 0; i--) {
+    if
+...
+
+================================================================================
+CASE 52: p3/s12
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 20
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S12: Basic counting (matches ref1)
+#include <iostream>
+using namespace std;
+
+int countOccurrences(int arr[], int n, int target) {
+  int count = 0;
+  for (int i = 0; i < n; i++) {
+    if (arr[i] 
+...
+
+================================================================================
+CASE 53: p3/s13
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 20
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S13: Basic counting (matches ref1)
+#include <iostream>
+using namespace std;
+
+int countOccurrences(int arr[], int n, int target) {
+  int count = 0;
+  for (int i = 0; i < n; i++) {
+    if (arr[i] 
+...
+
+================================================================================
+CASE 54: p3/s15
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 21
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S15: Count with break after N matches (matches ref1)
+#include <iostream>
+using namespace std;
+
+int countOccurrences(int arr[], int n, int target) {
+  int count = 0;
+  for (int i = 0; i < n; i++)
+...
+
+================================================================================
+CASE 55: p3/s17
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 24
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S17: Unrolled loop (matches ref1)
+#include <iostream>
+using namespace std;
+
+int countOccurrences(int arr[], int n, int target) {
+  int count = 0;
+  int i;
+  for (i = 0; i < n - 1; i += 2) {
+    
+...
+
+================================================================================
+CASE 56: p3/s18
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 21
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S18: Helper function for match (matches ref1)
+#include <iostream>
+using namespace std;
+
+int isMatch(int value, int target) { return value == target; }
+
+int countOccurrences(int arr[], int n, int
+...
+
+================================================================================
+CASE 57: p3/s19
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 18
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S19: Nested ternary counting (matches ref2)
+#include <iostream>
+using namespace std;
+
+int countOccurrences(int arr[], int n, int target) {
+  int count = 0;
+  for (int i = 0; i < n; i++) {
+    co
+...
+
+================================================================================
+CASE 58: p3/s20
+================================================================================
+
+Reason: TAIL_RECURSION
+Explanation: Uses tail recursion with accumulator parameter
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 20
+
+Missing CES Patterns: TAIL_RECURSIVE
+Fix Recommendation: Add TAIL_RECURSIVE pattern to CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S20: Accumulate with explicit conditional (matches ref1)
+#include <iostream>
+using namespace std;
+
+int countOccurrences(int arr[], int n, int target) {
+  int count = 0;
+  for (int i = 0; i < n; 
+...
+
+================================================================================
+CASE 59: p3/s3
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 19
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S3: While loop counter (matches ref1)
+#include <iostream>
+using namespace std;
+int countOccurrences(int arr[], int n, int target) {
+  int count = 0;
+  int i = 0;
+  while (i < n) {
+    if (arr[i]
+...
+
+================================================================================
+CASE 60: p3/s4
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 16
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S4: Ternary increment (matches ref1)
+#include <iostream>
+using namespace std;
+int countOccurrences(int arr[], int n, int target) {
+  int count = 0;
+  for (int i = 0; i < n; i++) {
+    count = (a
+...
+
+================================================================================
+CASE 61: p3/s5
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 17
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S5: Explicit form count = count + 1 (matches ref2)
+#include <iostream>
+using namespace std;
+int count_target(int data[], int size, int val) {
+  int result = 0;
+  for (int j = 0; j < size; j++) {
+...
+
+================================================================================
+CASE 62: p3/s6
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 21
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S6: Do-while variant (matches ref1)
+#include <iostream>
+using namespace std;
+int countOccurrences(int arr[], int n, int target) {
+  if (n == 0)
+    return 0;
+  int count = 0;
+  int i = 0;
+  do {
+...
+
+================================================================================
+CASE 63: p3/s7
+================================================================================
+
+Reason: SIMPLE_RECURSION
+Explanation: Uses simple recursion without accumulation patterns
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 21
+
+Missing CES Patterns: HEAD_RECURSIVE
+Fix Recommendation: Add HEAD_RECURSIVE pattern to CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S7: Recursive counting (matches ref1)
+#include <iostream>
+using namespace std;
+
+int countRec(int arr[], int n, int target, int index) {
+  if (index >= n)
+    return 0;
+  int found = (arr[index] 
+...
+
+================================================================================
+CASE 64: p3/s9
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 19
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P3-S9: Explicit count = count + 1 (matches ref2)
+#include <iostream>
+using namespace std;
+
+int countOccurrences(int arr[], int n, int target) {
+  int count = 0;
+  for (int i = 0; i < n; i++) {
+    
+...
+
+================================================================================
+CASE 65: p4/s13
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P4-S13: Ternary return (matches ref2)
+#include <iostream>
+using namespace std;
+
+int linearSearch(int arr[], int n, int target) {
+  int result = -1;
+  for (int i = 0; i < n; i++) {
+    result = (arr
+...
+
+================================================================================
+CASE 66: p4/s16
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 19
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P4-S16: Sentinel check (matches ref2)
+#include <iostream>
+using namespace std;
+
+int linearSearch(int arr[], int n, int target) {
+  int result = -1;
+  for (int i = 0; i < n && result == -1; i++) {
+ 
+...
+
+================================================================================
+CASE 67: p4/s19
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 20
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P4-S19: Inline index increment (matches ref2)
+#include <iostream>
+using namespace std;
+
+int linearSearch(int arr[], int n, int target) {
+  int result = -1;
+  int i = 0;
+  while (i < n) {
+    if (ar
+...
+
+================================================================================
+CASE 68: p4/s20
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 19
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P4-S20: Conditional continue variant (matches ref1)
+#include <iostream>
+using namespace std;
+
+int linearSearch(int arr[], int n, int target) {
+  for (int i = 0; i < n; i++) {
+    if (arr[i] != targ
+...
+
+================================================================================
+CASE 69: p4/s5
+================================================================================
+
+Reason: STL_ALGORITHM
+Explanation: Uses STL algorithms (accumulate, sort, etc.)
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: True
+  code_length: 17
+
+Missing CES Patterns: STL_ALGORITHM
+Fix Recommendation: Enhance STL algorithm detection in CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P4-S5: Full traversal with flag (matches ref2)
+#include <iostream>
+using namespace std;
+int findIndex(int data[], int size, int key) {
+  int position = -1;
+  for (int j = 0; j < size; j++) {
+    if
+...
+
+================================================================================
+CASE 70: p4/s7
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 22
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P4-S7: Recursive search (matches ref1)
+#include <iostream>
+using namespace std;
+
+int searchRec(int arr[], int n, int target, int index) {
+  if (index >= n)
+    return -1;
+  if (arr[index] == target
+...
+
+================================================================================
+CASE 71: p5/s12
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 23
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P5-S12: Recursion - matches ref1
+#include <iostream>
+using namespace std;
+
+void reverseHelper(int arr[], int left, int right) {
+  if (left >= right)
+    return;
+  int t = arr[left];
+  arr[left] = a
+...
+
+================================================================================
+CASE 72: p5/s15
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: True
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 19
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P5-S15-S20: Final batch
+// S15: Inline swap (ref2)
+#include <iostream>
+using namespace std;
+void reverseArray(int arr[], int n) {
+  for (int i = 0; i < n / 2; i++) {
+    arr[i] += arr[n - 1 - i];
+ 
+...
+
+================================================================================
+CASE 73: p5/s4
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: True
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 22
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P5-S4: XOR swap (different strategy, matches ref1 conceptually)
+#include <iostream>
+using namespace std;
+void reverseArray(int arr[], int n) {
+  int left = 0, right = n - 1;
+  while (left < right) 
+...
+
+================================================================================
+CASE 74: p5/s7
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 21
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P5-S7-S20: Batch creating remaining students
+// S7: Recursive (ref1)
+#include <iostream>
+using namespace std;
+void revRec(int arr[], int l, int r) {
+  if (l >= r)
+    return;
+  int t = arr[l];
+  ar
+...
+
+================================================================================
+CASE 75: p6/s14
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: False
+  has_conditional: False
+  has_early_return: False
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 19
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P6-S14: Explicit r = r * i - matches ref1
+#include <iostream>
+using namespace std;
+
+int factorial(int n) {
+  int r = 1;
+  int i = 1;
+  while (i <= n) {
+    r = r * i;
+    i++;
+  }
+  return r;
+}
+
+in
+...
+
+================================================================================
+CASE 76: p6/s15
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: False
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 15
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P6-S15: Recursive factorial - matches ref2
+#include <iostream>
+using namespace std;
+
+int factorial(int n) {
+  if (n <= 1)
+    return 1;
+  return n * factorial(n - 1);
+}
+
+int main() {
+  cout << "5! 
+...
+
+================================================================================
+CASE 77: p6/s3
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: False
+  has_conditional: False
+  has_early_return: False
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 15
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P6-S3: Factorial with explicit multiplication (matches ref1)
+#include <iostream>
+using namespace std;
+int factorial(int n) {
+  int fact = 1;
+  for (int i = 1; i <= n; i++) {
+    fact = fact * i; //
+...
+
+================================================================================
+CASE 78: p6/s7
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: False
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 15
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P6-S7: Recursive factorial (matches ref2)
+#include <iostream>
+using namespace std;
+
+int factorial(int n) {
+  if (n <= 1)
+    return 1;
+  return n * factorial(n - 1);
+}
+
+int main() {
+  cout << "5! =
+...
+
+================================================================================
+CASE 79: p6/s8
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: True
+  has_conditional: False
+  has_early_return: False
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 17
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P6-S8: Explicit multiplication - matches ref1
+#include <iostream>
+using namespace std;
+
+int arrayProduct(int arr[], int n) {
+  int p = 1;
+  for (int i = 0; i < n; i++)
+    p = p * arr[i];
+  return 
+...
+
+================================================================================
+CASE 80: p7/s13
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: False
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 17
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P7-S13: Helper function - matches ref1
+#include <iostream>
+using namespace std;
+
+int factHelper(int n) {
+  if (n <= 1)
+    return 1;
+  return n * factHelper(n - 1);
+}
+
+int factorial(int n) { return
+...
+
+================================================================================
+CASE 81: p7/s18
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: False
+  has_conditional: False
+  has_early_return: False
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 11
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P7-S18: Negation check - matches ref1
+#include <iostream>
+using namespace std;
+
+int fact(int n) { return !n ? 1 : n * fact(n - 1); }
+
+int main() {
+  cout << "5! = " << fact(5) << endl;
+  return 0;
+
+...
+
+================================================================================
+CASE 82: p7/s4
+================================================================================
+
+Reason: SIMPLE_RECURSION
+Explanation: Uses simple recursion without accumulation patterns
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: True
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: False
+  has_conditional: True
+  has_early_return: True
+  has_swap: True
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 16
+
+Missing CES Patterns: HEAD_RECURSIVE
+Fix Recommendation: Add HEAD_RECURSIVE pattern to CES v3
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P7-S4: Recursive with explicit return statement (matches ref1)
+#include <iostream>
+using namespace std;
+int factorial(int n) {
+  if (n <= 1) {
+    return 1;
+  } else {
+    int temp = factorial(n - 
+...
+
+================================================================================
+CASE 83: p8/s10
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: False
+  has_conditional: True
+  has_early_return: True
+  has_swap: True
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 24
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P8-S10: No temp variable swap (matches ref1)
+#include <iostream>
+using namespace std;
+
+int fibonacci(int n) {
+  if (n <= 1) {
+    return n;
+  }
+
+  int a = 0, b = 1;
+
+  for (int i = 2; i <= n; i++) 
+...
+
+================================================================================
+CASE 84: p8/s12
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 25
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P8-S12: Backward iteration (matches ref1)
+#include <iostream>
+using namespace std;
+
+int fibonacci(int n) {
+  if (n <= 1) {
+    return n;
+  }
+
+  int fib[n + 1];
+  fib[0] = 0;
+  fib[1] = 1;
+
+  for (i
+...
+
+================================================================================
+CASE 85: p8/s14
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: False
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 21
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P8-S14: Tail recursive variant (matches ref2)
+#include <iostream>
+using namespace std;
+
+int fibTail(int n, int a, int b) {
+  if (n == 0) {
+    return a;
+  }
+  if (n == 1) {
+    return b;
+  }
+  retu
+...
+
+================================================================================
+CASE 86: p8/s20
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 27
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P8-S20: Backward loop (ref1)
+#include <iostream>
+using namespace std;
+
+int fibonacci(int n) {
+  if (n <= 1) {
+    return n;
+  }
+
+  int fib[n + 1];
+  fib[0] = 0;
+  fib[1] = 1;
+
+  int i = 2;
+  while 
+...
+
+================================================================================
+CASE 87: p8/s4
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: True
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 19
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P8-S4: Fibonacci with array (matches ref1 conceptually)
+#include <iostream>
+using namespace std;
+int fibonacci(int n) {
+  if (n <= 1)
+    return n;
+  int fib[100];
+  fib[0] = 0;
+  fib[1] = 1;
+  for
+...
+
+================================================================================
+CASE 88: p8/s7
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: True
+  has_array_access: False
+  has_conditional: True
+  has_early_return: True
+  has_swap: True
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 18
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P8-S7: Fibonacci with XOR swap (matches ref1)
+#include <iostream>
+using namespace std;
+int fibonacci(int n) {
+  if (n <= 1)
+    return n;
+  int a = 0, b = 1;
+  for (int i = 2; i <= n; i++) {
+    b 
+...
+
+================================================================================
+CASE 89: p9/s12
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: False
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 20
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P9-S12: Subtraction-based GCD (ref1 variant)
+#include <iostream>
+using namespace std;
+
+int gcd(int a, int b) {
+  while (a != b) {
+    if (a > b) {
+      a = a - b;
+    } else {
+      b = b - a;
+   
+...
+
+================================================================================
+CASE 90: p9/s15
+================================================================================
+
+Reason: DIRECT_COMPUTATION
+Explanation: No loops or recursion - direct formula/computation
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: False
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: False
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 19
+
+Missing CES Patterns: DIRECT_FORMULA
+Fix Recommendation: Add DIRECT_FORMULA pattern or accept 0.0 as correct
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P9-S15-S20
+// S15: Tail recursive with helper (ref2)
+#include <iostream>
+using namespace std;
+
+int gcdHelper(int a, int b, int prev) {
+  if (b == 0) {
+    return a;
+  }
+  return gcdHelper(b, a % b,
+...
+
+================================================================================
+CASE 91: p9/s17
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: False
+  has_conditional: False
+  has_early_return: False
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 19
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P9-S17-20
+#include <iostream>
+using namespace std;
+
+int gcd(int x, int y) {
+  while (y) {
+    x = x % y;
+    x = x + y;
+    y = x - y;
+    x = x - y;
+  }
+  return x;
+}
+
+int main() {
+  cout << "GCD(
+...
+
+================================================================================
+CASE 92: p9/s4
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: False
+  has_conditional: True
+  has_early_return: True
+  has_swap: False
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 17
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P9-S4: GCD subtraction method (different algorithm)
+#include <iostream>
+using namespace std;
+int gcd(int a, int b) {
+  while (a != b) {
+    if (a > b)
+      a = a - b;
+    else
+      b = b - a;
+  }
+...
+
+================================================================================
+CASE 93: p9/s8
+================================================================================
+
+Reason: COMPLEX_STRUCTURE
+Explanation: Complex code structure with helper functions
+References: ref1, ref2
+
+Student Code Patterns:
+  has_recursion: False
+  has_loop: True
+  has_helper_function: True
+  has_accumulator: False
+  has_array_access: False
+  has_conditional: False
+  has_early_return: False
+  has_swap: True
+  has_comparison: True
+  is_empty_or_trivial: False
+  has_stl_algorithm: False
+  code_length: 20
+
+Missing CES Patterns: HELPER_FUNCTION_PATTERN
+Fix Recommendation: Analyze helper function patterns separately
+
+Code Preview:
+--------------------------------------------------------------------------------
+// P9-S8-S20: Additional GCD variants
+// S8: No temp variable swap (ref1)
+#include <iostream>
+using namespace std;
+
+int gcd(int a, int b) {
+  while (b != 0) {
+    a = a % b;
+    a = a + b;
+    b = a -
+...
+
+
+================================================================================
+RECOMMENDATIONS FOR CES v3 ENHANCEMENT
+================================================================================
+
+New patterns to add to CES v3:
+
+1. DIRECT_FORMULA
+   Implementation: Detect direct computation without loops
+   Pattern: Single return statement with formula
+
+2. HEAD_RECURSIVE
+   Implementation: Detect recursion with computation on return
+   Pattern: return value + recursive_call(n-1)
+
+3. HELPER_FUNCTION_PATTERN
+
+4. STL_ALGORITHM
+   Implementation: Enhance detection of std::accumulate, etc.
+   Pattern: std::algorithm_name(...)
+
+5. TAIL_RECURSIVE
+   Implementation: Detect recursion with accumulator parameter
+   Pattern: function(params..., accumulator) with recursive call
+
