@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software in your research, please cite it as below."
-title: "Multi-View Code Similarity Framework for Pedagogical Assessment"
-abstract: "A research-grade code similarity system achieving 89% accuracy using interpretable multi-view analysis of Code Property Graphs. Features the novel Computation Evolution Signatures (CES) component for distinguishing computational strategies."
+title: "An Interpretable Deterministic Framework for Cross-Language Educational Code Similarity Using Code Property Graphs"
+abstract: "A research-grade code similarity system achieving high-accuracy cross-language mapping using interpretable multi-view analysis of Code Property Graphs. Features the novel Abstract Program Model (APM) and Contextual Execution Signatures (CES)."
 authors:
   - family-names: "Your Last Name"
     given-names: "Your First Name"
@@ -24,7 +24,7 @@ keywords:
 license: MIT
 preferred-citation:
   type: article
-  title: "Multi-View Code Similarity for Pedagogical Assessment via Computation Evolution Signatures"
+  title: "An Interpretable Deterministic Framework for Cross-Language Educational Code Similarity Using Code Property Graphs"
   authors:
     - family-names: "Your Last Name"
       given-names: "Your First Name"

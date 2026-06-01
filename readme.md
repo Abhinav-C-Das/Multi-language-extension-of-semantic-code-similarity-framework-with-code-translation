@@ -1,4 +1,4 @@
-# CKG Multi-View Code Similarity & APM Translation Framework
+# An Interpretable Deterministic Framework for Cross-Language Educational Code Similarity Using Code Property Graphs
 
 <div align="center">
   <img src="assets/architecture1.png" alt="Multi-View Architecture Diagram" width="850">
@@ -84,12 +84,16 @@ Refer to the `requirements.txt` to align module distributions for the Python eva
 pip install -r requirements.txt
 ```
 
-### Reproducing Evaluation Pipelines
+### Reproducing Full-Scale Evaluation Pipelines
 
-To evaluate an onboarded local dataset, initiate the evaluation suites via the modular shell scripts available at the repository root:
+While the `demo/` folder allows for quick, interactive testing, the root directory contains the massive, automated shell scripts (`.sh`) designed to process and evaluate the entire dataset (e.g., the N=400 algorithmic repository) all at once.
 
-1.  **C++ Baseline:** `./run_cpp_pipeline.sh`
-2.  **Java Equivalency:** `./run_java_pipeline.sh`
-3.  **Cross-Language Parsing:** `./run_cross_pipeline.sh`
+If you have onboarded the full `data/` structure locally, you can execute these pipelines. Each script sequentially handles CPG extraction, Contextual Execution State (CES) tracing, Variable Lifespan (WL) tracking, and mathematical similarity scoring for its respective domain:
 
-Accuracy and aggregated weighted values are validated using explicitly constrained scripts located in `evaluation/`.
+1.  **`./run_c_pipeline.sh`**: Executes the full extraction and similarity evaluation specifically for the C language dataset.
+2.  **`./run_cpp_pipeline.sh`**: Executes the full extraction and baseline comparison suite for C++ paradigms.
+3.  **`./run_java_pipeline.sh`**: Executes the Java-specific pipeline, handling complex Object-Oriented CES discrepancies.
+4.  **`./run_cross_pipeline.sh`**: The ultimate multi-language pipeline. This script cross-references and evaluates equivalencies *between* languages (e.g., C vs. Java) using the 25/35/40 weighted multi-view algorithm.
+5.  **`./run_cross_test.sh`**: A smaller, highly constrained subset of the cross-pipeline meant for rapid integrity testing before running the massive `run_cross_pipeline.sh`.
+
+Accuracy and aggregated weighted values from these massive runs are automatically validated using explicitly constrained evaluation scripts located in `evaluation/`.
