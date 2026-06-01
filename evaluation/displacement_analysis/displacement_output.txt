@@ -1,0 +1,41 @@
+======================================================================
+COMPETITIVE DISPLACEMENT EFFECT ANALYSIS
+======================================================================
+
+Total C submissions analyzed:   120
+Total C++ submissions analyzed: 140
+Total Java submissions:         139
+
+-- Directional Top-1 Counts (outcomes) --
+  c->c_cpp            : n= 109  Top-1 correct= 94 ( 86.2%)  Top-2 correct= 94 ( 86.2%)
+  c->java             : n=  11  Top-1 correct= 11 (100.0%)  Top-2 correct=  6 ( 54.5%)
+  cpp->c_cpp          : n= 137  Top-1 correct=120 ( 87.6%)  Top-2 correct=120 ( 87.6%)
+  cpp->java           : n=   3  Top-1 correct=  3 (100.0%)  Top-2 correct=  1 ( 33.3%)
+  java->c_cpp         : n= 139  Top-1 correct=128 ( 92.1%)  Top-2 correct=132 ( 95.0%)
+
+-- Displacement Records: 246 C/C++ queries where Java was NOT top-1 --
+  Mean winning C/C++ score:    0.9105
+  Mean displaced Java score:   0.8032
+  Mean score gap (C/C++ - Java): 0.1073
+  Max gap: 0.2558  Min gap: 0.0056
+  Displaced Java in top-2 (correct): 121/246 (49.2%)
+
+  C->Java displaced:   109
+    Mean winner score: 0.9097
+    Mean Java score:   0.8015
+    Mean gap:          0.1082
+    Java correct in top-2: 57/109 (52.3%)
+
+  C++->Java displaced: 137
+    Mean winner score: 0.9111
+    Mean Java score:   0.8045
+    Mean gap:          0.1066
+    Java correct in top-2: 64/137 (46.7%)
+
+-- Java->C/C++ direction --
+  n=139
+  Top-1 accuracy: 128/139 = 92.09%
+
+======================================================================
+RAW DATA SAVED to displacement_results.json
+======================================================================

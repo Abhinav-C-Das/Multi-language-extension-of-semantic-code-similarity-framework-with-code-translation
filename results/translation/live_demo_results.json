@@ -1,0 +1,50 @@
+[
+  {
+    "problem": "p1",
+    "source": "c",
+    "target": "cpp",
+    "compile_ok": true,
+    "output_match": true,
+    "error": ""
+  },
+  {
+    "problem": "p1",
+    "source": "c",
+    "target": "java",
+    "compile_ok": true,
+    "output_match": true,
+    "error": ""
+  },
+  {
+    "problem": "p2",
+    "source": "cpp",
+    "target": "c",
+    "compile_ok": true,
+    "output_match": true,
+    "error": ""
+  },
+  {
+    "problem": "p2",
+    "source": "cpp",
+    "target": "java",
+    "compile_ok": true,
+    "output_match": true,
+    "error": ""
+  },
+  {
+    "problem": "p3",
+    "source": "java",
+    "target": "c",
+    "compile_ok": true,
+    "output_match": true,
+    "error": ""
+  },
+  {
+    "problem": "p3",
+    "source": "java",
+    "target": "cpp",
+    "compile_ok": true,
+    "output_match": true,
+    "error": ""
+  }
+]

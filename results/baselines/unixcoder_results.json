@@ -1,0 +1,37 @@
+{
+  "model": "microsoft/unixcoder-base",
+  "total": 399,
+  "correct": 275,
+  "accuracy_pct": 68.92,
+  "wilson_ci": [
+    64.22,
+    73.26
+  ],
+  "by_direction": {
+    "java->c_cpp": {
+      "n": 139,
+      "correct": 91,
+      "acc": 65.47
+    },
+    "cpp->java": {
+      "n": 35,
+      "correct": 30,
+      "acc": 85.71
+    },
+    "c->c_cpp": {
+      "n": 111,
+      "correct": 79,
+      "acc": 71.17
+    },
+    "c->java": {
+      "n": 9,
+      "correct": 6,
+      "acc": 66.67
+    },
+    "cpp->c_cpp": {
+      "n": 105,
+      "correct": 69,
+      "acc": 65.71
+    }
+  }
+}

@@ -1,0 +1,758 @@
+{
+  "model": "microsoft/codebert-base",
+  "protocol": "fine-tuned, InfoNCE contrastive, AdamW lr=2e-05, 3 epochs, batch=8, max_length=128, seed=42",
+  "train_n": 319,
+  "test_n": 80,
+  "correct": 53,
+  "accuracy_pct": 66.25,
+  "wilson_ci_95": [
+    55.36,
+    75.65
+  ],
+  "device": "cpu",
+  "epochs": 3,
+  "per_problem": {
+    "p1": {
+      "correct": 3,
+      "total": 4,
+      "accuracy": 75.0
+    },
+    "p10": {
+      "correct": 3,
+      "total": 4,
+      "accuracy": 75.0
+    },
+    "p11": {
+      "correct": 3,
+      "total": 4,
+      "accuracy": 75.0
+    },
+    "p12": {
+      "correct": 3,
+      "total": 4,
+      "accuracy": 75.0
+    },
+    "p13": {
+      "correct": 4,
+      "total": 4,
+      "accuracy": 100.0
+    },
+    "p14": {
+      "correct": 1,
+      "total": 4,
+      "accuracy": 25.0
+    },
+    "p15": {
+      "correct": 3,
+      "total": 4,
+      "accuracy": 75.0
+    },
+    "p16": {
+      "correct": 2,
+      "total": 4,
+      "accuracy": 50.0
+    },
+    "p17": {
+      "correct": 3,
+      "total": 4,
+      "accuracy": 75.0
+    },
+    "p18": {
+      "correct": 2,
+      "total": 4,
+      "accuracy": 50.0
+    },
+    "p19": {
+      "correct": 1,
+      "total": 4,
+      "accuracy": 25.0
+    },
+    "p2": {
+      "correct": 4,
+      "total": 4,
+      "accuracy": 100.0
+    },
+    "p20": {
+      "correct": 3,
+      "total": 4,
+      "accuracy": 75.0
+    },
+    "p3": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    },
+    "p4": {
+      "correct": 3,
+      "total": 4,
+      "accuracy": 75.0
+    },
+    "p5": {
+      "correct": 4,
+      "total": 4,
+      "accuracy": 100.0
+    },
+    "p6": {
+      "correct": 2,
+      "total": 4,
+      "accuracy": 50.0
+    },
+    "p7": {
+      "correct": 1,
+      "total": 4,
+      "accuracy": 25.0
+    },
+    "p8": {
+      "correct": 4,
+      "total": 4,
+      "accuracy": 100.0
+    },
+    "p9": {
+      "correct": 4,
+      "total": 4,
+      "accuracy": 100.0
+    }
+  },
+  "detail": [
+    {
+      "prob": "p1",
+      "stem": "s17_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p1",
+      "stem": "s18_c",
+      "lang": "c",
+      "gt": "ref3",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p1",
+      "stem": "s10_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p1",
+      "stem": "s13_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p10",
+      "stem": "s3_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p10",
+      "stem": "s9_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p10",
+      "stem": "s16_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p10",
+      "stem": "s7_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p11",
+      "stem": "s18_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p11",
+      "stem": "s8_cpp",
+      "lang": "cpp",
+      "gt": "ref2",
+      "predicted": "ref1",
+      "correct": false
+    },
+    {
+      "prob": "p11",
+      "stem": "s20_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p11",
+      "stem": "s13_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p12",
+      "stem": "s19_java",
+      "lang": "java",
+      "gt": "ref2",
+      "predicted": "ref2",
+      "correct": true
+    },
+    {
+      "prob": "p12",
+      "stem": "s17_cpp",
+      "lang": "cpp",
+      "gt": "ref2",
+      "predicted": "ref2",
+      "correct": true
+    },
+    {
+      "prob": "p12",
+      "stem": "s11_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p12",
+      "stem": "s12_c",
+      "lang": "c",
+      "gt": "ref2",
+      "predicted": "ref1",
+      "correct": false
+    },
+    {
+      "prob": "p13",
+      "stem": "s17_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p13",
+      "stem": "s7_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p13",
+      "stem": "s15_c",
+      "lang": "c",
+      "gt": "ref2",
+      "predicted": "ref2",
+      "correct": true
+    },
+    {
+      "prob": "p13",
+      "stem": "s9_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p14",
+      "stem": "s9_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p14",
+      "stem": "s1_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p14",
+      "stem": "s8_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p14",
+      "stem": "s16_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p15",
+      "stem": "s12_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p15",
+      "stem": "s5_cpp",
+      "lang": "cpp",
+      "gt": "ref2",
+      "predicted": "ref2",
+      "correct": true
+    },
+    {
+      "prob": "p15",
+      "stem": "s6_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p15",
+      "stem": "s14_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p16",
+      "stem": "s1_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p16",
+      "stem": "s18_c",
+      "lang": "c",
+      "gt": "ref2",
+      "predicted": "ref1",
+      "correct": false
+    },
+    {
+      "prob": "p16",
+      "stem": "s7_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p16",
+      "stem": "s13_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p17",
+      "stem": "s10_java",
+      "lang": "java",
+      "gt": "ref2",
+      "predicted": "ref2",
+      "correct": true
+    },
+    {
+      "prob": "p17",
+      "stem": "s6_c",
+      "lang": "c",
+      "gt": "ref2",
+      "predicted": "ref2",
+      "correct": true
+    },
+    {
+      "prob": "p17",
+      "stem": "s7_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p17",
+      "stem": "s15_c",
+      "lang": "c",
+      "gt": "ref2",
+      "predicted": "ref2",
+      "correct": true
+    },
+    {
+      "prob": "p18",
+      "stem": "s15_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p18",
+      "stem": "s7_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p18",
+      "stem": "s5_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p18",
+      "stem": "s14_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p19",
+      "stem": "s12_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p19",
+      "stem": "s8_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p19",
+      "stem": "s17_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p19",
+      "stem": "s13_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p2",
+      "stem": "s17_cpp",
+      "lang": "cpp",
+      "gt": "ref2",
+      "predicted": "ref2",
+      "correct": true
+    },
+    {
+      "prob": "p2",
+      "stem": "s6_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p2",
+      "stem": "s12_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p2",
+      "stem": "s1_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p20",
+      "stem": "s7_java",
+      "lang": "java",
+      "gt": "ref2",
+      "predicted": "ref1",
+      "correct": false
+    },
+    {
+      "prob": "p20",
+      "stem": "s9_c",
+      "lang": "c",
+      "gt": "ref2",
+      "predicted": "ref2",
+      "correct": true
+    },
+    {
+      "prob": "p20",
+      "stem": "s20_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p20",
+      "stem": "s3_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p3",
+      "stem": "s3_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p3",
+      "stem": "s14_cpp",
+      "lang": "cpp",
+      "gt": "ref2",
+      "predicted": "ref1",
+      "correct": false
+    },
+    {
+      "prob": "p3",
+      "stem": "s4_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p3",
+      "stem": "s7_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p4",
+      "stem": "s16_java",
+      "lang": "java",
+      "gt": "ref2",
+      "predicted": "ref2",
+      "correct": true
+    },
+    {
+      "prob": "p4",
+      "stem": "s8_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p4",
+      "stem": "s5_cpp",
+      "lang": "cpp",
+      "gt": "ref2",
+      "predicted": "ref2",
+      "correct": true
+    },
+    {
+      "prob": "p4",
+      "stem": "s3_c",
+      "lang": "c",
+      "gt": "ref2",
+      "predicted": "ref2",
+      "correct": true
+    },
+    {
+      "prob": "p5",
+      "stem": "s7_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p5",
+      "stem": "s11_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p5",
+      "stem": "s16_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p5",
+      "stem": "s19_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p6",
+      "stem": "s9_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p6",
+      "stem": "s13_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p6",
+      "stem": "s2_cpp",
+      "lang": "cpp",
+      "gt": "ref2",
+      "predicted": "ref1",
+      "correct": false
+    },
+    {
+      "prob": "p6",
+      "stem": "s17_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p7",
+      "stem": "s1_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p7",
+      "stem": "s4_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p7",
+      "stem": "s19_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p7",
+      "stem": "s14_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref2",
+      "correct": false
+    },
+    {
+      "prob": "p8",
+      "stem": "s4_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p8",
+      "stem": "s15_c",
+      "lang": "c",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p8",
+      "stem": "s19_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p8",
+      "stem": "s20_cpp",
+      "lang": "cpp",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p9",
+      "stem": "s1_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p9",
+      "stem": "s16_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p9",
+      "stem": "s19_java",
+      "lang": "java",
+      "gt": "ref1",
+      "predicted": "ref1",
+      "correct": true
+    },
+    {
+      "prob": "p9",
+      "stem": "s18_c",
+      "lang": "c",
+      "gt": "ref2",
+      "predicted": "ref2",
+      "correct": true
+    }
+  ]
+}

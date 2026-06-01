@@ -1,0 +1,50 @@
+python : 2026-05-26 22:58:08.219010: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see 
+slightly different numerical results due to floating-point round-off errors from different computation orders. To turn 
+them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+At line:1 char:1
++ python graphcodebert_eval.py 2>&1 | Out-File -Encoding ascii graphcod ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-05-26 22:5...ONEDNN_OPTS=0`.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-05-26 22:58:13.740249: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly 
+different numerical results due to floating-point round-off errors from different computation orders. To turn them 
+off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Some weights of RobertaModel were not initialized from the model checkpoint at microsoft/graphcodebert-base and are 
+newly initialized: ['pooler.dense.bias', 'pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+[INFO] Using device: cpu
+[INFO] Loading model: microsoft/graphcodebert-base
+[OK] Model loaded
+
+[INFO] Problems: 20
+[INFO] Encoding all submissions and references...
+[OK] Encoded 523 files
+
+======================================================================
+GRAPHCODEBERT ZERO-SHOT CROSS-LANGUAGE RETRIEVAL RESULTS
+======================================================================
+
+Total evaluations:  399
+Correct (Top-1):    235
+Aggregate Accuracy: 58.90%
+95% Wilson CI:      [54.01%, 63.62%]
+
+-- Directional Breakdown --
+  c->c_cpp                 : 66/120 = 55.00%
+  cpp->c_cpp               : 84/133 = 63.16%
+  cpp->java                : 6/7 = 85.71%
+  java->c_cpp              : 79/139 = 56.83%
+
+======================================================================
+Full comparison table (all neural baselines):
+  JPlag (token):              51.50%
+  MOSS (token):               54.20%
+  CodeBERT (zero-shot):       59.50%
+  UniXcoder (zero-shot):      68.92%  [64.22%, 73.26%]
+  GraphCodeBERT (zero-shot):  58.90%  [54.01%, 63.62%]  <-- NEW
+  TF-IDF baseline:            79.50%
+  Proposed Framework:         87.25%  [83.60%, 90.20%]
+======================================================================
+
+[OK] Results saved to graphcodebert_results.json
