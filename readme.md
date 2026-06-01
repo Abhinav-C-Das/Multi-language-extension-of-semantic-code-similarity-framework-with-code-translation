@@ -58,17 +58,31 @@ We have included interactive demonstration scripts in the `demo/` directory to a
 
 ## 📊 Dataset and Reproducibility
 
-All evaluation datasets and finalized algorithmic matrices generated for our publication are maintained immutably in the `results/` folder.
+### The Evaluation Results (`results/`)
+All mathematical outcomes, similarity matrices, and empirical logs generated for our publication are maintained immutably in the `results/` folder.
+*   `results/cpp/`, `results/java/`, `results/cross/` — The complete single and cross-language aggregated similarity matrices predicting accurate algorithmic mappings.
+*   `results/baselines/` — The empirical `.json` results from our neural baseline comparisons (CodeBERT, GraphCodeBERT, UniXCoder).
+*   `results/translation/` — Comprehensive logs verifying compilation integrity and input-output matches for the 120-pair APM translation matrix.
 
-**The APM Translation Matrix:**
-The translation capability was stressed by translating all 20 algorithms across 6 directional language pairs (e.g., C→Java, Java→C++) producing 120 isolated translations verified against strict compilation and behavioral test cases.
+### Reconstructing the Source Dataset (`data/`)
+> [!IMPORTANT]
+> For dataset preservation, privacy, and space concerns, the massive raw source code repository and intermediate components (`data/`) are strictly excluded via `.gitignore`. 
 
-### Directory Mapping
-*   `results/cpp/` — Single-language validation ensuring C++ semantic equivalency mappings hold up against baseline ASTs.
-*   `results/java/` — Java specific datasets heavily analyzing CES discrepancies in OOP contexts.
-*   `results/cross/` — The complete cross-language equivalency validation, containing the aggregated similarity matrices predicting accurate mappings regardless of input language parity.
-*   `results/baselines/` — The empirical `.json` results from our CodeBERT, GraphCodeBERT, and UniXCoder comparative evaluations.
-*   `results/translation/` — Comprehensive logs (`apm_final_evaluation_results.json`) validating compilation integrity and input-output matches for the 120-pair APM matrix.
+If you are expanding on this codebase locally and wish to run the `.sh` evaluation pipelines, you **must recreate the `data/` directory structure** at the root of the project. The framework expects the following hierarchy for evaluation:
+
+```text
+data/
+ ├── c/
+ │    └── p1/
+ │         ├── ref/
+ │         │    └── ref1_c.c
+ │         └── s/
+ │              ├── s1_c.c
+ │              └── s2_c.c
+ ├── cpp/
+ └── java/
+```
+*(Where `p1` represents the algorithmic problem bucket, `ref` contains the baseline reference solutions, and `s` contains the student/target implementations to be evaluated).*
 
 ---
 
