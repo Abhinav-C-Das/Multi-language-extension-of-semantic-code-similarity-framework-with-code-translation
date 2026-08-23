@@ -235,15 +235,15 @@ def run_ablation():
     for res in results_log[:15]:
         wc, wb, ww = res["weights"]
         gap_str = f"{res['gap']:.4f}"
-        assessment = "★ BEST" if res == results_log[0] else \
-                     "✅ good" if res["gap"] < 0.10 else \
-                     "⚠️ biased" if res["gap"] < 0.20 else "❌ poor"
+        assessment = "[BEST]" if res == results_log[0] else \
+                     "good" if res["gap"] < 0.10 else \
+                     "biased" if res["gap"] < 0.20 else "poor"
         print(f"  {wc:.2f}   {wb:.2f}   {ww:.2f}   | {res['accuracy']:.0%}    {res['correct']}/{res['total']}      | {gap_str:<8} {assessment}")
 
     # ── Best by accuracy ──
-    print(f"\n  [BEST ACCURACY]    CES={best_weights[0]:.2f}, Base={best_weights[1]:.2f}, WL={best_weights[2]:.2f}  →  {best_acc:.0%}")
+    print(f"\n  [BEST ACCURACY]    CES={best_weights[0]:.2f}, Base={best_weights[1]:.2f}, WL={best_weights[2]:.2f}  ->  {best_acc:.0%}")
     if best_gap_weights:
-        print(f"  [MOST AGNOSTIC]    CES={best_gap_weights[0]:.2f}, Base={best_gap_weights[1]:.2f}, WL={best_gap_weights[2]:.2f}  →  gap={best_gap:.4f}")
+        print(f"  [MOST AGNOSTIC]    CES={best_gap_weights[0]:.2f}, Base={best_gap_weights[1]:.2f}, WL={best_gap_weights[2]:.2f}  ->  gap={best_gap:.4f}")
 
     # ── Single View Analysis ──
     print(f"\n{'='*70}")
@@ -257,7 +257,7 @@ def run_ablation():
                       abs(r["weights"][1]-w[1])<1e-5 and 
                       abs(r["weights"][2]-w[2])<1e-5), None)
         if match:
-             print(f"  {n:<12}: Acc={match['accuracy']:.0%} ({match['correct']}/{match['total']})  Gap={match['gap']:.4f}")
+             print(f"  {n:<12}: Acc={match['accuracy']:.2%} ({match['correct']}/{match['total']})  Gap={match['gap']:.4f}")
         else:
              print(f"  {n:<12}: (Not found in grid)")
 
@@ -267,7 +267,7 @@ def run_ablation():
                     abs(r["weights"][1]-0.35)<1e-5 and 
                     abs(r["weights"][2]-0.40)<1e-5), None)
     if current:
-        print(f"\n  [CURRENT]  CES=0.25, Base=0.35, WL=0.40  →  Acc={current['accuracy']:.0%}  Gap={current['gap']:.4f}")
+        print(f"\n  [CURRENT]  CES=0.25, Base=0.35, WL=0.40  ->  Acc={current['accuracy']:.2%} ({current['correct']}/{current['total']})  Gap={current['gap']:.4f}")
 
     print("=" * 70)
 

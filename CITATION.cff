@@ -3,14 +3,16 @@ message: "If you use this software in your research, please cite it as below."
 title: "An Interpretable Deterministic Framework for Cross-Language Educational Code Similarity Using Code Property Graphs"
 abstract: "A research-grade code similarity system achieving high-accuracy cross-language mapping using interpretable multi-view analysis of Code Property Graphs. Features the novel Abstract Program Model (APM) and Contextual Execution Signatures (CES)."
 authors:
-  - family-names: "Your Last Name"
-    given-names: "Your First Name"
-    # orcid: "https://orcid.org/0000-0000-0000-0000"
-    # email: "your.email@example.com"
+  - family-names: "T"
+    given-names: "Hareesh"
+  - family-names: "Das"
+    given-names: "Abhinav C"
+  - family-names: "Thushara"
+    given-names: "M.G."
 version: 1.0.0
 date-released: 2026-01-12
-url: "https://github.com/yourusername/ckg-multiview-code-similarity"
-repository-code: "https://github.com/yourusername/ckg-multiview-code-similarity"
+url: "https://github.com/Abhinav-C-Das/Multi-language-extension-of-semantic-code-similarity-framework-with-code-translation"
+repository-code: "https://github.com/Abhinav-C-Das/Multi-language-extension-of-semantic-code-similarity-framework-with-code-translation"
 keywords:
   - code similarity
   - code property graphs
@@ -26,8 +28,10 @@ preferred-citation:
   type: article
   title: "An Interpretable Deterministic Framework for Cross-Language Educational Code Similarity Using Code Property Graphs"
   authors:
-    - family-names: "Your Last Name"
-      given-names: "Your First Name"
-  # journal: "Conference/Journal Name"
-  # year: 2026
-  # doi: "10.xxxx/xxxxx"
+    - family-names: "T"
+      given-names: "Hareesh"
+    - family-names: "Das"
+      given-names: "Abhinav C"
+    - family-names: "Thushara"
+      given-names: "M.G."
+

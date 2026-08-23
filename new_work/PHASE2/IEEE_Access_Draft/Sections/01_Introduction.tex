@@ -1,0 +1,65 @@
+\section{Introduction}
+\label{sec:introduction}
+
+\IEEEPARstart{C}{onsider} two students solving the same array summation problem: one submits a C implementation using an imperative \texttt{for}-loop, the other a Java implementation using a \texttt{while}-loop with an index variable. Both programs express the identical computational strategy---iterate over an array, accumulate a running sum, and return the result---yet AST-based similarity tools classify them as unrelated, because each language frontend produces a node type vocabulary specific to its syntax. As multi-lingual introductory programming courses grow in prevalence~\cite{ref_luxton2018}---where the same algorithmic assignment may be submitted in C, C++, or Java---this structural opacity across language boundaries constitutes a fundamental limitation of automated feedback and retrieval systems: algorithmically equivalent submissions cannot be recognized as equivalent, and students receive no pedagogically meaningful cross-language strategy feedback.
+
+Each of the two prominent technical solutions solves only one part of this problem. Token-matching and clone detection~\cite{ref_baker1995} methods operate at the syntactic level of a single programming language and cannot identify the equivalence of algorithms that use different syntaxes. On the other hand, neural-based CodeBERT~\cite{ref_codebert} and UniXcoder~\cite{ref_unixcoder} provide language-independent representations learned during pre-training but still rely on fine-tuned corpora that are not available in the narrow environment of education and output dense vectors, which do not have the ability to represent \textit{which} algorithmic patterns the submission contains or \textit{why} two programs share the same structure.
+
+In our previous research, we constructed an interpretable multi-view framework based on Code Property Graph (CPG) that reaches 88.5\% top-1 retrieval accuracy for single-language C educational submissions. However, there is a major architectural constraint associated with it --- the WL neighborhood hash and Computation Evolution Signature (CES) label of the method are language-specific, and the system cannot identify cross-language algorithmic equivalence.
+
+This paper extends that framework to C, C++, and Java, addressing three gaps in the current literature:
+\begin{enumerate}
+    \item \textbf{Multi-language CPG-based assessment:} A Context Normalization Protocol resolves semantic label incompatibilities between different languages when extracting graphs, thus allowing direct comparison between C, C++, and Java programs, without using any learned alignment or translation between the languages.
+    \item \textbf{Empirical weight stability characterization:} We propose, to the best of our knowledge, an empirical characterization of the weights' stability in a multi-view context across programming languages in a CPG-based system, in the context of an educational setting CS-1 restricted to a single institution, using a two-proportion z-test based on different program population samples.
+    \item \textbf{Demonstration of dual use of CPGs:} The same CPG-based representation of source code, which supports interpretation through similarity retrieval, also enables code generation through deterministic rules.
+\end{enumerate}
+
+Our multi-language extension of Phase~1 framework makes four main contributions:
+\begin{itemize}
+    \item \textbf{Normalized Semantic Taxonomy:} A 21-pattern CES taxonomy built upon the Phase~1 baseline and augmented with a Context Normalization Protocol which allows the transformation of language-dependent patterns such as procedural \texttt{for}-loop structures vs object-oriented \texttt{while}-loops into abstract semantic tokens (\texttt{loop\_ANY}, \texttt{rec\_ANY}) without the need for any learning step. This normalization operates deterministically at CPG extraction time and requires no additional training data.
+    \item \textbf{Asymmetric Similarity Metric}: A principled substitution of the symmetric cosine similarity metric of Phase~1 by the asymmetric Tversky index with parameters $\alpha{=}0.1$ and $\beta{=}0.9$, inspired by the instructional asymmetry in missing strategies and unnecessary student-level abstraction constructs. The asymmetric similarity metric places a harsh penalty on missing strategies while being tolerant of verbosity, thus compensating for the verbosity disparity naturally associated with Java over C/C++.
+    \item \textbf{Weight Stability Against Cross-Language Testing:} Feature weights based solely on monolingual C programs ($w_{BL}=0.35, w_{WL}=0.40, w_{CES}=0.25$) achieve an aggregate accuracy of 87.25\% on the 400-program cross-language dataset ($91.43\%$ top-1 accuracy on the primary Java$\rightarrow$C/C++ cross-frontend direction, $n=140$). Because the majority of evaluation pairs arise from the shared C/C++ frontend, these results are consistent with weight transfer stability within the constrained CS-1 institutional scope rather than language-independent generalizability, and the aggregate score does not imply symmetric cross-language performance. A two-proportion z-test on independent program populations yields no statistically significant evidence of accuracy degradation relative to the monolingual baseline ($z \approx 1.44$, $p \approx 0.15$); the absence of significance should not be interpreted as equivalence across language settings.
+    \item \textcolor{blue}{\textbf{Rule-Based Deterministic Code Transpilation with Normalized CPGs:} For demonstration purposes, as a second, architecture-independent proof of feasibility under author-constructed test conditions, the same normalized CPG supports deterministic code transpilation using rule-based translation of code across all six direction pairs between C/C++/Java for all twenty CS-1 algorithms evaluated in the study. The compilation success (99.2\%) and behavioral agreement (98.3\%) are reported strictly as internal consistency measures rather than general performance benchmarks (Section~\ref{subsec:apm_results}).}
+\end{itemize}
+
+\subsection{Scope and Limitations}
+\label{subsec:scope}
+This framework is purposely limited in scope to CS-1 algorithmic problems---including sorting, array manipulation, elementary number theory, and classical recursion/search paradigms. This design seeks interpretability and deterministic behavior in the context of these algorithmic problems, and does not extend to evaluation of dynamic typing, polymorphic types, inheritance trees or abstract classes, template meta-programming, or thread management techniques. Throughout this paper, ``gradient-free'' denotes the absence of backpropagation or any gradient-based parameter optimization: TF-IDF weights are fitted deterministically from corpus statistics and the APM rule base is hand-authored. Interpretability refers specifically to the framework's production of explicit, human-readable CES pattern inventories per submission---enumerating matched algorithmic strategies such as \texttt{ACCUMULATIVE} or \texttt{NARROWING\_WINDOW}---enabling instructors to identify which strategies a submission captures or omits; no user study was conducted to measure instructor utility of this output, and interpretability in this context refers to structural output transparency rather than demonstrated pedagogical efficacy. All scope-related caveats are consolidated in Section~\ref{sec:discussion}.
+
+\subsection{Notation and Abbreviations}
+\label{subsec:abbreviations}
+
+Table~\ref{tab:abbreviations} lists abbreviations and notation used throughout this paper.
+
+\begin{table}[ht]
+\caption{Abbreviations and Notation Used in This Paper.}
+\label{tab:abbreviations}
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Abbreviation} & \textbf{Expansion} \\
+\hline
+CPG   & Code Property Graph \\
+CES   & Computation Evolution Signatures \\
+APM   & Abstract Program Model \\
+WL    & Weisfeiler-Lehman (graph kernel) \\
+BL    & Bag-of-Lemmas (lexical view) \\
+TF-IDF & Term Frequency -- Inverse Document Frequency \\
+IRR   & Inter-Rater Reliability \\
+CI    & Confidence Interval \\
+STL   & C++ Standard Template Library \\
+CS-1  & First-year introductory programming course \\
+OO    & Object-Oriented \\
+RQ    & Research Question \\
+\hline
+\end{tabular}
+\end{table}
+
+Three research questions guide the evaluation:
+\begin{enumerate}
+    \item \textbf{RQ1 (Cross-Language Retrieval):} Is it possible to retrieve algorithmic patterns effectively through a deterministic CPG-based multi-view approach in the CS-1 cross-language setting evaluated in the current study, without any form of language-dependent model fine-tuning or embedding learning?
+    \item \textbf{RQ2 (Weight Transfer Stability):} Are feature weights from a monolingual C corpus still discriminatively valuable after being transferred into a cross-language evaluation setting, and is CPG context normalization enough for providing adequate structural alignment---in terms of no statistically significant drop in accuracy (two-proportion z-test, Section~\ref{subsec:weight_stability_discussion})---between procedural C/C++ and object-oriented Java frontends in the CS-1 setting?
+    \item \textbf{RQ3 (CPG Generative Capability):} Is it possible to demonstrate the capability of the same CPG representation, which has been used to conduct similarity analyses, to deterministically generate algorithmic problems in compliance with their behavior requirements along all six directional pairs for CS-1 problems?
+\end{enumerate}
+
+The remainder of this paper is organized as follows. Section~\ref{sec:related_work} surveys related work; Section~\ref{sec:framework} presents the extended framework; Section~\ref{sec:implementation} provides the mathematical formulation; Section~\ref{sec:evaluation_setup} describes the evaluation methodology; Section~\ref{sec:results} reports empirical results; Section~\ref{sec:discussion} interprets findings and addresses threats to validity; Section~\ref{sec:conclusion} concludes. All evaluation artifacts are publicly archived at \url{https://github.com/Abhinav-C-Das/ckg-multiview-code-similarity}.

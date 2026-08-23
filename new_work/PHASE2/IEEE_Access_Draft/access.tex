@@ -1,0 +1,79 @@
+\documentclass{ieeeaccess}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{caption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage[table]{xcolor}  % enables \rowcolor for shaded table rows
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+\history{}
+\doi{}
+\def\volumeyear{2025}
+\def\volumenumber{13}
+
+\title{An Interpretable Deterministic Framework for Cross-Language Educational Code Similarity Using Code Property Graphs}
+\author{\uppercase{Hareesh T}\authorrefmark{1},
+\uppercase{Abhinav C Das}\authorrefmark{1},
+\uppercase{M.G. Thushara}\authorrefmark{1},
+}
+\address[1]{Department of Computer Science and Applications, Amrita School of Computing, Amrita Vishwa Vidyapeetham, Amritapuri, India (e-mail: hareesh9320@gmail.com, abhiskp3@gmail.com,thusharamg@am.amrita.edu)}
+\tfootnote{This work received no specific grant from any funding agency in the public, commercial, or not-for-profit sectors.}
+
+\markboth
+{Hareesh \headeretal: Interpretable Deterministic Framework for Cross-Language Educational Code Similarity Using CPGs}
+{Hareesh \headeretal: Interpretable Deterministic Framework for Cross-Language Educational Code Similarity Using CPGs}
+
+\corresp{Corresponding author: M.G. Thushara (e-mail: thusharamg@am.amrita.edu).}
+
+\begin{abstract}
+Recognizing algorithmically equivalent code written in different programming languages remains a fundamental challenge in multi-language introductory programming courses.Two programs representing the same algorithm using two different languages---in one case, C and another case, Java---create disjoint syntax trees such that matching tokenization algorithms will not detect algorithmic equivalence between languages. Neural embedding approaches achieve cross-language representation but require labeled fine-tuning corpora unavailable in labeled-data-scarce CS-1 settings, and produce dense vectors that cannot enumerate which algorithmic patterns a submission contains---a capability essential for interpretable instructional feedback.
+
+This paper proposes a deterministic, gradient-free framework for cross-language algorithmic similarity in CS-1 educational settings, covering C, C++, and Java. Context Normalization Protocol---a cross-language label unification process applied to Code Property Graph (CPG) nodes—our framework makes it possible to perform direct comparisons between patterns irrespective of language without any form of learned alignment. An extended 21-pattern Computation Evolution Signatures (CES) taxonomy, comprising pattern-level descriptors of variable evolution within loops and recursive calls, covers CS-1 imperative strategies across all three languages.  An asymmetrical Tversky formulation compensates for Java’s innate verbosity by assigning a low weight to irrelevant patterns submitted by the students while retaining the ability to capture necessary reference strategies. The framework is able to enumerate the algorithmic patterns present in every submitted code without using GPUs and labeled fine-tuning data.
+
+Under matched held-out evaluation, the model attains 88.75\% top-1 recall accuracy, whereas the neural baseline achieves 71.37\%, highlighting the model’s effectiveness in scenarios where labeled data for fine-tuning is lacking. On the entire 400-program cross-language evaluation task, the aggregate cross-language retrieval accuracy is 87.25\% ($n=400$, all directions); the Java$\rightarrow$C/C++ cross-frontend direction, which constitutes 35\% of evaluation pairs, attains 91.43\% ($n=140$). The remaining 61.5\% of pairs share the C/C++ parser frontend. \textcolor{blue}{The aggregate performance is primarily driven by the Java$\rightarrow$C/C++ and C$\leftrightarrow$C++ directions; the remaining directions are underpowered and detailed in Section~\ref{subsec:cross_lang_results}, indicating that the aggregate score does not imply symmetric cross-language performance.} Feature weights are estimated using only monolingual C code without retraining ($p{<}0.0001$ compared to a TF-IDF benchmark). All reported results are scoped to CS-1 imperative algorithmic problems within a single-institution dataset ($N{=}400$); the hand-crafted taxonomy and rule base intentionally trade scalability for interpretability, and external generalizability requires \textcolor{blue}{multi-institution validation}. Artifacts: \url{https://github.com/Abhinav-C-Das/ckg-multiview-code-similarity}.
+\end{abstract}
+
+\begin{keywords}
+Automated program assessment, code property graph, computation evolution signatures, cross-language code similarity, Weisfeiler-Lehman graph kernel, context normalization, rule-based code generation, interpretable similarity, educational code assessment, deterministic program analysis.
+\end{keywords}
+
+\titlepgskip=-15pt
+
+\maketitle
+
+\input{Sections/01_Introduction}
+\input{Sections/02_RelatedWork}
+\input{Sections/03_ExtendedFramework}
+\input{Sections/04_ImplementationDetails}
+\input{Sections/05_EvaluationSetup}
+\input{Sections/06_Results}
+\input{Sections/07_Discussion}
+\input{Sections/08_Conclusion}
+\input{Sections/09_References}
+% \appendices % Uncomment and populate if supplementary appendices are added prior to submission.
+
+
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{hareesh.jpg}}]{Hareesh T}
+is currently pursuing the Master of Computer Applications (MCA) degree at the School of Computing, Amrita Vishwa Vidyapeetham, Amritapuri, India. His research interests include cybersecurity, program analysis, and source-to-source program transformation.
+\end{IEEEbiography}
+
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{abhinav.jpeg}}]{Abhinav C Das}
+is currently pursuing the Master of Computer Applications (MCA) degree at the School of Computing, Amrita Vishwa Vidyapeetham, Amritapuri, India. His academic interests include data science, program analysis, compiler design, and applied machine learning for software engineering.
+\end{IEEEbiography}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{thushara.jpg}}]{M.G. Thushara} received her PhD degree in Computer Science and Engineering from the University of Amrita Vishwa Vidyapeetham, Coimbatore, India, in 2021. In 2010, she was selected for Erasmus Mundus Scholarship for Research in University of Munich, Germany for a period of 36 months. In 2012 and 2013 she was invited consecutively to work in DALI Lab at University of Perpignan, France in the domain of Abstract Interpretation model for a period of one month.
+
+Since 2013, she has been an Assistant Professor with the Amrita School of Computing, Amrita Vishwa Vidyapeetham. She works in the domain of Program Analysis, Static Analysis for Floating Point Programs, Software Engineering, Automatic Code Generation \& Assessment Models and Sustainability of Ancient Indian Art Forms and Rituals.
+\end{IEEEbiography}
+
+\vfill %
+\EOD
+
+\end{document}

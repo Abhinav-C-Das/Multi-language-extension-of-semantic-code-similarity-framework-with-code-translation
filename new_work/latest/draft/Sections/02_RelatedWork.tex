@@ -1,0 +1,69 @@
+\section{Related Work}
+\label{sec:related_work}
+
+The framework intersects five research areas: static program analysis via code property graphs, graph kernel methods for structural code comparison, automated assessment in educational settings, cross-language code understanding, and generative code modeling. This subsection will provide an overview of the converging limitations of these research tracks that lead to the current framework's design choices and compare the current framework to relevant prior art.
+
+\subsection{Code Property Graphs and Static Analysis}
+Code Property Graph (CPG)~\cite{ref_yamaguchi2014} is a unification of Abstract Syntax Trees (AST), Control Flow Graphs (CFG), and Program Dependence Graphs (PDG) into one structure. Designed as part of a code vulnerability detection system, the CPG presents common node and edge semantics regardless of language used in a form of a queryable graph. Specifically, Joern~\cite{ref_joern_platform} provides support for CPG generation from C/C++ code (\texttt{c2cpg}) and Java (\texttt{javasrc2cpg}). The former consists of two separate implementations supporting parsing for each respective programming language while both parsers convert distinct grammars into a common structural layer. While prior studies have utilized CPGs for control flow analysis, this study takes the advantage of static control and data flow analysis to identify \textit{semantic algorithmic intent} regardless of which frontend created the CPG. Joern's shared CPG node schema provides the common vocabulary that, under appropriate normalization, aligns structurally equivalent programs across language boundaries without learned representations.
+
+\subsection{Kernels on Graph Structure for Code Comparison}
+The Weisfeiler-Lehman (WL) subtree kernel~\cite{ref_shervashidze2011,ref_weisfeiler68} performs an iterative hashing of neighborhood information around nodes in graphs to create an efficient, gradient-free feature map representing local structure. The key problem for applying such kernels across multiple programming languages is \textit{hash fragmentation} caused by differences in node vocabulary arising from the absence of CPG normalization: each frontend creates its own graph with unique node types, leading to separate WL hash vocabularies for equivalent algorithms implemented in different languages and thus causing them to look unrelated. As shown in Sec.~\ref{sec:results}, the CPG schema implemented in Joern is capable of mapping node vocabularies to a consistent representation across languages, thereby ensuring that WL hashes at $h=2$ stay discriminating between languages within the selected CS-1 scope.
+
+\subsection{Automated Similarity Assessment in Educational Settings}
+The OverCode~\cite{ref_glassman2015} clusters Python programs by normalizing variable names and abstracting away syntactic variants, indicating that structural normalization allows detecting similarities between algorithms written in diverse ways within a single language. Singh et al.~\cite{ref_singh2013} used program transformation to create an automated feedback mechanism for students learning introductory programming within the same language context. Rivers and Koedinger~\cite{ref_rivers2017} propose an adaptive hint recommendation system ITAP that constructs canonical solution paths by canonicalizing the ASTs in Python. This idea relies on the educational insight~\cite{ref_soloway1984} that a number of solutions must be accounted for during assessment. In addition, there are numerous studies on automated assessment in programming~\cite{ref_ihantola2010, ref_paiva2022, ref_parvathy2025, ref_rao2024} and AI-driven personalized learning systems in education~\cite{ref_pradeesh2025, ref_reddy2025}. Both MOSS~\cite{ref_schleimer2003} and JPlag~\cite{ref_prechelt2002} systems rely on fingerprinting to detect similarities in programs written in different languages; however, since neither tool provides cross-language adaptors, they resort to simple text/token-based detection techniques at language boundaries. All the aforementioned systems depend on single-language parsers or execution of the test suite, failing to provide any cross-language capabilities in multi-strategy analysis and retrieval.
+
+\textbf{Information Retrieval for Code Similarity:} Latent semantic and term-frequency weighting approaches~\cite{ref_ir_code_retrieval} have been applied to code segment retrieval but suffer from the ``lexical gap''---semantically identical algorithms with different variable names or surface syntax evade detection. The TF-IDF Baseline view in our present framework serves as a representative IR-level proxy, evaluated under identical conditions, to isolate the incremental contribution of the structural and semantic views.
+
+\subsection{Cross-Language Code and Neural Approaches}
+Path-based models (Code2Vec~\cite{ref_code2vec}, Code2Seq~\cite{ref_code2seq}) and tree-based networks (ASTNN~\cite{ref_astnn}, FA-AST~\cite{ref_fa_ast}) generate highly discriminative structural representations, yet remain constrained to single-language AST schemas. Pretrained transformer-based architectures (CodeBERT~\cite{ref_codebert}, GraphCodeBERT~\cite{ref_graphcodebert}, and UniXcoder~\cite{ref_unixcoder}) attain excellent cross-language retrieval performance via contextual pretraining, yet require labeled data to fine-tune which is unavailable for narrow educational domains, generating dense embeddings which fail to expose algorithmic patterns contained in submissions---a necessary requirement for instructional feedback. Generative neural architectures (TransCoder~\cite{ref_lachaux2020}, CodeT5+~\cite{ref_wang2023}, StarCoder~\cite{ref_starcoder}, CodeLlama~\cite{ref_codellama}) achieve significant advances in large-scale code translation but lack determinism, operate upon general code samples, and have not been characterized for their educational potential in resource-poor CS-1 settings. Other recent developments include cross-language mapping techniques~\cite{ref_naik2024} and declarative pattern detection~\cite{ref_mohan2024}, which similarly address code comprehension but differ fundamentally from our gradient-free strategy retrieval approach. It must be recognized that the difference between the present architecture and those discussed lies in priorities, not capabilities: neural models focus on representation learning and generalization, while the present system emphasizes determinism, structural interpretability, and deployability---all properties which are inherent requirements for educational applications, rather than limitations thereof. Differences in design philosophy are further discussed in Section~\ref{subsec:neural_comparison}.
+
+\subsection{The Specific Evaluative Gap}
+\label{subsec:evaluative_gap}
+Intermediary representations (e.g. LLVM IR~\cite{ref_llvm}) evade AST node-type incompatibilities by operating at the register level of abstraction---an engineering trade-off of representational generality for structural information. The empirical advantages or disadvantages of IR approaches are not evaluated herein; a CPG-based approach was selected to enable interpretability of algorithmic patterns in the source code.
+
+Three converging limitations in the surveyed CS-1 educational assessment literature motivate this work: (1) to the best of our knowledge, CPG-based program analysis has remained a within-language discipline in this domain, with no multi-language educational extension empirically characterized; (2) the feature weight stability of CPG-based multi-view systems across language boundaries has not been previously characterized within this scope; and (3) to the best of our knowledge, the combined use of a normalized CPG for both interpretable similarity analysis and deterministic code generation within a single CS-1 educational framework has not been previously explored.
+
+Table~\ref{tab:method_comparison} shows the placement of the present approach relative to exemplary baseline methods using the same cross-language evaluation dataset with the hard filtering constraint applied. MOSS and JPlag constitute structural lower bounds and thus serve only as a benchmarking standard for the absence of structural adapters. Zero-shot neural models provide an empirical upper bound on performance absent task-specific adaptation; the fine-tuned UniXcoder performance reported in Table~\ref{tab:baseline_comparison} represents a direct neural reference point.
+
+\begin{table*}[t]
+\caption{Positioning of the Proposed Framework Relative to Representative Approaches
+Evaluated on the CS-1 Cross-Language Dataset. MOSS and JPlag were run in standard
+token-fingerprinting mode on C/C++/Java submission files; neither possesses a
+cross-language structural adapter and thus falls back to generic text/token matching
+at language boundaries. CodeBERT and GraphCodeBERT are evaluated in a zero-shot
+configuration (\texttt{[CLS]}-token cosine similarity, no fine-tuning on CS-1 data);
+CodeBERT and UniXcoder are additionally reported in a fine-tuned configuration
+(see footnote~$^{\S}$). ``Deterministic: Yes'' denotes absence of gradient-based
+training; TF-IDF weights are corpus-fitted and APM rules are hand-authored (see Section~\ref{subsec:scope}).}
+
+\label{tab:method_comparison}
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+\textbf{Approach} & \textbf{Cross-Language} & \textbf{Explainable} & \textbf{Deterministic} & \textbf{CPG-Based} & \textbf{Training Required} & \textbf{CS-1 Acc.} \\
+\hline
+TF-IDF educational baseline & Partial & Yes & Yes & No & No & 79.50\% \\
+\hline
+\multicolumn{7}{|c|}{\cellcolor{gray!15}\textit{Non-Semantic Lower Bounds}} \\
+\hline
+MOSS (token-fingerprinting)$^{\dagger}$ & Partial & No & Yes & No & No & 54.20\% \\
+JPlag (token-fingerprinting)$^{\dagger}$ & Partial & No & Yes & No & No & 51.50\% \\
+\hline
+\multicolumn{7}{|c|}{\cellcolor{gray!15}\textit{Neural Baselines}} \\
+\hline
+CodeBERT~\cite{ref_codebert}$^{\ddagger}$ & Yes & Limited & No & No & Yes (pre-trained) & 59.50\% \\
+CodeBERT (fine-tuned)$^{\S}$ & Yes & Limited & No & No & Yes & 66.25\% \\
+GraphCodeBERT~\cite{ref_graphcodebert}$^{\ddagger\P}$ & Yes & Limited & No & No & Yes (pre-trained) & 58.90\% \\
+UniXcoder~\cite{ref_unixcoder}$^{\ddagger}$ & Yes & Limited & No & No & Yes (pre-trained) & 68.92\% \\
+UniXcoder (fine-tuned)$^{\S}$ & Yes & Limited & No & No & Yes & 71.37\% \\
+\hline
+Rule-based generators$^{*}$ & Partial & Yes & Yes & No & No & --- \\
+\textbf{Proposed Framework} & \textbf{Yes (CS-1)} & \textbf{Yes} & \textbf{Yes} & \textbf{Yes} & \textbf{No} & \textbf{87.25\%} \\
+\hline
+\multicolumn{7}{p{0.98\linewidth}}{$^{\dagger}$MOSS and JPlag tested as non-semantic lower-bounds; they lack a cross-language structural adapter.} \\
+\multicolumn{7}{p{0.98\linewidth}}{$^{\ddagger}$Zero-shot evaluation via \texttt{[CLS]}-token cosine similarity; no fine-tuning on CS-1 data performed.} \\
+\multicolumn{7}{p{0.98\linewidth}}{$^{\S}$Fine-tuned models evaluated on the 80-program held-out test set (80/20 stratified split of the 400-program cross-language corpus; 320 programs used for fine-tuning, 80 held out); full protocol in Section~\ref{subsec:neural_finetuning}. The reported 87.25\% framework result is on the full 400-program corpus; framework accuracy on the same 80-program held-out set is 88.75\% [95\% Wilson CI: 80.49\%, 93.83\%].} \\
+\multicolumn{7}{p{0.98\linewidth}}{$^{*}$Rule-based generators are evaluated on behavioral agreement (99.2\% compilation success, 98.3\% behavioral agreement across 120 cross-language pairs), not top-1 retrieval accuracy; the blank entry is expected.} \\
+\multicolumn{7}{p{0.98\linewidth}}{$^{\P}$GraphCodeBERT evaluated on raw code tokens without DFG preprocessing; its data-flow-conditioned pre-training advantage is not activated, constituting a lower bound on GraphCodeBERT capability {(see Section~\ref{subsec:neural_comparison}).}} \\
+\end{tabular}
+\end{table*}
